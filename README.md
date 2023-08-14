@@ -19,7 +19,7 @@ InStock is our answer to the outdated inventory systems that struggle under heav
 ## Setup
 
 1. Clone the repository: 
-```git clone https://github.com/yourgithubusername/io-instock.git```
+```git clone https://github.com/Mannyhab/io-instock.git```
 
 2. Install dependencies:
 ```npm install```
@@ -34,14 +34,14 @@ InStock is our answer to the outdated inventory systems that struggle under heav
 
 ## Team
 
-| Name        | Role              |
-| ----------- | ----------------- |
-| Iman        | Software Engineer |
-| Juan        | Software Engineer |
-| John        | Software Engineer |
-| Emmanuel    | Software Engineer |
+| Name                                    | Role              |
+| --------------------------------------- | ----------------- |
+| [@Iman](https://github.com/imanhedeshy) | Software Engineer |
+| [@Juan](https://github.com/JDVM)        | Software Engineer |
+| [@John](https://github.com/jcpierce321) | Software Engineer |
+| [@Emmanuel](https://github.com/Mannyhab)| Software Engineer |
 
-🌟 Special thanks to **Nich**, our project manager, for the guidance and support throughout the project lifecycle.
+🌟 Special thanks to **[@Nich](https://github.com/ntkunz)**, our project manager, for the guidance and support throughout the project lifecycle.
 
 ---
 
