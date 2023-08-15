@@ -1,19 +1,14 @@
 {
-  "name": "io-instock",
+  "name": "my-react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.4.0",
-    "history": "^5.3.0",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.65.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -39,9 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "Welcome to **InStock**, the modern, scalable inventory management system designed for high traffic loads. Crafted with dedication by team **IO** as part of *The Nameless '23* cohort at BrainStation's software engineering bootcamp.",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC"
+  }
 }
