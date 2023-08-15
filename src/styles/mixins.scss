@@ -1,0 +1,19 @@
+@use '../styles/partials/fonts';
+@use '../styles/partials/fontStyles' as *;
+@use '../styles/partials/colors' as *;
+@use '../styles/partials/breakpoints' as *;
+
+@mixin button {
+    button-height: 2.375rem;
+    button-border-radius: 1.25rem;
+    button-border: none;
+    button-text-align: center;
+    button-background-color: $primary-blue;
+    button-color: $primary-white;
+    button-padding: 0 1rem;
+}
+
+@mixin input {
+    input-height: 2.375rem;
+    input-border-radius: 1.25rem;
+}
