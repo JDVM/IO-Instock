@@ -1,0 +1,54 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fontStyles" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+@use "../../App.scss" as *;
+
+.header{
+    display: flex;
+    flex-direction: column;
+    background-color: $background-dark;
+    height: 12.5rem;
+    align-items: center;
+
+    @include tablet{
+        height: 11.25rem;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    &__logo{
+        width: 8.0625rem;
+        padding: 1rem;
+    }
+
+    &__nav{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        text-align: center;
+        padding: 0 1rem;
+        
+
+    }
+    &__warehouses{
+        @include P3;
+        width: 50%;
+        color: $primary-white;
+        padding: .5rem;
+        border-radius: 1rem;
+        
+    }
+    &__inventory{
+        @include P3;
+        width: 50%;
+        color: $primary-white;
+        padding: .5rem;
+        border-radius: 1rem;
+      
+    }
+    &__active{
+        background-color: $primary-black;
+    }
+}
+
