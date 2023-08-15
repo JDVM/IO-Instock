@@ -8,8 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Warehouses/>} />
-        <Route path="/" element={<Inventory/>} />
+        <Route path="/Warehouses" element={<Warehouses/>} />
+        <Route path="/Inventory" element={<Inventory/>} />
         <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </BrowserRouter>
