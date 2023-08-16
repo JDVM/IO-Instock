@@ -7,6 +7,7 @@ import './Warehouse.scss';
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
 import editIcon from '../../assets/images/Icons/edit-24px.svg';
 import chevronIcon from '../../assets/images/Icons/chevron_right-24px.svg';
+import sortIcon from '../../assets/images/Icons/sort-24px.svg';
 
 const API_BASE_URL = 'http://localhost:8080';
 
@@ -43,31 +44,33 @@ function WarehouseList () {
                     <button className='warehouse-list__add-button' type="button">+ Add New Warehouse</button>
                 </div>
             </div>
-            <div className='warehouse-list__card-item warehouse-list__card-item--tablet'>
-                <article className='warehouse-list__card-parent'>
-                    <div className='warehouse-list__card-child'>
-                        <div className='warehouse-list__card-info'>
-                            <h4 className='warehouse-list__card-title'>WAREHOUSE</h4>
-                            
+            <div>
+                <div className='warehouse-list__card-item warehouse-list__card-item--tablet'>
+                    <article className='warehouse-list__card-parent'>
+                        <div className='warehouse-list__card-child'>
+                            <div className='warehouse-list__card-info'>
+                                <h4 className='warehouse-list__card-title'>WAREHOUSE</h4>
+                                <img src={sortIcon} alt='sort icon' />
+                            </div>
+                            <div className='warehouse-list__card-info'>
+                                <h4 className='warehouse-list__card-title'>ADDRESS</h4>
+                                <img src={sortIcon} alt='sort icon' />
+                            </div>
                         </div>
-                        <div className='warehouse-list__card-info'>
-                            <h4 className='warehouse-list__card-title'>ADDRESS</h4>
-                            
+                        <div className='warehouse-list__card-child'>
+                            <div className='warehouse-list__card-info'>
+                                <h4 className='warehouse-list__card-title'>CONTACT NAME</h4>
+                                <img src={sortIcon} alt='sort icon' />
+                            </div>
+                            <div className='warehouse-list__card-info'>
+                                <h4 className='warehouse-list__card-title'>CONTACT INFORMATION</h4>
+                                <img src={sortIcon} alt='sort icon' />
+                            </div>
                         </div>
+                    </article>
+                    <div className='warehouse-list__card-actions'>
+                        <h4 className='warehouse-list__card-title'>ACTIONS</h4>
                     </div>
-                    <div className='warehouse-list__card-child'>
-                        <div className='warehouse-list__card-info'>
-                            <h4 className='warehouse-list__card-title'>CONTACT NAME</h4>
-                            
-                        </div>
-                        <div className='warehouse-list__card-info'>
-                            <h4 className='warehouse-list__card-title'>CONTACT INFORMATION</h4>
-                        </div>
-                    </div>
-                </article>
-                <div className='warehouse-list__foot'> 
-                    <img className='warehouse-list__icon' src={deleteIcon} alt='delete icon' />
-                    <img className='warehouse-list__icon' src={editIcon} alt='edit icon'/>
                 </div>
             </div>
                 {warehouses.map((warehouse) => (
