@@ -6,9 +6,13 @@ function WarehouseList () {
     return (
         <section className='warehouse-list'>
             <div className='warehouse-list__head'>
-                <h1 className='warehouse-list__title'>WAREHOUSES</h1>
-                <input className='warehouse-list__input' type="search" name="search" placeholder="Search..." />
-                <button className='warehouse-list__add-button' type="button">+ Add New Warehouse</button>
+                <div>
+                    <h1 className='warehouse-list__title'>Warehouses</h1>
+                </div>
+                <div className='warehouse-list__CTA'>
+                    <input className='warehouse-list__input' type="search" name="search" placeholder="Search..." />
+                    <button className='warehouse-list__add-button' type="button">+ Add New Warehouse</button>
+                </div>
             </div>
             <div className='warehouse-list__card-item'>
                 <article className='warehouse-list__card-parent'>

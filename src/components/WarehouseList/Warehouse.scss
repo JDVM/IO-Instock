@@ -6,17 +6,30 @@
 
 @import '../../styles/mixins.scss';
 
-import delete from 
-
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+input::placeholder {
+    padding-left: 4px;
 }
 
 .warehouse-list {
 
     &__head {
+        display: flex;
+        flex-direction: column;
         padding: 1rem;
         border-bottom: 2px solid $secondary-lightgrey;
+
+            @include tablet {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 2rem;
+            }
     }
 
     &__title {
@@ -24,9 +37,15 @@ import delete from
         margin: 0.5rem 0;
         color: $primary-black;
         text-align: left;
-    
-             @include tablet {
-        }
+    }
+
+    &__CTA {
+        display: flex;
+        flex-direction: column;
+
+            @include tablet {
+                flex-direction: row;
+            }
     }
 
     &__input {
@@ -39,27 +58,48 @@ import delete from
         background-position: 236px 7px;
         outline-color: $primary-blue !important;
     }
+            @include tablet {
+                background-position: 128px 7px;
+            }
 
     &__add-button {
         width: 100%;
         margin: 0.5rem 0;
         @include button;
         @include H3;
+
+            @include tablet {
+                margin-left: 1rem;
+            }
     }
 
     &__card-item {
+        display: flex;
+        flex-direction: column;
         padding: 0 1rem 1.5rem 1rem;
         border-bottom: 2px solid $secondary-lightgrey;
+
+            @include tablet {
+                flex-direction: row;
+                padding: 0 2rem;
+            }
     }
     
     &__card-parent {
         display: flex;
+        flex: 1;
+        column-gap: 1rem;
     }
 
     &__card-child {
         width: 50%;
+        margin: 1rem 0;
         display: flex;
         flex-direction: column;
+
+            @include tablet {
+                flex-direction: row;
+            }
     }
 
     &__card-info {
@@ -69,32 +109,22 @@ import delete from
     &__card-title {
         @include H4;
         color: $secondary-darkgrey;
-        margin: 0.5rem 0;
+        margin: 0;
         text-align: left;
-
-            @include tablet {                
-            }
     }
 
     &__card-link {
         @include H3;
         color: $primary-blue;
-        margin: 0.5rem 0;
+        margin: 0;
         text-align: left;
-
-            @include tablet {
-            }
     }
 
     &__card-text {
         @include P2;
         color: $primary-black;
-        margin: 0.5rem 0;
+        margin: 0;
         text-align: left;
-
-            @include tablet {
-
-            }
     }
 
     &__foot {
