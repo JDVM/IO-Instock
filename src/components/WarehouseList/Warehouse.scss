@@ -13,7 +13,7 @@
 }
 
 input::placeholder {
-    padding-left: 4px;
+    padding-left: 0.5rem;
 }
 
 .warehouse-list {
@@ -55,7 +55,7 @@ input::placeholder {
         border: 2px solid $secondary-lightgrey;
         background-image: url(../../assets/images/Icons/search-24px.svg);
         background-repeat: no-repeat;
-        background-position: 236px 7px;
+        background-position: 16rem;
         outline-color: $primary-blue !important;
     }
             @include tablet {
@@ -84,6 +84,14 @@ input::placeholder {
                 padding: 0 2rem;
             }
     }
+
+    &__card-item--tablet {
+        display: none;
+
+            @include tablet {
+                display: flex;
+            }
+    }
     
     &__card-parent {
         display: flex;
@@ -99,11 +107,17 @@ input::placeholder {
 
             @include tablet {
                 flex-direction: row;
+                align-items: center;
+                margin-right: 2rem;
             }
     }
 
     &__card-info {
         padding: 0.5rem 0;
+
+            @include tablet {
+                width: 50%;
+            }
     }
 
     &__card-title {
@@ -111,6 +125,12 @@ input::placeholder {
         color: $secondary-darkgrey;
         margin: 0;
         text-align: left;
+
+            &--tablet {
+                @include tablet {
+                display: none;
+            }
+        }
     }
 
     &__card-link {
@@ -118,6 +138,7 @@ input::placeholder {
         color: $primary-blue;
         margin: 0;
         text-align: left;
+        display: flex;
     }
 
     &__card-text {
@@ -130,6 +151,16 @@ input::placeholder {
     &__foot {
         display: flex;
         justify-content: space-between;
+
+            @include tablet {
+                gap: 1rem;
+            }
+    }
+
+    &__icon {
+        @include tablet {
+            
+        }
     }
 
 }

@@ -1,8 +1,37 @@
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import './Warehouse.scss';
+
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
 import editIcon from '../../assets/images/Icons/edit-24px.svg';
+import chevronIcon from '../../assets/images/Icons/chevron_right-24px.svg';
+
+const API_BASE_URL = 'http://localhost:8080';
 
 function WarehouseList () {
+    const [warehouses, setWarehouses] = useState(null);
+    const { warehouseId } = useParams();
+    
+    useEffect(() => {
+        axios.get(`${API_BASE_URL}/warehouses`).then((res) => {
+            const warehousesData = res.data;
+            setWarehouses(warehousesData);
+            console.log(warehousesData)
+        }).catch((error) => {
+            console.error('Error fetching warehouses:', error);
+        });
+    }, []);
+
+    if (warehouses === null) {
+        return <h1>Loading...</h1>;
+    }
+
+    if (warehouses.length === 0) {
+        return null;
+    }
+
     return (
         <section className='warehouse-list'>
             <div className='warehouse-list__head'>
@@ -14,26 +43,25 @@ function WarehouseList () {
                     <button className='warehouse-list__add-button' type="button">+ Add New Warehouse</button>
                 </div>
             </div>
-            <div className='warehouse-list__card-item'>
+            <div className='warehouse-list__card-item warehouse-list__card-item--tablet'>
                 <article className='warehouse-list__card-parent'>
                     <div className='warehouse-list__card-child'>
                         <div className='warehouse-list__card-info'>
                             <h4 className='warehouse-list__card-title'>WAREHOUSE</h4>
-                            <p className='warehouse-list__card-link'>Washington</p>
+                            
                         </div>
                         <div className='warehouse-list__card-info'>
                             <h4 className='warehouse-list__card-title'>ADDRESS</h4>
-                            <p className='warehouse-list__card-text'>503 Broadway, New York, USA</p>
+                            
                         </div>
                     </div>
                     <div className='warehouse-list__card-child'>
                         <div className='warehouse-list__card-info'>
                             <h4 className='warehouse-list__card-title'>CONTACT NAME</h4>
-                            <p className='warehouse-list__card-text'>Graeme Lyon</p>
+                            
                         </div>
                         <div className='warehouse-list__card-info'>
                             <h4 className='warehouse-list__card-title'>CONTACT INFORMATION</h4>
-                            <p className='warehouse-list__card-text'>+1 629 555-012 <br/> paujla@instock.com</p>
                         </div>
                     </div>
                 </article>
@@ -42,6 +70,38 @@ function WarehouseList () {
                     <img className='warehouse-list__icon' src={editIcon} alt='edit icon'/>
                 </div>
             </div>
+                {warehouses.map((warehouse) => (
+                    <div className='warehouse-list__card-item' key={warehouse.id}>
+                        <article className='warehouse-list__card-parent'>
+                            <div className='warehouse-list__card-child'>
+                                <div className='warehouse-list__card-info'>
+                                    <h4 className='warehouse-list__card-title warehouse-list__card-title--tablet'>WAREHOUSE</h4>
+                                    <p className='warehouse-list__card-link'>{warehouse.warehouse_name}
+                                        <img src={chevronIcon} alt='chevron icon' />
+                                    </p>
+                                </div>
+                                <div className='warehouse-list__card-info'>
+                                    <h4 className='warehouse-list__card-title warehouse-list__card-title--tablet'>ADDRESS</h4>
+                                    <p className='warehouse-list__card-text'>{warehouse.address} {warehouse.city}, {warehouse.country}</p>
+                                </div>
+                            </div>
+                            <div className='warehouse-list__card-child'>
+                                <div className='warehouse-list__card-info'>
+                                    <h4 className='warehouse-list__card-title warehouse-list__card-title--tablet'>CONTACT NAME</h4>
+                                    <p className='warehouse-list__card-text'>{warehouse.contact_name}</p>
+                                </div>
+                                <div className='warehouse-list__card-info'>
+                                    <h4 className='warehouse-list__card-title warehouse-list__card-title--tablet'>CONTACT INFORMATION</h4>
+                                    <p className='warehouse-list__card-text'>{warehouse.contact_phone} <br/> {warehouse.contact_email}</p>
+                                </div>
+                            </div>
+                        </article>
+                        <div className='warehouse-list__foot'> 
+                            <img src={deleteIcon} alt='delete icon' />
+                            <img src={editIcon} alt='edit icon'/>
+                        </div>
+                    </div>
+                ))}   
         </section>
     )
 }
