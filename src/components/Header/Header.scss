@@ -14,12 +14,13 @@
     @include tablet{
         height: 11.25rem;
         flex-direction: row;
-        align-items: baseline;
+        align-items: flex-start;
+        justify-content: space-between;
     }
 
     &__logo{
         width: 8.0625rem;
-        padding: 1rem;
+        padding: 1.5rem;
     }
 
     &__nav{
@@ -28,7 +29,10 @@
         width: 100%;
         text-align: center;
         padding: 0 1rem;
-        
+        @include tablet{
+            padding: 1rem;
+            width: 30%;
+        }
 
     }
     &__warehouses{
@@ -37,6 +41,9 @@
         color: $primary-white;
         padding: .5rem;
         border-radius: 1rem;
+        @include tablet{
+            padding: .5rem;
+        }
         
     }
     &__inventory{
@@ -45,6 +52,9 @@
         color: $primary-white;
         padding: .5rem;
         border-radius: 1rem;
+        @include tablet{
+            padding:  .5rem;
+        }
       
     }
     &__active{
