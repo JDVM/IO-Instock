@@ -1,8 +1,6 @@
-import "./App.scss";
-<<<<<<< HEAD
-import Footer from './components/Footer/Footer';
+import "../../App.scss"
 
-function App() {
+function Warehouses() {
   return (
     <div className="App">
       <>
@@ -58,30 +56,9 @@ function App() {
           Cohort: <strong>The Nameless '23</strong>.
         </p>
         <p>Stay tuned for more updates!</p>
-        
       </>
     </div>
   );
-=======
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Warehouses from "./Pages/Warehouses/Warehouses";
-import Inventory from "./Pages/Inventory/Inventory";
-import PageNotFound from "./Pages/PageNotFound/PageNotFound";
-import Header from "./components/Header/Header"
-
-function App() {
-  return (
-    <BrowserRouter>
-    <Header />
-      <Routes>
-        <Route path="/Warehouses" element={<Warehouses/>} />
-        <Route path="/Inventory" element={<Inventory/>} />
-        <Route path="*" element={<PageNotFound/>} />
-      </Routes>
-    <Footer />
-    </BrowserRouter>
-  )
->>>>>>> develop
 }
 
-export default App;
+export default Warehouses;
