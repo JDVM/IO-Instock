@@ -1,0 +1,18 @@
+@use '../../styles/partials/font';
+@use '../../styles/partials/fontStyles' as *;
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/breakpoints' as *;
+
+.footer {
+    background-color: $primary-white;
+
+    &__text {
+        @include P3;
+        color: $secondary-darkgrey;
+        text-align: center;
+        margin-bottom: 2rem;
+
+            @include tablet {
+        }
+    }
+}
