@@ -1,0 +1,105 @@
+@use '../../styles/partials/font';
+@use '../../styles/partials/fontStyles' as *;
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/mixins.scss' as *;
+
+@import '../../styles/mixins.scss';
+
+import delete from 
+
+* {
+    box-sizing: border-box;
+}
+
+.warehouse-list {
+
+    &__head {
+        padding: 1rem;
+        border-bottom: 2px solid $secondary-lightgrey;
+    }
+
+    &__title {
+        @include H1;
+        margin: 0.5rem 0;
+        color: $primary-black;
+        text-align: left;
+    
+             @include tablet {
+        }
+    }
+
+    &__input {
+        width: 100%;
+        margin: 0.5rem 0;
+        @include input;
+        border: 2px solid $secondary-lightgrey;
+        background-image: url(../../assets/images/Icons/search-24px.svg);
+        background-repeat: no-repeat;
+        background-position: 236px 7px;
+        outline-color: $primary-blue !important;
+    }
+
+    &__add-button {
+        width: 100%;
+        margin: 0.5rem 0;
+        @include button;
+        @include H3;
+    }
+
+    &__card-item {
+        padding: 0 1rem 1.5rem 1rem;
+        border-bottom: 2px solid $secondary-lightgrey;
+    }
+    
+    &__card-parent {
+        display: flex;
+    }
+
+    &__card-child {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__card-info {
+        padding: 0.5rem 0;
+    }
+
+    &__card-title {
+        @include H4;
+        color: $secondary-darkgrey;
+        margin: 0.5rem 0;
+        text-align: left;
+
+            @include tablet {                
+            }
+    }
+
+    &__card-link {
+        @include H3;
+        color: $primary-blue;
+        margin: 0.5rem 0;
+        text-align: left;
+
+            @include tablet {
+            }
+    }
+
+    &__card-text {
+        @include P2;
+        color: $primary-black;
+        margin: 0.5rem 0;
+        text-align: left;
+
+            @include tablet {
+
+            }
+    }
+
+    &__foot {
+        display: flex;
+        justify-content: space-between;
+    }
+
+}

@@ -1,5 +1,6 @@
 import "./App.scss";
 import Footer from './components/Footer/Footer';
+import WarehouseList from "./components/WarehouseList/WarehouseList";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
           Cohort: <strong>The Nameless '23</strong>.
         </p>
         <p>Stay tuned for more updates!</p>
+        <WarehouseList />
         <Footer />
       </>
     </div>
