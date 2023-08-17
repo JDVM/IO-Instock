@@ -10,7 +10,7 @@ import editIcon from "../../assets/images/Icons/edit-24px.svg";
 import chevronIcon from "../../assets/images/Icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/images/Icons/sort-24px.svg";
 
-const API_BASE_URL = "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
@@ -19,7 +19,7 @@ function WarehouseList() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/warehouses`)
+      .get(`${API_URL}/warehouses`)
       .then((res) => {
         const warehousesData = res.data;
         setWarehouses(warehousesData);

@@ -30,3 +30,4 @@ yarn-error.log*
 #styles
 .css
 .css.map
+.vscode
