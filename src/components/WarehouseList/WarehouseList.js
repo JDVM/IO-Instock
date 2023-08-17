@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import DeleteModal from "../DeleteModal/DeleteModal";
 
 import "./WarehouseList.scss";
 
@@ -15,7 +14,6 @@ const API_URL = process.env.REACT_APP_API_URL;
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
   const { warehouseId } = useParams();
-  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     axios
@@ -37,16 +35,6 @@ function WarehouseList() {
   if (warehouses.length === 0) {
     return null;
   }
-
-  const handleDeleteWarehouse = async (id) => {
-    console.log("delete button was clicked");
-    setIsClicked(true)
-    // try {
-    //     await axios.delete(`${API_BASE_URL}/warehouses/${id}`);
-    // } catch (error) {
-    //     console.error('Error deleting warehouse:', error);
-    // }
-  };
 
   return (
     <>
@@ -122,12 +110,12 @@ function WarehouseList() {
                   <h4 className="warehouse-list__card-title warehouse-list__card-title--tablet">
                     WAREHOUSE
                   </h4>
-                  {/* <Link to={`/warehouses/${warehouse.id}`}> */}
+                  <Link to={`/warehouses/${warehouse.id}`}>
                   <p className="warehouse-list__card-link">
                     {warehouse.warehouse_name}
                     <img src={chevronIcon} alt="chevron icon" />
                   </p>
-                  {/* </Link> */}
+                  </Link>
                 </div>
                 <div className="warehouse-list__card-info">
                   <h4 className="warehouse-list__card-title warehouse-list__card-title--tablet">
@@ -161,14 +149,12 @@ function WarehouseList() {
               <img
                 src={deleteIcon}
                 alt="delete icon"
-                onClick={() => handleDeleteWarehouse(warehouse.id)}
               />
               <img src={editIcon} alt="edit icon" />
             </div>
           </div>
         ))}
       </section>
-      <DeleteModal isClicked={isClicked} />
     </>
   );
 }
