@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import './Warehouse.scss';
+import './WarehouseList.scss';
 
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
 import editIcon from '../../assets/images/Icons/edit-24px.svg';
@@ -50,21 +50,21 @@ function WarehouseList () {
                         <div className='warehouse-list__card-child'>
                             <div className='warehouse-list__card-info'>
                                 <h4 className='warehouse-list__card-title'>WAREHOUSE</h4>
-                                <img src={sortIcon} alt='sort icon' />
+                                <img className='warehouse-list__sort-icon'src={sortIcon} alt='sort icon' />
                             </div>
                             <div className='warehouse-list__card-info'>
                                 <h4 className='warehouse-list__card-title'>ADDRESS</h4>
-                                <img src={sortIcon} alt='sort icon' />
+                                <img className='warehouse-list__sort-icon'src={sortIcon} alt='sort icon' />
                             </div>
                         </div>
                         <div className='warehouse-list__card-child'>
                             <div className='warehouse-list__card-info'>
                                 <h4 className='warehouse-list__card-title'>CONTACT NAME</h4>
-                                <img src={sortIcon} alt='sort icon' />
+                                <img className='warehouse-list__sort-icon'src={sortIcon} alt='sort icon' />
                             </div>
                             <div className='warehouse-list__card-info'>
                                 <h4 className='warehouse-list__card-title'>CONTACT INFORMATION</h4>
-                                <img src={sortIcon} alt='sort icon' />
+                                <img className='warehouse-list__sort-icon' src={sortIcon} alt='sort icon' />
                             </div>
                         </div>
                     </article>
@@ -79,13 +79,15 @@ function WarehouseList () {
                             <div className='warehouse-list__card-child'>
                                 <div className='warehouse-list__card-info'>
                                     <h4 className='warehouse-list__card-title warehouse-list__card-title--tablet'>WAREHOUSE</h4>
-                                    <p className='warehouse-list__card-link'>{warehouse.warehouse_name}
-                                        <img src={chevronIcon} alt='chevron icon' />
-                                    </p>
+                                        {/* <Link to={`/warehouses/${warehouse.id}`}> */}
+                                            <p className='warehouse-list__card-link'>{warehouse.warehouse_name}
+                                                <img src={chevronIcon} alt='chevron icon' />
+                                            </p>
+                                        {/* </Link> */}
                                 </div>
                                 <div className='warehouse-list__card-info'>
                                     <h4 className='warehouse-list__card-title warehouse-list__card-title--tablet'>ADDRESS</h4>
-                                    <p className='warehouse-list__card-text'>{warehouse.address} {warehouse.city}, {warehouse.country}</p>
+                                    <p className='warehouse-list__card-text'>{warehouse.address}, {warehouse.city}, {warehouse.country}</p>
                                 </div>
                             </div>
                             <div className='warehouse-list__card-child'>

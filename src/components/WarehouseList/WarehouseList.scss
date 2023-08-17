@@ -28,6 +28,7 @@ input::placeholder {
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
+                margin-bottom: -1rem;
                 padding: 0 2rem;
                 border: none;
             }
@@ -62,10 +63,11 @@ input::placeholder {
         background-repeat: no-repeat;
         background-position: 16rem;
         outline-color: $primary-blue !important;
-    }
+    
             @include tablet {
-                background-position: 128px 7px;
+                background-position: 8rem;
             }
+    }
 
     &__add-button {
         width: 100%;
@@ -87,6 +89,7 @@ input::placeholder {
             @include tablet {
                 flex-direction: row;
                 padding: 0 2rem;
+                gap: 1rem;
             }
 
             @include desktop {
@@ -100,7 +103,7 @@ input::placeholder {
             @include tablet {
                 display: flex;
                 border: none;
-                height: 4rem;
+                height: 3rem;
             }
     }
     
@@ -130,10 +133,12 @@ input::placeholder {
 
     &__card-info {
         padding: 0.5rem 0;
+        height: 50%;
 
             @include tablet {
                 width: 50%;
                 display: flex;
+                align-items: center;
             }
     }
 
@@ -171,6 +176,7 @@ input::placeholder {
         height: 4rem;
         margin: 1rem 0;
         display: flex;
+        justify-content: end;
         align-items: center;
     }
 
@@ -181,18 +187,19 @@ input::placeholder {
             @include tablet {
                 gap: 1rem;
             }
+    }
+}
 
-            // &--tablet {
-            //     @include tablet {
-            //     display: none;
-            // }
-        }
-    // }
+.warehouse-list__card-item:hover {
+    background-color: rgba(46, 102, 229, 0.07);
+}
 
-    // &__icon {
-    //     @include tablet {
-    //         display: none;
-    //     }
-    // }
+.warehouse-list__sort-icon {
+    height: 1rem;
+    fill: $secondary-darkgrey;
+    transition: fill 0.3s ease;
+  }
 
+.warehouse-list__sort-icon:active {
+      fill: rgba(46, 102, 229, 0.07);
 }
