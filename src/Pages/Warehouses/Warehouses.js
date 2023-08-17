@@ -1,10 +1,10 @@
 import "../../App.scss"
-import InventoryList from "../../components/InventoryList/InventoryList";
+import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList"
 
 function Warehouses() {
   return (
    <>
-   <InventoryList />
+   <WarehouseInventoryList />
    </>
 );
 }
