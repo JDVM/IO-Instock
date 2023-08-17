@@ -1,0 +1,57 @@
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/colors";
+@import "../../styles/partials/font";
+@import "../../styles/partials/fontStyles";
+
+/*...    Mobile View    ...*/
+.warehouse-details {
+  display: flex;
+  flex-direction: column;
+  @include H1;
+
+  &__header {
+    display: flex;
+    flex: row;
+    align-items: center;
+  }
+
+  &__back-icon {
+    padding: 0.5rem;
+    transform: scale(1.5);
+  }
+
+  &__edit {
+    display: flex;
+    flex: row;
+    align-items: center;
+
+    border-radius: 50%;
+    background-color: $primary-blue;
+
+    padding: 0.5rem;
+
+    &-icon {
+      & path {
+        fill: $primary-white;
+      }
+    }
+
+    &--mobile {
+      display: none;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+
+    
+  }
+
+  /*...    Tablet View    ...*/
+  @include tablet {
+  }
+  /*...    Desktop View    ...*/
+  @include desktop {
+  }
+}
