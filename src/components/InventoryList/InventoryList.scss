@@ -59,6 +59,7 @@
     &__card-parent {
         display: flex;
         flex: 1;
+        flex-wrap: wrap;
 
         @include tablet {
             width: auto;
@@ -67,7 +68,7 @@
     }
 
     &__card-child {
-        width: 50%;
+        width: 100%;
         margin: 1rem 0;
         display: flex;
         flex-direction: column;
@@ -75,15 +76,17 @@
 
         @include tablet {
             flex-direction: row;
-            width: 40%;
+            // width: 40%;
         }
     }
 
     &__card-info {
         padding: 0.5rem 0;
+        width: 50%;
 
         @include tablet {
-            width: 10rem;
+            width: 20%;
+            padding: 1rem;
         }
     }
 
@@ -95,8 +98,8 @@
         display: flex;
         align-items: center;
 
-        @include tablet {
-            width: 10rem;
+        &--align-flex-end {
+            justify-content: flex-end;
         }
 
         &--tablet {
@@ -111,29 +114,39 @@
         width: 1rem;
     }
 
-    &__card-link {
-        @include H3;
-        color: $primary-blue;
-        margin: 0;
-        text-align: left;
-        display: flex;
-
-    }
-
-    &__card-text {
-        @include P2;
-        color: $primary-black;
-        margin: 0;
-        text-align: left;
-    }
-
-    &__foot {
-        display: flex;
-        justify-content: space-between;
-
-        @include tablet {
+        &__card-link {
+            @include H3;
+            color: $primary-blue;
+            margin: 0;
+            text-align: left;
             display: flex;
-            justify-content: center;
+
+        }
+
+        &__card-text {
+            @include P2;
+            color: $primary-black;
+            margin: 0;
+            text-align: left;
+        }
+
+        &__child {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            @include tablet {
+                display: flex;
+                justify-content: flex-end;
+                padding: 1rem;
+                width: 20%;
+            }
+        }
+        &__action-icon {
+            width: 1rem;
+    
+            @include tablet {
+                width: 1.5rem;
+            }
         }
     }
-}
