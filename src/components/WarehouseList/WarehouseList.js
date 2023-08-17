@@ -79,11 +79,11 @@ function WarehouseList () {
                             <div className='warehouse-list__card-child'>
                                 <div className='warehouse-list__card-info'>
                                     <h4 className='warehouse-list__card-title warehouse-list__card-title--tablet'>WAREHOUSE</h4>
-                                        {/* <Link to={`/warehouses/${warehouse.id}`}> */}
+                                        <Link to={`/warehouses/${warehouse.id}`}>
                                             <p className='warehouse-list__card-link'>{warehouse.warehouse_name}
                                                 <img src={chevronIcon} alt='chevron icon' />
                                             </p>
-                                        {/* </Link> */}
+                                        </Link>
                                 </div>
                                 <div className='warehouse-list__card-info'>
                                     <h4 className='warehouse-list__card-title warehouse-list__card-title--tablet'>ADDRESS</h4>
