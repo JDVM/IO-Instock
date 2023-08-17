@@ -4,6 +4,7 @@ import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
 
 function App() {
   return (
