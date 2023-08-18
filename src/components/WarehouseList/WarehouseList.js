@@ -1,4 +1,5 @@
 import axios from "axios";
+import Modal from "react-modal";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./WarehouseList.scss";
@@ -6,19 +7,17 @@ import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/images/Icons/edit-24px.svg";
 import chevronIcon from "../../assets/images/Icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/images/Icons/sort-24px.svg";
-import DeleteModal from "../DeleteModal/DeleteModal";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT || 8080;
 
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
-  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     axios
-      .get(`${API_URL}:${PORT}/warehouses`)
       .get(`${API_URL}:${PORT}/warehouses`)
       .then((res) => {
         const warehousesData = res.data;
@@ -38,13 +37,31 @@ function WarehouseList() {
     return null;
   }
 
-  const handleDeleteWarehouse = (id) => {
-    const warehouseToDelete = warehouses.find((warehouse) => warehouse.id === id);
-    setSelectedWarehouse(warehouseToDelete);
-    setDeleteModalVisible(true);
+  const openModal = () => {
+    setModalIsOpen(true);
   };
 
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
+  const handleDelete = async (id) => {
+      try {
+          await axios.delete(`${API_URL}:${PORT}/warehouses/${id}`);
+          const newWarehouses = warehouses.filter((warehouse) => warehouse.id !== id);
+          setWarehouses(newWarehouses);
+      } catch (error) {
+          console.error('Error deleting warehouse:', error);
+      }
+
+    closeModal();
+  };
+
+  const deleteCallback = (id) => {
+    console.log (id)
+    setSelectedWarehouse(id);
+    openModal();
+  };
 
   return (
     <>
@@ -121,10 +138,10 @@ function WarehouseList() {
                     WAREHOUSE
                   </h4>
                   <Link to={`/warehouses/${warehouse.id}`}>
-                  <p className="warehouse-list__card-link">
-                    {warehouse.warehouse_name}
-                    <img src={chevronIcon} alt="chevron icon" />
-                  </p>
+                    <p className="warehouse-list__card-link">
+                      {warehouse.warehouse_name}
+                      <img src={chevronIcon} alt="chevron icon" />
+                    </p>
                   </Link>
                 </div>
                 <div className="warehouse-list__card-info">
@@ -159,18 +176,25 @@ function WarehouseList() {
               <img
                 src={deleteIcon}
                 alt="delete icon"
-                onClick={() => handleDeleteWarehouse(warehouse.id)}
+                onClick={() => deleteCallback(warehouse.id)}
               />
+              
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Delete Confirmation"
+              >
+                <h2>Confirm Deletion</h2>
+                <p>Are you sure you want to delete this item?</p>
+                <button onClick={() => handleDelete(selectedWarehouse)}>
+                  Yes, Delete
+                </button>
+                <button onClick={closeModal}>Cancel</button>
+              </Modal>
               <img src={editIcon} alt="edit icon" />
             </div>
           </div>
         ))}
-        <DeleteModal
-          isOpen={deleteModalVisible}
-          onClose={() => setDeleteModalVisible(false)}
-          // onDelete={}
-          // warehouse={}
-        />
       </section>
     </>
   );
