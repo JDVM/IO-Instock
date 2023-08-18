@@ -1,16 +1,30 @@
 import axios from "axios";
+import Modal from "react-modal";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./WarehouseList.scss";
+import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/images/Icons/edit-24px.svg";
 import chevronIcon from "../../assets/images/Icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/images/Icons/sort-24px.svg";
 
 const API_URL = process.env.REACT_APP_API_URL;
-const PORT = process.env.REACT_APP_API_PORT;
+const PORT = process.env.REACT_APP_API_PORT || 8080;
+
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
+  // const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+
+  // const [warehouseName, setWarehouseName] = useState(null);
+  const [warehouseData, setWarehouseData] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  // const [getWarehousesById, setWarehousesById] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [toDeleteWarehouse, setToDeleteWarehouse] = useState([]);
+
+  const { id } = useParams();
 
   useEffect(() => {
     axios
@@ -32,6 +46,32 @@ function WarehouseList() {
   if (warehouses.length === 0) {
     return null;
   }
+
+  // const openModal = () => {
+  //   setModalIsOpen(true);
+  // };
+
+  // const closeModal = () => {
+  //   setModalIsOpen(false);
+  // };
+
+  // const handleDelete = async (id) => {
+  //     try {
+  //         await axios.delete(`${API_URL}:${PORT}/warehouses/${id}`);
+  //         const newWarehouses = warehouses.filter((warehouse) => warehouse.id !== id);
+  //         setWarehouses(newWarehouses);
+  //     } catch (error) {
+  //         console.error('Error deleting warehouse:', error);
+  //     }
+
+  //   closeModal();
+  // };
+
+  // const deleteCallback = (id) => {
+  //   console.log (id)
+  //   setSelectedWarehouse(id);
+  //   openModal();
+  // };
 
   return (
     <>
@@ -108,10 +148,10 @@ function WarehouseList() {
                     WAREHOUSE
                   </h4>
                   <Link to={`/warehouses/${warehouse.id}`}>
-                  <p className="warehouse-list__card-link">
-                    {warehouse.warehouse_name}
-                    <img src={chevronIcon} alt="chevron icon" />
-                  </p>
+                    <p className="warehouse-list__card-link">
+                      {warehouse.warehouse_name}
+                      <img src={chevronIcon} alt="chevron icon" />
+                    </p>
                   </Link>
                 </div>
                 <div className="warehouse-list__card-info">
@@ -146,14 +186,39 @@ function WarehouseList() {
               <img
                 src={deleteIcon}
                 alt="delete icon"
+                onClick={() => {
+                  setModalIsOpen(true);
+                  setToDeleteWarehouse([warehouse.id, warehouse.warehouse_name]);
+                }}
               />
              <Link to={ { pathname: `/warehouses/${warehouse.id}/edit`, state: { warehouseData: warehouse } }}>
   <img src={editIcon} alt="edit icon" />
 </Link>
+{/*               
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Delete Confirmation"
+              >
+                <h2>Confirm Deletion</h2>
+                <p>Are you sure you want to delete this item?</p>
+                <button onClick={() => handleDelete(selectedWarehouse)}>
+                  Yes, Delete
+                </button>
+                <button onClick={closeModal}>Cancel</button>
+              </Modal> */}
+              <img src={editIcon} alt="edit icon" />
             </div>
           </div>
         ))}
       </section>
+      <DeleteWarehouse
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        toDeleteWarehouse={toDeleteWarehouse}
+        warehouses={warehouses}
+        setWarehouses={setWarehouses}
+      />
     </>
   );
 }
