@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./WarehouseList.scss";
+import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/images/Icons/edit-24px.svg";
 import chevronIcon from "../../assets/images/Icons/chevron_right-24px.svg";
@@ -13,8 +14,17 @@ const PORT = process.env.REACT_APP_API_PORT || 8080;
 
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
-  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+  // const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+
+  // const [warehouseName, setWarehouseName] = useState(null);
+  const [warehouseData, setWarehouseData] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  // const [getWarehousesById, setWarehousesById] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [toDeleteWarehouse, setToDeleteWarehouse] = useState([]);
+
+  const { id } = useParams();
 
   useEffect(() => {
     axios
@@ -37,31 +47,31 @@ function WarehouseList() {
     return null;
   }
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+  // const openModal = () => {
+  //   setModalIsOpen(true);
+  // };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  // const closeModal = () => {
+  //   setModalIsOpen(false);
+  // };
 
-  const handleDelete = async (id) => {
-      try {
-          await axios.delete(`${API_URL}:${PORT}/warehouses/${id}`);
-          const newWarehouses = warehouses.filter((warehouse) => warehouse.id !== id);
-          setWarehouses(newWarehouses);
-      } catch (error) {
-          console.error('Error deleting warehouse:', error);
-      }
+  // const handleDelete = async (id) => {
+  //     try {
+  //         await axios.delete(`${API_URL}:${PORT}/warehouses/${id}`);
+  //         const newWarehouses = warehouses.filter((warehouse) => warehouse.id !== id);
+  //         setWarehouses(newWarehouses);
+  //     } catch (error) {
+  //         console.error('Error deleting warehouse:', error);
+  //     }
 
-    closeModal();
-  };
+  //   closeModal();
+  // };
 
-  const deleteCallback = (id) => {
-    console.log (id)
-    setSelectedWarehouse(id);
-    openModal();
-  };
+  // const deleteCallback = (id) => {
+  //   console.log (id)
+  //   setSelectedWarehouse(id);
+  //   openModal();
+  // };
 
   return (
     <>
@@ -176,9 +186,12 @@ function WarehouseList() {
               <img
                 src={deleteIcon}
                 alt="delete icon"
-                onClick={() => deleteCallback(warehouse.id)}
+                onClick={() => {
+                  setModalIsOpen(true);
+                  setToDeleteWarehouse([warehouse.id, warehouse.warehouse_name]);
+                }}
               />
-              
+{/*               
               <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -190,12 +203,19 @@ function WarehouseList() {
                   Yes, Delete
                 </button>
                 <button onClick={closeModal}>Cancel</button>
-              </Modal>
+              </Modal> */}
               <img src={editIcon} alt="edit icon" />
             </div>
           </div>
         ))}
       </section>
+      <DeleteWarehouse
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        toDeleteWarehouse={toDeleteWarehouse}
+        warehouses={warehouses}
+        setWarehouses={setWarehouses}
+      />
     </>
   );
 }
