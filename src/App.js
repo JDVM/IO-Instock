@@ -1,8 +1,8 @@
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Warehouses from "./pages/Warehouses/Warehouses";
-import Inventory from "./pages/Inventory/Inventory";
-import PageNotFound from "./pages/PageNotFound/PageNotFound";
+import Warehouses from "./Pages/Warehouses/Warehouses";
+import Inventory from "./Pages/Inventory/Inventory";
+import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Modal from 'react-modal';
