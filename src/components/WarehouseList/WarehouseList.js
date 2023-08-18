@@ -1,23 +1,20 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
 import "./WarehouseList.scss";
-
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/images/Icons/edit-24px.svg";
 import chevronIcon from "../../assets/images/Icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/images/Icons/sort-24px.svg";
 
 const API_URL = process.env.REACT_APP_API_URL;
-
+const PORT = process.env.REACT_APP_API_PORT;
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
-  const { warehouseId } = useParams();
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/warehouses`)
+      .get(`${API_URL}:${PORT}/warehouses`)
       .then((res) => {
         const warehousesData = res.data;
         setWarehouses(warehousesData);
