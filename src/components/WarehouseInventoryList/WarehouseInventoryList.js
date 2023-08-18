@@ -118,8 +118,8 @@ function WarehouseInventoryList() {
               <p
                 className={`warehouse-inventory-list__card-text ${
                   info.status === "Out of Stock"
-                    ? "warehouse-inventory-list__status-color-instock"
-                    : "warehouse-inventory-list__status-color-out-of-stock"
+                    ? "warehouse-inventory-list__card-text--status-color-out-of-stock"
+                    : "warehouse-inventory-list__card-text--status-color-instock"
                 }`}
               >
                 {info.status}
@@ -135,7 +135,7 @@ function WarehouseInventoryList() {
               </p>
             </div>
 
-            <div className="warehouse-inventory-list__card-info">
+            <div className="warehouse-inventory-list__card-info warehouse-inventory-list__card-title--tablet">
               <h4 className="warehouse-inventory-list__card-title warehouse-inventory-list__card-title--tablet">
                 WAREHOUSE
               </h4>
@@ -152,7 +152,7 @@ function WarehouseInventoryList() {
                   alt="delete icon"
                 />
               </Link>
-              <Link to={"/"}>
+              <Link to={`/inventory/${info.id}/edit`}>
                 <img
                   className="warehouse-inventory-list__action-icon"
                   src={editIcon}
