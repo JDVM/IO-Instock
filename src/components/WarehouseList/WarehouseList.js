@@ -147,7 +147,7 @@ function WarehouseList() {
                 src={deleteIcon}
                 alt="delete icon"
               />
-             <Link to={`/warehouses/${warehouse.id}/edit`}>
+             <Link to={ { pathname: `/warehouses/${warehouse.id}/edit`, state: { warehouseData: warehouse } }}>
   <img src={editIcon} alt="edit icon" />
 </Link>
             </div>

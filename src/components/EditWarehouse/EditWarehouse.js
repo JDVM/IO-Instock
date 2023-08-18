@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate,useLocation }from 'react-router-dom';
 import axios from 'axios';
 import backicon from '../../assets/images/Icons/arrow_back-24px.svg';
 import errorIcon from '../../assets/images/Icons/error-24px.svg';
 import './EditWarehouse.scss';
-const EditWarehouse = ({ warehouseData }) => {
+const EditWarehouse = () => {
+  const location = useLocation();
+  const warehouseData = location.state.warehouseData;
   const [formData, setFormData] = useState({
     warehouse_name: warehouseData.warehouse_name,
     street_address: warehouseData.street_address,
@@ -109,7 +111,7 @@ const EditWarehouse = ({ warehouseData }) => {
           {errors.warehouse_name && (
   <div className="error-text">
     <img className="error-icon" src={errorIcon} alt="Error Icon" />
-    {errors.warehouse_name}
+    <span className="error-txt"> {errors.warehouse_name}</span> 
   </div>
 )}
           <label className="form-section--label">Street Address</label>
@@ -139,7 +141,7 @@ const EditWarehouse = ({ warehouseData }) => {
           {errors.city && (
            <div className="error-text">
          <img className="error-icon" src={errorIcon} alt="Error Icon" />
-           {errors.city}
+         <span className="error-txt">{errors.city}</span> 
            </div>
 )}
           <label className="form-section--label">Country</label>
@@ -154,7 +156,7 @@ const EditWarehouse = ({ warehouseData }) => {
       {errors.country && (
   <div className="error-text">
     <img className="error-icon" src={errorIcon} alt="Error Icon" />
-    {errors.country}
+    <span className="error-txt">{errors.country}</span> 
   </div>
 )}
         </div>
@@ -172,7 +174,7 @@ const EditWarehouse = ({ warehouseData }) => {
           {errors.contact_name && (
   <div className="error-text">
     <img className="error-icon" src={errorIcon} alt="Error Icon" />
-    {errors.contact_name}
+    <span className="error-txt">{errors.contact_name}</span> 
   </div>
 )}
           <label className="form-section--label">Contact Position</label>
@@ -187,7 +189,7 @@ const EditWarehouse = ({ warehouseData }) => {
           {errors.contact_position && (
   <div className="error-text">
     <img className="error-icon" src={errorIcon} alt="Error Icon" />
-    {errors.contact_position}
+    <span className="error-txt">{errors.contact_position}</span> 
   </div>
 )}
           <label className="form-section--label">Contact Phone Number</label>
@@ -202,7 +204,7 @@ const EditWarehouse = ({ warehouseData }) => {
           {errors.contact_phone && (
   <div className="error-text">
     <img className="error-icon" src={errorIcon} alt="Error Icon" />
-    {errors.contact_phone}
+    <span className="error-txt">{errors.contact_phone}</span> 
   </div>
 )}
           <label  className="form-section--label">Contact Email</label>
@@ -217,7 +219,7 @@ const EditWarehouse = ({ warehouseData }) => {
            {errors.contact_email && (
   <div className="error-text">
     <img className="error-icon" src={errorIcon} alt="Error Icon" />
-    {errors.contact_email}
+    <span className="error-txt">{errors.contact_email}</span> 
   </div>
 )} 
         </div>

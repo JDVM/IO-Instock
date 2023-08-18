@@ -5,7 +5,7 @@ import Inventory from "./Pages/Inventory/Inventory";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import EditWarehousePreview from './components/EditWarehouse/EditWarehousePreview';
+import EditWarehouse from './components/EditWarehouse/EditWarehouse';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/Warehouses" element={<Warehouses/>} />
         <Route path="/Warehouses/:id" element={<Warehouses/>} />
         <Route path="/Inventory" element={<Inventory/>} />
-        <Route path="/edit-warehouse-preview" element={<EditWarehousePreview />} />
+        <Route path="/warehouse/:id/edit" element={<EditWarehouse />} />
         <Route path="*" element={<PageNotFound/>} />
       </Routes>
     <Footer />
