@@ -11,7 +11,17 @@
         border-radius: .25rem;
         margin: 0 1rem;
     }
-
+    &__status-color-instock{
+        background-color: $support-green;
+        opacity: 7%;
+        color:$support-green ;
+        border-radius: 1rem;
+    }
+    &__status-color-out-off-stock{
+        background-color: $background-light;
+        color:$support-green ;
+        border-radius: 1rem;
+    }
 
     &__head {
         display: flex;
@@ -60,6 +70,7 @@
         display: flex;
         flex: 1;
         flex-wrap: wrap;
+        justify-content: flex-end;
 
         @include tablet {
             width: auto;
@@ -83,6 +94,7 @@
     &__card-info {
         padding: 0.5rem 0;
         width: 50%;
+
 
         @include tablet {
             width: 20%;
@@ -128,6 +140,8 @@
         color: $primary-black;
         margin: 0;
         text-align: left;
+        width: fit-content;
+        width: -moz-fit-content;
     }
 
     &__child {
