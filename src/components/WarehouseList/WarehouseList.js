@@ -150,7 +150,9 @@ function WarehouseList() {
                 src={deleteIcon}
                 alt="delete icon"
               />
-              <img src={editIcon} alt="edit icon" />
+             <Link to={`/warehouses/${warehouse.id}/edit`}>
+  <img src={editIcon} alt="edit icon" />
+</Link>
             </div>
           </div>
         ))}

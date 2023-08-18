@@ -1,0 +1,275 @@
+// .edit-warehouse{
+// display: flex;
+
+// }
+// .edit-warehouse--header{
+//     display: flex;
+    
+// }
+// .edit-form{
+//     display: flex;
+    
+// }
+// .form-sections{
+//     display: flex;
+// }
+// .form--section{
+//     display: flex;
+//     flex-direction: column;
+// }
+// .form-section--input{
+//     width: 100%;
+// }
+// // .edit-warehouse-container {
+// //     padding: 20px;
+// //     margin: 10px;
+// //   }
+  
+// //   .edit-warehouse-header {
+// //     display: flex;
+// //     align-items: center;
+// //     margin-bottom: 20px;
+  
+// //     .back-button {
+// //       margin-right: 10px;
+// //       display: inline-block;
+// //       width: 20px;
+// //       height: 20px;
+  
+// //       img {
+// //         width: 100%;
+// //         height: auto;
+// //       }
+// //     }
+  
+// //     h2 {
+// //       margin: 0;
+// //     }
+// //   }
+  
+// //   .edit-warehouse-form {
+// //     border: 1px solid #ccc;
+// //     padding: 20px;
+// //     display: flex;
+  
+// //     .form-column {
+// //       flex: 1;
+// //       padding-right: 20px;
+  
+// //       h3 {
+// //         margin-top: 0;
+// //       }
+  
+// //       label {
+// //         display: block;
+// //         margin-bottom: 10px;
+// //       }
+  
+// //       input {
+// //         width: 100%;
+// //         padding: 8px;
+// //         border: 1px solid #ccc;
+// //         border-radius: 4px;
+// //       }
+  
+// //       /* Other styling for form fields */
+// //     }
+  
+// //     .buttons {
+// //       margin-top: 20px;
+// //       text-align: right;
+  
+// //       .cancel-button,
+// //       .save-button {
+// //         margin: 5px;
+// //         padding: 10px 20px;
+// //         border-radius: 20px;
+// //         border: none;
+// //         cursor: pointer;
+// //       }
+  
+// //       .cancel-button {
+// //         background-color: #ccc;
+// //       }
+  
+// //       .save-button {
+// //         background-color: #2e66e6;
+// //         color: #fff;
+// //       }
+// //     }
+// //   }
+  // EditWarehouse.scss
+ @use '../../styles/partials/breakpoints' as *; 
+ @use '../../styles/partials/colors' as *; 
+ @use '../../styles/partials/font' as *; 
+.edit-warehouse {
+  padding: 1rem;
+  
+    &--header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    
+      .back-button {
+        margin-right: 1.25rem;
+        .back-icon {
+          width: 1.5rem;
+        }
+      }
+  
+      .edit-warehouse--title {
+        font-size:1.75rem;
+        line-height: 2.25rem;
+        font-family: "Titillium Web" , Arial, sans-serif;
+        @include tablet{
+            font-size:2rem;
+            line-height: 2.5rem;
+        }
+        @include desktop{
+            font-size:2rem;
+            line-height: 2.5rem;
+        }
+      }
+    }
+  
+    .edit-warehouse--form {
+     
+      .form-sections {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @include tablet {
+            flex-direction: row;
+        }
+        @include desktop{
+            flex-direction: row;
+        }
+  
+        .form--section {
+          flex-grow: 1;
+          margin: 1rem auto;
+          border-top: 1px solid #ccc;
+          border-width: 100%;
+          position: relative;
+          &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+           background-color: $secondary-lightgrey;
+    }
+
+          @include tablet{
+            padding-right:2rem;
+          
+          }
+          .form-section--title {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.75rem;
+            font-family: "Titillium Web" , Arial, sans-serif;
+            @include tablet{
+                font-size:1.5rem;
+                line-height: 2rem;
+              
+            }
+            @include desktop{
+                font-size:1.5rem;
+                line-height: 2rem;
+            }
+          }
+  
+         .form-section--label {
+            margin-bottom: 0.25rem;
+            font-family: "Titillium Web" , Arial, sans-serif;
+            font-size: 0.8125rem;
+            @include tablet{
+                font-size:0.875rem;
+                line-height: 1.375rem;
+            }
+            @include desktop{
+                font-size:0.875rem;
+                line-height: 1.375rem;
+            }
+          }
+  
+          .form-section--input {
+            width: 100%;
+            padding-left: 1rem;
+            padding-right:1rem;
+            
+            border: 1px solid $secondary-lightgrey;
+            border-radius:1.25rem;
+            margin-bottom: 0.625rem;
+            height: 2.375rem;
+            &:focus {
+                border:1px solid $primary-blue;
+                outline: none;
+             }
+             &.error {
+                border: 1px solid $support-red;
+               
+              
+            }
+              .error-icon {
+                display: inline-block;
+                margin-right: 0.5rem; 
+              
+              }
+              
+              .error-text {
+                color: red !important;
+                font-size: 2rem; 
+                margin-top: 0.2rem;
+                
+              }
+          }
+        }
+      }
+  
+      .form-btns {
+        display: flex;
+        justify-content:center;
+        width: 100%;
+     
+        background-color:$background-light;
+        @include tablet{
+           justify-content: flex-end;
+           width:min-content;
+        }
+        @include desktop{
+            width: min-content; 
+            justify-content: flex-end;
+        }
+        .save-btn {
+          padding: 10px 20px;
+          margin-left: 10px;
+          border: none;
+          border-radius:1.25rem;
+          background-color: $primary-blue;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          width: 100%;
+          height: 2.375rem;
+          &:hover{
+            background-color: $background-dark;
+          }
+        }
+          .cancel-btn {
+            background-color: #fff;
+            color: #333;
+            width: 100%;
+            border-radius: 1.25rem;
+            height: 2.375rem;
+            border: 1px solid black;
+          }
+        }
+      }
+    }
+  
+    .error-txt{
+      color:red;
+    }
