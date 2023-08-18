@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // Import Link to enable navigation
+import { Link, useParams, useNavigate } from "react-router-dom";
 import getWarehouseById from "../../utils/getWarehouseById";
+import backArrow from "../../assets/images/Icons/arrow_back-24px.svg";
 
 import "./WarehouseDetails.scss";
 
 export default function WarehouseDetails({ id }) {
+  const navigate = useNavigate();
   const [warehouseData, setWarehouseData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,25 +29,16 @@ export default function WarehouseDetails({ id }) {
   return (
     <div className="warehouse-details">
       <div className="warehouse-details__header">
-        <Link to="/warehouses/:id/edit">
-          <svg
-            className="warehouse-details__back-icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z"
-              fill="#2E66E6"
-            />
-          </svg>
-        </Link>
-        <h2 className="warehouse-details__title">
+        <img
+          className="warehouse-details__back-icon"
+          onClick={() => navigate(-1)}
+          src={backArrow}
+          alt="back arrow"
+        />
+        <h2 className="warehouse-details__heading">
           {warehouseData.warehouse_name}
         </h2>
-        <div className="warehouse-details__edit">
+        <Link className="warehouse-details__edit" to={`/warehouses/${id}/edit`}>
           <svg
             className="warehouse-details__edit-icon"
             width="24"
@@ -60,22 +53,31 @@ export default function WarehouseDetails({ id }) {
             />
           </svg>
           <p className="warehouse-details__edit--mobile">Edit</p>
-        </div>
+        </Link>
       </div>
-      <div className="warehouse-details__body">
+      <div className="warehouse-details__wrapper">
         <div className="warehouse-details__address">
-          <h4>Warehouse Address:</h4>
-          <p>{warehouseData.address}</p>
+          <h4 className="warehouse-details__title">Warehouse Address:</h4>
+          <p className="warehouse-details__content">{warehouseData.address},</p>
+          <p className="warehouse-details__content">{warehouseData.city}, {warehouseData.country}</p>
         </div>
         <div className="warehouse-details__contact-name">
-          <h4>Contact Name:</h4>
-          <p>{warehouseData.contact_name}</p>
-          <p>{warehouseData.contact_position}</p>
+          <h4 className="warehouse-details__title">Contact Name:</h4>
+          <p className="warehouse-details__content">
+            {warehouseData.contact_name}
+          </p>
+          <p className="warehouse-details__content">
+            {warehouseData.contact_position}
+          </p>
         </div>
         <div className="warehouse-details__contact-info">
-          <h4>Contact Information:</h4>
-          <p>{warehouseData.contact_phone}</p>
-          <p>{warehouseData.contact_email}</p>
+          <h4 className="warehouse-details__title">Contact Information:</h4>
+          <p className="warehouse-details__content">
+            {warehouseData.contact_phone}
+          </p>
+          <p className="warehouse-details__content">
+            {warehouseData.contact_email}
+          </p>
         </div>
       </div>
     </div>

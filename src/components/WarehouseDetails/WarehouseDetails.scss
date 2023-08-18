@@ -3,34 +3,46 @@
 @import "../../styles/partials/font";
 @import "../../styles/partials/fontStyles";
 
-/*...    Mobile View    ...*/
 .warehouse-details {
   display: flex;
   flex-direction: column;
-  @include H1;
+
+  &__heading {
+    @include H1;
+  }
 
   &__header {
     display: flex;
     flex: row;
     align-items: center;
+    padding: 1.5rem;
   }
 
   &__back-icon {
-    padding: 0.5rem;
-    transform: scale(1.5);
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
   }
 
   &__edit {
     display: flex;
+    margin-left: auto;
     flex: row;
+    justify-self: right;
     align-items: center;
+    justify-content: center;
 
     border-radius: 50%;
     background-color: $primary-blue;
 
-    padding: 0.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
 
     &-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+
       & path {
         fill: $primary-white;
       }
@@ -41,17 +53,53 @@
     }
   }
 
-  &__body {
+  &__title {
+    @include H4;
+    color: $secondary-darkgrey;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    @include P2;
+  }
+
+  &__wrapper {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
 
-    
+    border-bottom: 0.0625rem solid $secondary-lightgrey;
+    border-top: 0.0625rem solid $secondary-lightgrey;
+    @include tablet {
+      padding: 1.5rem 2rem;
+    }
+  }
+  &__address {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    & > :first-child {
+      width: 100%;
+    }
+
+    @include tablet {
+      flex: 1;
+      flex-direction: column;
+      border-right: 0.0625rem solid $secondary-lightgrey;
+      margin-right: 2.5rem;
+
+    }
   }
 
-  /*...    Tablet View    ...*/
-  @include tablet {
+  &__contact-name {
+    flex: 1;
   }
-  /*...    Desktop View    ...*/
-  @include desktop {
+
+  &__contact-info {
+    flex: 1;
   }
 }
