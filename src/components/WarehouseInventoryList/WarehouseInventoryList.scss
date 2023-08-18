@@ -11,6 +11,10 @@
         border-radius: .25rem;
         margin: 0 1rem;
     }
+
+    &--disabled {
+        pointer-events: none;
+    }
     
     &__head {
         display: flex;
@@ -130,8 +134,8 @@
         // margin: 0;
         padding: 0 .5rem;
         text-align: left;
-        width: fit-content;
         width: -moz-fit-content;
+        width: fit-content;
         &--status-color-instock{
             background-color: rgba(21, 132, 99, .7);
             color:$support-green ;
