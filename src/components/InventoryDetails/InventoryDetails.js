@@ -1,29 +1,38 @@
 import "./inventoryDetails.scss";
 import backarrow from "../../assets/images/Icons/arrow_back-24px.svg";
 import editCircle from "../../assets/images/Icons/edit-white-24px.svg";
-import { Link, useParams, NavLink } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
+// import getWarehouseById from "../../utils/getWarehouseById"
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT;
 function InventoryDetails() {
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
+ 
   const [inventoryData, setInventoryData] = useState();
   const { id } = useParams();
+  console.log(`${API_URL}:${PORT}/inventories/${id}`)
   useEffect(() => {
     axios.get(`${API_URL}:${PORT}/inventories/${id}`).then((res) => {
-        const inventoryInfo = res.data
-        setInventoryData(inventoryInfo)
-    }) ;
-  });
+      const inventoryInfo = res.data;
+      console.log(res.data)
+      setInventoryData(inventoryInfo);
+    })
+    .catch((error) => {console.error(error)})
+  },);
 
-console.log(inventoryData)
+// const warehouseName = async () => {return await getWarehouseById(inventoryData.warehouse_id)}
+  console.log(inventoryData);
   return (
     <section className="inventory-details">
       <header className="inventory-details__header">
         <h1 className="inventory-details__page-title">
-          <img src={backarrow} alt="Back arrowkey" />
-          Item Name
+          <img src={backarrow} alt="Back arrowkey" onClick={goBack} />
+          {inventoryData.item_name}
         </h1>
         <button className="inventory-details__edit-button">
           <img
@@ -38,21 +47,21 @@ console.log(inventoryData)
         <div className="inventory-details__description-and-catergory-container">
           <div className="inventory-details__description">
             <h3 className="inventory-details__title">ITEM DESCRIPTION:</h3>
-            <p className="inventory-details__text">Item DESCRIPTION</p>
+            <p className="inventory-details__text">{inventoryData.description}</p>
           </div>
           <div className="inventory-details__category">
             <h3 className="inventory-details__title">CATEGORY:</h3>
-            <p className="inventory-details__text">Item catergory</p>
+            <p className="inventory-details__text">{inventoryData.category}</p>
           </div>
         </div>
         <div className="inventory-details__status-quantity-warehouse-container">
           <div className="inventory-details__status">
             <h3 className="inventory-details__title">STATUS:</h3>
-            <p className="inventory-details__text">Item STATUS</p>
+            <p className="inventory-details__text">{inventoryData.status}</p>
           </div>
           <div className="inventory-details__quantity">
             <h3 className="inventory-details__title">QUANTIY:</h3>
-            <p className="inventory-details__text">Item QUANTIY</p>
+            <p className="inventory-details__text">{inventoryData.quantity}</p>
           </div>
           <div className="inventory-details__warehouse">
             <h3 className="inventory-details__title">WAREHOUSE:</h3>
