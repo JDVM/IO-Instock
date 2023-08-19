@@ -3,17 +3,13 @@ import "../../App.scss"
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList"
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 import EditWarehouse from "../../components/EditWarehouse/EditWarehouse"
+import AddWarehouse from "../../components/AddWarehouse/AddWarehouse";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 function Warehouses() {
   const { id } = useParams();
   const location = useLocation();
   const isEditing = location.pathname.endsWith('/edit');
-
-
-
-
-
-
+  
   console.log('isEditing:', isEditing);
   console.log('id:', id);
 
@@ -34,7 +30,13 @@ function Warehouses() {
       </>
     );
   }
-
+  if (location.pathname.endsWith("/new")) {
+    return (
+      <>
+        <AddWarehouse />
+      </>
+    );
+  }
   console.log('Rendering WarehouseList');
   return (
     <>
