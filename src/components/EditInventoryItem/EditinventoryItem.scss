@@ -1,0 +1,44 @@
+@use "../../styles/partials/font";
+@use "../../styles/partials/fontStyles" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/mixins.scss" as *;
+
+@import "../../styles/mixins.scss";
+
+.edit-inventory-item {
+    
+    &__head {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        height: 1.5rem;
+    }
+
+    &__head-title {
+        @include H1;
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__subhead-title {
+        @include H2;
+    }
+
+    &__label {
+        @include H3;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        @include input;
+        border: 1px solid $secondary-lightgrey;
+    }
+}
+
