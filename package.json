@@ -48,5 +48,6 @@
   "description": "Welcome to **InStock**, the modern, scalable inventory management system designed for high traffic loads. Crafted with dedication by team **IO** as part of *The Nameless '23* cohort at BrainStation's software engineering bootcamp.",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }
