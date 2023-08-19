@@ -3,9 +3,6 @@ import "../../App.scss"
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList"
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 
-
-import { useParams } from "react-router-dom";
-
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 
 function Warehouses() {

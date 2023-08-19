@@ -1,11 +1,22 @@
 import "./inventoryDetails.scss";
 import backarrow from "../../assets/images/Icons/arrow_back-24px.svg";
 import editCircle from "../../assets/images/Icons/edit-white-24px.svg";
-import { useParams } from "react-router";
+import { Link, useParams, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { response } from "express";
+const API_URL = process.env.REACT_APP_API_URL;
+const PORT = process.env.REACT_APP_API_PORT;
 function InventoryDetails() {
-
-
-
+  const [inventoryData, setInventoryData] = useState();
+  const { id } = useParams();
+  useEffect(() => {
+    axios.get(`${API_URL}:${PORT}/${id}`).then((res) => {
+        const inventoryInfo = res.data
+        setInventoryData(inventoryInfo)
+    }) ;
+  });
+console.log(inventoryData)
   return (
     <section className="inventory-details">
       <header className="inventory-details__header">
