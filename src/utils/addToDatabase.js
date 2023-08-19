@@ -17,7 +17,7 @@ const PORT = process.env.REACT_APP_API_PORT;
   }
 */
 export const addInventoryItem = async (newItem) => {
-    console.log(newItem)
+  console.log(newItem);
   try {
     const newItemWithId = await axios.post(
       `${API_URL}:${PORT}/inventories`,
@@ -31,5 +31,30 @@ export const addInventoryItem = async (newItem) => {
   }
 };
 
-export const addWarehouse = async (newWarehouse) => {};
+/* function to add a new warehouse to the warehouses database
 
+{
+    "warehouse_name": "Chicago",
+    "address": "3218 Guess Rd",
+    "city": "Chicago",
+    "country": "USA",
+    "contact_name": "Jameson Schuppe",
+    "contact_position": "Warehouse Manager",
+    "contact_phone": "+1 (919) 797-2875",
+    "contact_email": "jschuppe@instock.com"
+  }
+*/
+export const addWarehouse = async (newWarehouse) => {
+  console.log(newWarehouse);
+  try {
+    const newWarehouseWithId = await axios.post(
+      `${API_URL}:${PORT}/warehouses`,
+      newWarehouse
+    );
+    if (!newWarehouseWithId.data) throw new Error();
+    else return newWarehouseWithId.data;
+  } catch (error) {
+    console.error("Error creating new warehouse!");
+    throw error;
+  }
+};
