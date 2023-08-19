@@ -12,11 +12,11 @@ function Inventory() {
     return (
       <div className="inventories">
         <AddInventory />
-        <InventoryDetails />
+       
       </div>
     );
 
-  
+   <InventoryDetails />
 }
 
 export default Inventory;
