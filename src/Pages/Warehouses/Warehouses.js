@@ -4,8 +4,6 @@ import WarehouseInventoryList from "../../components/WarehouseInventoryList/Ware
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 
 
-import { useParams } from "react-router-dom";
-
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 
 function Warehouses() {
@@ -13,6 +11,7 @@ const {id} = useParams()
 if( id ){
   return(
     <>
+    <WarehouseDetails id={id} />
     <WarehouseInventoryList />
     </>
   )
