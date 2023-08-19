@@ -5,28 +5,44 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// import getWarehouseById from "../../utils/getWarehouseById"
+import getWarehouseById from "../../utils/getWarehouseById"
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT;
 function InventoryDetails() {
+
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
- 
+
   const [inventoryData, setInventoryData] = useState();
+  const [warehouseName, setWarehouseName] = useState(""); // State to hold the warehouse name
   const { id } = useParams();
-  console.log(`${API_URL}:${PORT}/inventories/${id}`)
+
+  const API_URL = process.env.REACT_APP_API_URL;
+  const PORT = process.env.REACT_APP_API_PORT;
+
   useEffect(() => {
     axios.get(`${API_URL}:${PORT}/inventories/${id}`).then((res) => {
       const inventoryInfo = res.data;
-      console.log(res.data)
       setInventoryData(inventoryInfo);
-    })
-    .catch((error) => {console.error(error)})
-  },);
 
-// const warehouseName = async () => {return await getWarehouseById(inventoryData.warehouse_id)}
-  console.log(inventoryData);
+      getWarehouseById(inventoryInfo.warehouse_id)
+        .then((warehouseInfo) => {
+          setWarehouseName(warehouseInfo.warehouse_name);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, []);
+
+  if (!inventoryData) {
+    return <p>Loading...</p>;
+  }
+
+  
   return (
     <section className="inventory-details">
       <header className="inventory-details__header">
@@ -57,15 +73,15 @@ function InventoryDetails() {
         <div className="inventory-details__status-quantity-warehouse-container">
           <div className="inventory-details__status">
             <h3 className="inventory-details__title">STATUS:</h3>
-            <p className="inventory-details__text">{inventoryData.status}</p>
+            <p className={`inventory-details__text-status ${inventoryData.status === "Out of Stock" ? "inventory-details__text-status--status-color-out-of-stock" : "inventory-details__text-status--status-color-instock"}`}>{inventoryData.status}</p>
           </div>
           <div className="inventory-details__quantity">
             <h3 className="inventory-details__title">QUANTIY:</h3>
-            <p className="inventory-details__text">{inventoryData.quantity}</p>
+            <p className="inventory-details__text" >{inventoryData.quantity}</p>
           </div>
           <div className="inventory-details__warehouse">
             <h3 className="inventory-details__title">WAREHOUSE:</h3>
-            <p className="inventory-details__text">Item WAREHOUSE</p>
+            <p className="inventory-details__text">{warehouseName}</p>
           </div>
         </div>
       </section>
@@ -73,5 +89,3 @@ function InventoryDetails() {
   );
 }
 export default InventoryDetails;
-
-//inventory-details
