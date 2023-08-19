@@ -6,6 +6,9 @@ import errorIcon from '../../assets/images/Icons/error-24px.svg';
 import './EditWarehouse.scss';
 const EditWarehouse = () => {
   const [warehouseData, setWarehouseData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+const [successMessage, setSuccessMessage] = useState('');
+const [errorMessage, setErrorMessage] = useState('');
   const { id } = useParams();
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -93,13 +96,21 @@ const EditWarehouse = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     if (validateForm()) {
+      setIsLoading(true);
     try {
-         console.log(formData)
         const response =  await axios.put(`http://localhost:8080/warehouses/${id}`,formData);
        
        if(response.status === 200){
-        navigate('/warehouses');
+            setIsLoading(false);
+            setSuccessMessage('Warehouse Updated Successfully!');
+
+            setTimeout(() => {
+               setSuccessMessage(''); 
+               navigate('/warehouses'); 
+            }, 2000);
        } else{
+        setIsLoading(false);
+        setErrorMessage('Warehouse Update Failed.');
         const errorData =  response.data;
         console.log('Error:', errorData);
        }
@@ -258,6 +269,11 @@ const EditWarehouse = () => {
         
      
       </form>
+      {isLoading && <div>Updating your warehouse...</div>}
+
+      {successMessage && <div>{successMessage}</div>}
+
+      {errorMessage && <div>{errorMessage}</div>}
     </div>
   );
 };
