@@ -1,0 +1,17 @@
+@use "../../styles/partials/font" as *;
+@use "../../styles/partials/fontStyles" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/mixins.scss" as *;
+
+// .inventories {
+//   display: flex;
+//   justify-content: center;
+//   max-width: 63.75rem;
+//   max-height: 37.875;
+//   @include tablet {
+//     background-color: $primary-white;
+
+//     margin-top: -6rem
+//   }
+// }
