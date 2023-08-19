@@ -15,11 +15,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Warehouses />} />
+        <Route path="/warehouses/:id/edit" element={ <EditWarehouse  />}/>
         <Route path="/Warehouses" element={<Warehouses/>} />
         <Route path="/Warehouses/:id" element={<Warehouses/>} />
         <Route path="/Inventory/new" element={<Inventory />} />
         <Route path="/Inventory" element={<Inventory/>} />
-        <Route path="/warehouses/:id/edit" element={ <EditWarehouse  />}/>
+      
         <Route path="*" element={<PageNotFound/>} />   
         <Route path="/Warehouses/new" element={<Warehouses />} />        
       </Routes>

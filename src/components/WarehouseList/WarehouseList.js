@@ -197,6 +197,9 @@ function WarehouseList() {
                   ]);
                 }}
               />
+              <Link to={`/warehouses/${warehouse.id}/edit`}>
+                <img src={editIcon} alt="edit icon" />
+            </Link>
 {/*               
               <Modal
                 isOpen={modalIsOpen}
@@ -215,6 +218,7 @@ function WarehouseList() {
           </div>
         ))}
       </section>
+ 
       <DeleteWarehouse
         modalIsOpen={modalIsOpen}
         setModalIsOpen={setModalIsOpen}

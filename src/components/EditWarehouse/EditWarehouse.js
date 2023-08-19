@@ -106,7 +106,7 @@ const [errorMessage, setErrorMessage] = useState('');
 
             setTimeout(() => {
                setSuccessMessage(''); 
-               navigate('/warehouses'); 
+               navigate(-1); 
             }, 2000);
        } else{
         setIsLoading(false);
