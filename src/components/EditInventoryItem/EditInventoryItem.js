@@ -13,6 +13,8 @@ function EditInventoryItem() {
   const [description, setDescription] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedWarehouse, setSelectedWarehouse] = useState("");
+  const [availability, setAvailability] = useState("inStock");
+  const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -25,6 +27,8 @@ function EditInventoryItem() {
         setDescription(itemData.description);
         setSelectedCategory(itemData.category);
         setSelectedWarehouse(itemData.warehouse_id);
+        setAvailability(itemData.quantity > 0 ? "inStock" : "outOfStock");
+        setQuantity(itemData.quantity);
       } catch (error) {
         console.error("Error getting item data:", error);
       }
@@ -47,6 +51,10 @@ function EditInventoryItem() {
 
   const handleWarehouseChange = (e) => {
     setSelectedWarehouse(e.target.value);
+  };
+
+  const handleAvailabilityChange = (e) => {
+    setAvailability(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -128,19 +136,42 @@ function EditInventoryItem() {
       </section >
       <section className="edit-inventory-item__section">
         <h2 className="edit-inventory-item__subhead-title">Item Availability</h2>
+        <h3 className="edit-inventory-item__label">Status</h3>
+          <label className="edit-inventory-item__availability-radio">
+            <input
+              type="radio"
+              name="availability"
+              value="inStock"
+              checked={availability === "inStock"}
+              onChange={handleAvailabilityChange}
+            />
+            In Stock ({quantity} available)
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="availability"
+              value="outOfStock"
+              checked={availability === "outOfStock"}
+              onChange={handleAvailabilityChange}
+            />
+            Out of Stock
+          </label>
         <h3 className="edit-inventory-item__label">Warehouse</h3>
-        <select className="edit-inventory-item__input"
-          name="warehouse"
-          value={selectedWarehouse}
-          onChange={handleWarehouseChange}
-        >
-          <option value="">Select a warehouse</option>
-          {warehouseOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+            <select className="edit-inventory-item__input"
+            name="warehouse"
+            value={selectedWarehouse}
+            onChange={handleWarehouseChange}
+            >
+            <option value="">Select a warehouse</option>
+            {warehouseOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                {option.label}
+                </option>
+            ))}
+            </select>
+            <button>Cancel</button>
+            <button>Save</button>
       </section>
     </form>
   );
