@@ -49,5 +49,7 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
 }
