@@ -11,7 +11,7 @@ const EditWarehouse = () => {
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     warehouse_name: '',
-    street_address: '',
+    address: '',
     city: '',
     country: '',
     contact_name: '',
@@ -25,11 +25,10 @@ const EditWarehouse = () => {
         const response = await axios.get(`http://localhost:8080/warehouses/${id}`);
 
         setWarehouseData(response.data);
-        console.log(`http://localhost:8080/warehouses/${id}`)
-        console.log(response)
+       console.log(response.data)
         setFormData({
           warehouse_name: response.data.warehouse_name,
-          street_address: response.data.address,
+          address: response.data.address,
           city: response.data.city,
           country: response.data.country,
           contact_name: response.data.contact_name,
@@ -53,8 +52,8 @@ const EditWarehouse = () => {
     if (!formData.warehouse_name.trim()) {
         newErrors.warehouse_name = 'Warehouse Name is required.';
       }
-      if (!formData.street_address.trim()) {
-        newErrors.street_address = 'Street Address is required.';
+      if (!formData.address.trim()) {
+        newErrors.address = 'Street Address is required.';
       }
       if (!formData.city.trim()) {
         newErrors.city = 'City is required.';
@@ -95,7 +94,9 @@ const EditWarehouse = () => {
     event.preventDefault();
     if (validateForm()) {
     try {
-        const response =  await axios.put(`/warehouses/${id}`,FormData);
+         console.log(formData)
+        const response =  await axios.put(`http://localhost:8080/warehouses/${id}`,formData);
+       
        if(response.status === 200){
         navigate('/warehouses');
        } else{
@@ -142,17 +143,17 @@ const EditWarehouse = () => {
 )}
           <label className="form-section--label">Street Address</label>
           <input
-             className={`form-section--input ${errors.street_address ? 'error' : ''}`}
+             className={`form-section--input ${errors.address ? 'error' : ''}`}
             type="text"
-            name="street_address"
-            value={formData.street_address}
+            name="address"
+            value={formData.address}
             onChange={handleFormChange}
             required
           />
-          {errors.street_address && (
+          {errors.address && (
            <div className="error-text">
             <img className="error-icon" src={errorIcon} alt="Error Icon" />
-          <span className="error-txt">{errors.street_address}</span> 
+          <span className="error-txt">{errors.address}</span> 
            </div>
 )}
           <label className="form-section--label">City</label>
@@ -252,7 +253,7 @@ const EditWarehouse = () => {
         </div>
          <div className='form-btns'>
          <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
-        <button  className="save-btn"type="button" onClick={handleFormSubmit}>Save</button>
+        <button  className="save-btn"type="submit" >Save</button>
          </div>
         
      
