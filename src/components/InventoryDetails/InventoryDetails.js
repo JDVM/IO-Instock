@@ -4,18 +4,15 @@ import editCircle from "../../assets/images/Icons/edit-white-24px.svg";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import getWarehouseById from "../../utils/getWarehouseById"
 
-const API_URL = process.env.REACT_APP_API_URL;
-const PORT = process.env.REACT_APP_API_PORT;
 function InventoryDetails() {
 
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
   const [inventoryData, setInventoryData] = useState();
-  const [warehouseName, setWarehouseName] = useState(""); // State to hold the warehouse name
+  const [warehouseName, setWarehouseName] = useState("");
   const { id } = useParams();
 
   const API_URL = process.env.REACT_APP_API_URL;
@@ -36,13 +33,13 @@ function InventoryDetails() {
     }).catch((error) => {
       console.error(error);
     });
-  }, []);
+  }, [id]);
 
   if (!inventoryData) {
     return <p>Loading...</p>;
   }
 
-  
+
   return (
     <section className="inventory-details">
       <header className="inventory-details__header">
