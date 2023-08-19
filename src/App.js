@@ -18,7 +18,7 @@ function App() {
         <Route path="/Warehouses" element={<Warehouses/>} />
         <Route path="/Warehouses/:id" element={<Warehouses/>} />
         <Route path="/Inventory" element={<Inventory/>} />
-        <Route path="/warehouse/:id/edit" element={<EditWarehouse />} />
+        <Route path="/warehouses/:id/edit" element={ <EditWarehouse  />}/>
         <Route path="*" element={<PageNotFound/>} />
       </Routes>
       <Footer />

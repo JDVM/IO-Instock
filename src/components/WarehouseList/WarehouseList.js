@@ -1,7 +1,7 @@
 import axios from "axios";
 import Modal from "react-modal";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,NavLink } from "react-router-dom";
 import "./WarehouseList.scss";
 import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
@@ -10,7 +10,7 @@ import chevronIcon from "../../assets/images/Icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/images/Icons/sort-24px.svg";
 
 const API_URL = process.env.REACT_APP_API_URL;
-const PORT = process.env.REACT_APP_API_PORT || 8080;
+const PORT = process.env.REACT_APP_API_PORT || 6080;
 
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
@@ -28,7 +28,7 @@ function WarehouseList() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}:${PORT}/warehouses`)
+      .get(`${API_URL}${PORT}/warehouses`)
       .then((res) => {
         const warehousesData = res.data;
         setWarehouses(warehousesData);
@@ -191,7 +191,10 @@ function WarehouseList() {
                   setToDeleteWarehouse([warehouse.id, warehouse.warehouse_name]);
                 }}
               />
-             <Link to={ { pathname: `/warehouses/${warehouse.id}/edit`, state: { warehouseData: warehouse } }}>
+  
+<Link
+  to={ `/warehouses/${warehouse.id}/edit` }
+>
   <img src={editIcon} alt="edit icon" />
 </Link>
 {/*               
@@ -207,7 +210,7 @@ function WarehouseList() {
                 </button>
                 <button onClick={closeModal}>Cancel</button>
               </Modal> */}
-              <img src={editIcon} alt="edit icon" />
+             
             </div>
           </div>
         ))}

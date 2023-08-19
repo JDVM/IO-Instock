@@ -1,26 +1,49 @@
-import React, { useState } from 'react';
-import { useParams, Link, useNavigate,useLocation }from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import { useParams, Link, useNavigate }from 'react-router-dom';
 import axios from 'axios';
 import backicon from '../../assets/images/Icons/arrow_back-24px.svg';
 import errorIcon from '../../assets/images/Icons/error-24px.svg';
 import './EditWarehouse.scss';
 const EditWarehouse = () => {
-  const location = useLocation();
-  const warehouseData = location.state.warehouseData;
-  const [formData, setFormData] = useState({
-    warehouse_name: warehouseData.warehouse_name,
-    street_address: warehouseData.street_address,
-    city: warehouseData.city,
-    country: warehouseData.country,
-    contact_name: warehouseData.contact_name,
-    contact_position: warehouseData.contact_position,
-    contact_phone: warehouseData.contact_phone,
-    contact_email: warehouseData.contact_email,
-  });
-  const [errors, setErrors] = useState({});
+  const [warehouseData, setWarehouseData] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({
+    warehouse_name: '',
+    street_address: '',
+    city: '',
+    country: '',
+    contact_name: '',
+    contact_position: '',
+    contact_phone: '',
+    contact_email: '',
+  });
+  useEffect(() => {
+    const fetchWarehouseData = async () => {
+      try {
+        const response = await axios.get(`/warehouses/${id}`);
+        setWarehouseData(response.data);
+        setFormData({
+          warehouse_name: warehouseData.warehouse_name,
+          street_address: warehouseData.street_address,
+          city: warehouseData.city,
+          country: warehouseData.country,
+          contact_name: warehouseData.contact_name,
+          contact_position: warehouseData.contact_position,
+          contact_phone: warehouseData.contact_phone,
+          contact_email: warehouseData.contact_email,
+        });
+      } catch (error) {
+        console.error('API Error:', error);
+      }
+    };
+    fetchWarehouseData();
+  }, [id]);
 
+  
+  
+ 
   const validateForm = () => {
     const newErrors = {};
 
@@ -69,7 +92,7 @@ const EditWarehouse = () => {
     event.preventDefault();
     if (validateForm()) {
     try {
-        const response =  await axios.put(`/warehouses/${id}`, warehouseData);
+        const response =  await axios.put(`/warehouses/${id}`,FormData);
        if(response.status === 200){
         navigate('/warehouses');
        } else{
