@@ -22,17 +22,20 @@ const EditWarehouse = () => {
   useEffect(() => {
     const fetchWarehouseData = async () => {
       try {
-        const response = await axios.get(`/warehouses/${id}`);
+        const response = await axios.get(`http://localhost:8080/warehouses/${id}`);
+
         setWarehouseData(response.data);
+        console.log(`http://localhost:8080/warehouses/${id}`)
+        console.log(response)
         setFormData({
-          warehouse_name: warehouseData.warehouse_name,
-          street_address: warehouseData.street_address,
-          city: warehouseData.city,
-          country: warehouseData.country,
-          contact_name: warehouseData.contact_name,
-          contact_position: warehouseData.contact_position,
-          contact_phone: warehouseData.contact_phone,
-          contact_email: warehouseData.contact_email,
+          warehouse_name: response.data.warehouse_name,
+          street_address: response.data.address,
+          city: response.data.city,
+          country: response.data.country,
+          contact_name: response.data.contact_name,
+          contact_position: response.data.contact_position,
+          contact_phone: response.data.contact_phone,
+          contact_email: response.data.contact_email,
         });
       } catch (error) {
         console.error('API Error:', error);

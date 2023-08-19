@@ -28,7 +28,7 @@ function WarehouseList() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}${PORT}/warehouses`)
+      .get(`http://localhost:8080/warehouses`)
       .then((res) => {
         const warehousesData = res.data;
         setWarehouses(warehousesData);
