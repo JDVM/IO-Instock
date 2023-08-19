@@ -104,21 +104,24 @@
  @use '../../styles/partials/colors' as *; 
  @use '../../styles/partials/font' as *; 
 .edit-warehouse {
-
+  padding:1rem;
   
     &--header {
       display: flex;
       align-items: center;
       margin-bottom: 1.25rem;
-    
+      margin-top:1.25rem;
       .back-button {
         margin-right: 1.25rem;
         .back-icon {
-          width: 1.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        flex-shrink: 0;
         }
       }
   
       .edit-warehouse--title {
+        color:$background-dark;
         font-size:1.75rem;
         line-height: 2.25rem;
         font-family: "Titillium Web" , Arial, sans-serif;
@@ -141,9 +144,27 @@
         justify-content: space-between;
         @include tablet {
             flex-direction: row;
+            align-items: stretch;
+            .form--section:first-child { 
+              border-right: 1px solid #ccc;
+              margin-top: auto;
+              margin-bottom: auto;
+             }
+             .form--section:last-child {
+              padding-left: 1.25rem;  
+          }
         }
         @include desktop{
-            flex-direction: row;
+          .form--section:first-child { 
+            border-right: 1px solid #ccc;
+            margin-top: auto;
+              margin-bottom: auto; 
+        }
+        .form--section:last-child {
+          padding-left: 1.25rem;  
+      }
+         align-items: stretch;
+         flex-direction: row;
         }
   
         .form--section {
@@ -167,6 +188,7 @@
           
           }
           .form-section--title {
+            margin-top: 1rem;
             font-size: 1.25rem;
             margin-bottom: 2rem;
             line-height: 1.75rem;
@@ -183,7 +205,9 @@
           }
   
          .form-section--label {
+         
             margin-bottom: 0.25rem;
+            font-weight: 600;
             font-family: "Titillium Web" , Arial, sans-serif;
             font-size: 0.8125rem;
             @include tablet{
@@ -221,7 +245,7 @@
               }
               
               .error-text {
-                color: red !important;
+                color: $support-red !important;
                 font-size: 2rem; 
                 margin-top: 0.2rem;
                 
@@ -234,16 +258,21 @@
         display: flex;
         justify-content:center;
         width:100%;
-        
-        background-color:$background-light;
+        margin-top:1rem;
+        margin-bottom: 1rem;
+       
         @include tablet{
-          justify-content: flex-end;
+      
+       padding-right: 2rem;
         width: min-content;
+        margin-left:auto;
        
         }
         @include desktop{
-          justify-content: flex-end;
-          width: min-content;
+             
+       padding-right: 2rem;
+       width: min-content;
+       margin-left:auto;
         
         }
         .save-btn {
@@ -260,11 +289,17 @@
           &:hover{
             background-color: $background-dark;
           }
+          @include tablet{
+            width:auto;
+          }
+          @include desktop{
+            width: auto;
+          }
         }
           .cancel-btn {
             background-color: #fff;
             color: #333;
-            width: 100%;
+            width:100%;
             border-radius: 1.25rem;
             height: 2.375rem;
             border: 1px solid black;
@@ -273,11 +308,15 @@
             &:hover{
               border-color:$primary-blue;
             }
+            @include tablet{
+              width:auto;
+            }
+            @include desktop{
+              width: auto;
+            }
           }
         }
       }
     }
   
-    .error-txt{
-      color:red;
-    }
+  

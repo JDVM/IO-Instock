@@ -72,9 +72,9 @@ const [errorMessage, setErrorMessage] = useState('');
       }
       if (!formData.contact_phone.trim()) {
         newErrors.contact_phone = 'Contact Phone is required.';
-      } else if (!/^[0-9]+$/.test(formData.contact_phone)) {
+    } else if (!/^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$|^\d{10}$|^\d{3}-\d{3}-\d{4}$/.test(formData.contact_phone)) {
         newErrors.contact_phone = 'Invalid Phone Number.';
-      }
+    }
       if (!formData.contact_email.trim()) {
         newErrors.contact_email = 'Contact Email is required.';
       } else if (!/^\S+@\S+\.\S+$/.test(formData.contact_email)) {
