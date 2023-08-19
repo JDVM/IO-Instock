@@ -99,10 +99,14 @@
 // //     }
 // //   }
   // EditWarehouse.scss
+  
  @use '../../styles/partials/breakpoints' as *; 
  @use '../../styles/partials/colors' as *; 
  @use '../../styles/partials/font' as *; 
 .edit-warehouse {
+  *{
+    border:1px solid black;
+  }
   padding: 1rem;
   
     &--header {
@@ -232,16 +236,18 @@
       .form-btns {
         display: flex;
         justify-content:center;
-        width: 100%;
-     
+        width:100%;
+        
         background-color:$background-light;
         @include tablet{
-           justify-content: flex-end;
-           width:min-content;
+          justify-content: flex-end;
+          width:100%;
+       
         }
         @include desktop{
-            width: min-content; 
-            justify-content: flex-end;
+          justify-content: flex-end;
+        
+            width:100%;
         }
         .save-btn {
           padding: 10px 20px;
@@ -265,6 +271,11 @@
             border-radius: 1.25rem;
             height: 2.375rem;
             border: 1px solid black;
+            padding-right:1rem;
+            padding-left:1rem;
+            &:hover{
+              border-color:$primary-blue;
+            }
           }
         }
       }

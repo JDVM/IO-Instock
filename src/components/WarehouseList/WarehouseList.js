@@ -1,7 +1,7 @@
 import axios from "axios";
 import Modal from "react-modal";
 import { useState, useEffect } from "react";
-import { Link, useParams,NavLink } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./WarehouseList.scss";
 import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
@@ -17,7 +17,7 @@ function WarehouseList() {
   // const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
   // const [warehouseName, setWarehouseName] = useState(null);
-  const [warehouseData, setWarehouseData] = useState([]);
+
   // const [isLoading, setIsLoading] = useState(true);
 
   // const [getWarehousesById, setWarehousesById] = useState(null);
@@ -32,6 +32,7 @@ function WarehouseList() {
       .then((res) => {
         const warehousesData = res.data;
         setWarehouses(warehousesData);
+       
         console.log(warehousesData);
       })
       .catch((error) => {
