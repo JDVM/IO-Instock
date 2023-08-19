@@ -1,7 +1,11 @@
 import "./inventoryDetails.scss";
 import backarrow from "../../assets/images/Icons/arrow_back-24px.svg";
 import editCircle from "../../assets/images/Icons/edit-white-24px.svg";
+import { useParams } from "react-router";
 function InventoryDetails() {
+
+
+
   return (
     <section className="inventory-details">
       <header className="inventory-details__header">
