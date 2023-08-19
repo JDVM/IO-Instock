@@ -11,7 +11,7 @@ function InventoryDetails() {
   const [inventoryData, setInventoryData] = useState();
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`${API_URL}:${PORT}/${id}`).then((res) => {
+    axios.get(`${API_URL}:${PORT}/inventories/${id}`).then((res) => {
         const inventoryInfo = res.data
         setInventoryData(inventoryInfo)
     }) ;
