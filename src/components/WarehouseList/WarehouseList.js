@@ -87,9 +87,11 @@ function WarehouseList() {
               name="search"
               placeholder="Search..."
             />
-            <button className="warehouse-list__add-button" type="button">
-              + Add New Warehouse
-            </button>
+            <Link to="/warehouses/new">
+              <button className="warehouse-list__add-button" type="button">
+                + Add New Warehouse
+              </button>
+            </Link>
           </div>
         </div>
         <div>
@@ -188,10 +190,13 @@ function WarehouseList() {
                 alt="delete icon"
                 onClick={() => {
                   setModalIsOpen(true);
-                  setToDeleteWarehouse([warehouse.id, warehouse.warehouse_name]);
+                  setToDeleteWarehouse([
+                    warehouse.id,
+                    warehouse.warehouse_name,
+                  ]);
                 }}
               />
-{/*               
+              {/*               
               <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

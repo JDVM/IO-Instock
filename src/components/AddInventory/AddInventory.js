@@ -39,13 +39,15 @@ export default function AddInventory({ setInventories }) {
     event.preventDefault();
 
     let errors = {
-      warehouse_id: !formData.warehouse_id,
-      item_name: !formData.item_name,
-      description: !formData.description,
-      category: !formData.category,
-      status: !formData.status,
-      quantity: formData.quantity <= 0,
+      warehouse_id:
+        !formData.warehouse_id || formData.warehouse_id.trim() === "",
+      item_name: !formData.item_name || formData.item_name.trim() === "",
+      description: !formData.description || formData.description.trim() === "",
+      category: !formData.category || formData.category.trim() === "",
+      status: !formData.status || formData.status.trim() === "",
+      quantity: !formData.quantity || formData.quantity <= 0,
     };
+
     setFormErrors(errors);
 
     if (Object.values(errors).some((error) => error)) return;
@@ -55,8 +57,9 @@ export default function AddInventory({ setInventories }) {
     } catch (error) {
       console.error(error);
       throw error;
+    } finally {
+      goBack();
     }
-    navigate(-1);
   };
 
   return (

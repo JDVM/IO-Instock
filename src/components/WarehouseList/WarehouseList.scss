@@ -73,6 +73,7 @@ input::placeholder {
     margin: 0.5rem 0;
     @include button;
     @include H3;
+    cursor: pointer;
 
     @include tablet {
       margin-left: 1rem;
