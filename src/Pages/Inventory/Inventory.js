@@ -1,13 +1,21 @@
 import "../../App.scss"
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
+import { useLocation } from "react-router-dom";
+import "./Inventory.scss";
+import AddInventory from "../../components/AddInventory/AddInventory";
 
 function Inventory() {
+  const location = useLocation();
+
+  console.log(location.pathname);
+  if (location.pathname.endsWith("/new"))
     return (
-      <div className="inventory">
+        
+      <div className="inventories">
         <InventoryDetails />
+        <AddInventory />
       </div>
     );
-  }
-  
-  export default Inventory;
-  
+}
+
+export default Inventory;

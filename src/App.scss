@@ -1,13 +1,19 @@
-*{ box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
 html,
 header,
 nav,
-body{
+body {
   margin: 0;
   padding: 0;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
+}
+
+.app {
+  background-color: #F7F8F9;
 }
