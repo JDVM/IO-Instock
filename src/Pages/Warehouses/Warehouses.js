@@ -1,27 +1,35 @@
-import { useParams } from "react-router-dom";
-import "../../App.scss"
-import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList"
+import { useParams, useLocation } from "react-router-dom";
+import "../../App.scss";
+import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
-
-
+import AddWarehouse from "../../components/AddWarehouse/AddWarehouse";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 
 function Warehouses() {
-const {id} = useParams()
-if( id ){
-  return(
-    <>
-    <WarehouseDetails id={id} />
-    <WarehouseInventoryList />
-    </>
-  )
-}
+  const location = useLocation();
+  const { id } = useParams();
+  if (id) {
+    return (
+      <>
+        <WarehouseDetails id={id} />
+        <WarehouseInventoryList />
+      </>
+    );
+  }
+
+  if (location.pathname.endsWith("/new")) {
+    return (
+      <>
+        <AddWarehouse />
+      </>
+    );
+  }
 
   return (
-   <>
-   <WarehouseList />
-   </>
-);
+    <>
+      <WarehouseList />
+    </>
+  );
 }
 
 export default Warehouses;
