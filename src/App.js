@@ -20,6 +20,7 @@ function App() {
         <Route path="/Inventory" element={<Inventory/>} />
         <Route path="/warehouses/:id/edit" element={ <EditWarehouse  />}/>
         <Route path="*" element={<PageNotFound/>} />
+        <Route path="/Inventory/new" element={<Inventory />} />
       </Routes>
       <Footer />
     </BrowserRouter>
