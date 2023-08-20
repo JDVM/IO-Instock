@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { addInventoryItem } from "../../utils/addToDatabase";
 
@@ -29,6 +29,10 @@ export default function AddInventory({ setInventories }) {
     statusbar: false,
     quantity: false,
   });
+
+  useEffect(() => {
+    document.title = "InStock | New Item";
+  }, []);
 
   const handleChange = async (event) => {
     const { name, value } = event.target;

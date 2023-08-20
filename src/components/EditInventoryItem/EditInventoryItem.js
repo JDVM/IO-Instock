@@ -32,6 +32,10 @@ function EditInventoryItem() {
   });
 
   useEffect(() => {
+    document.title = "InStock | Edit Inventory Item";
+  }, []);
+
+  useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.get(
@@ -140,6 +144,7 @@ function EditInventoryItem() {
   ];
 
   return (
+
     <div className="edit-inventory">
       <div className="edit-inventory-item__head">
         <img
@@ -166,7 +171,8 @@ function EditInventoryItem() {
             />
             {formErrors.item_name && (
               <div className="error">
-                <img className="error-icon" src={errorIcon}></img>
+
+                <img className="error-icon" src={errorIcon} alt="" />
                 <div className="error-message">{formErrors.item_name}</div>
               </div>
             )}
@@ -187,7 +193,7 @@ function EditInventoryItem() {
             />
             {formErrors.description && (
               <div className="error">
-                <img className="error-icon" src={errorIcon}></img>
+                <img className="error-icon" src={errorIcon} alt=""></img>
                 <div className="error-message">{formErrors.item_name}</div>
               </div>
             )}
@@ -257,7 +263,7 @@ function EditInventoryItem() {
             />
             {formErrors.description && (
               <div className="error">
-                <img className="error-icon" src={errorIcon}></img>
+                <img className="error-icon" src={errorIcon} alt="" ></img>
                 <div className="error-message">{formErrors.item_name}</div>
               </div>
             )}
