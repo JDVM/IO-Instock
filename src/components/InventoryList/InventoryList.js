@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import getInventories from "../../utils/getInventories";
+import DeleteInventory from "../DeleteInventory/DeleteInventory";
 
 import "./InventoryList.scss";
 
@@ -15,6 +16,9 @@ export default function InventoryList() {
   const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [toDeleteItem, setToDeleteItem] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const inventories = await getInventories();
@@ -24,11 +28,14 @@ export default function InventoryList() {
   }, []);
 
   const handleEdit = (id) => navigate(`/inventory/${id}/edit`);
-  const handleDelete = (id) => 
-  
+  //   const handleDelete = (id) =>
 
   return (
-    <div className="inventory-list">
+    <div
+      className={`inventory-list ${
+        modalIsOpen ? "inventory-list--disabled" : ""
+      }`}
+    >
       <div className="inventory-list-header">
         <h1 className="inventory-list__title">Inventory</h1>
         <div className="inventory-list__search-bar">
@@ -71,7 +78,7 @@ export default function InventoryList() {
               <div className="inventory-list-item__container">
                 <h4 className="inventory-list-item__title">Inventory Item</h4>
                 <Link
-                  to={`/inventories/${item.id}`}
+                  to={`/inventory/${item.id}`}
                   className="inventory-list-item__content inventory-list-item__content--link"
                 >
                   {item.item_name}
@@ -101,7 +108,7 @@ export default function InventoryList() {
               <div className="inventory-list-item__container">
                 <h4 className="inventory-list-item__title">Warehouse</h4>
                 <p className="inventory-list-item__content">
-                  {item.warehouse_id}
+                  {item.warehouse_name}
                 </p>
               </div>
               <div className="inventory-list__actions">
@@ -109,7 +116,10 @@ export default function InventoryList() {
                   className="inventory-list__actions-delete"
                   src={deleteIcon}
                   alt=""
-                  onClick={() => handleDelete(item.id)}
+                  onClick={() => {
+                    setModalIsOpen(true);
+                    setToDeleteItem([item.id, item.item_name]);
+                  }}
                 />
                 <img
                   className="inventory-list__actions-edit"
@@ -122,6 +132,13 @@ export default function InventoryList() {
           );
         })}
       </div>
+      <DeleteInventory
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        toDeleteItem={toDeleteItem}
+        inventoryData={inventories}
+        setInventoryData={setInventories}
+      />
     </div>
   );
 }
