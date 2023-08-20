@@ -1,7 +1,6 @@
 import axios from "axios";
-import Modal from "react-modal";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./WarehouseList.scss";
 import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 import deleteIcon from "../../assets/images/Icons/delete_outline-24px.svg";
@@ -17,11 +16,9 @@ function WarehouseList() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [toDeleteWarehouse, setToDeleteWarehouse] = useState([]);
 
-  const { id } = useParams();
-
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/warehouses`)
+      .get(`${API_URL}:${PORT}/warehouses`)
       .then((res) => {
         const warehousesData = res.data;
         setWarehouses(warehousesData);
