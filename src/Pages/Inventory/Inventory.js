@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import "./Inventory.scss";
 
 import AddInventory from "../../components/AddInventory/AddInventory";
+import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 
 function Inventory() {
   const location = useLocation();
@@ -11,26 +12,11 @@ function Inventory() {
     return (
       <div className="inventories">
         <AddInventory />
+        <InventoryDetails />
       </div>
     );
 
-  return (
-    <div className="inventories">
-      <>
-        <h1>InStock</h1>
-        <p>
-          Welcome to <strong>InStock</strong> - Your modern inventory management
-          system.
-        </p>
-        <p>
-          This application is currently under development by team{" "}
-          <strong>IO</strong> at BrainStation's Software Engineering Bootcamp,
-          Cohort: <strong>The Nameless '23</strong>.
-        </p>
-        <p>Stay tuned for more updates!</p>
-      </>
-    </div>
-  );
+  
 }
 
 export default Inventory;
