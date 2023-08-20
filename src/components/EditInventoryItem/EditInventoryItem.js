@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import arrowBackIcon from "../../assets/images/Icons/arrow_back-24px.svg";
+import errorIcon from '../../assets/images/Icons/error-24px.svg';
 import "./EditinventoryItem.scss";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -18,16 +19,16 @@ function EditInventoryItem() {
   const [description, setDescription] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedWarehouse, setSelectedWarehouse] = useState("");
-  const [availability, setAvailability] = useState("inStock");
+  const [status, setStatus] = useState("inStock");
   const [quantity, setQuantity] = useState(0);
 
   const [formErrors, setFormErrors] = useState({
-    warehouse_id: false,
-    item_name: false,
-    description: false,
-    category: false,
-    statusbar: false,
-    quantity: false,
+    warehouse_id: "",
+    item_name: "",
+    description: "",
+    category: "",
+    status: "",
+    quantity: "",
   });
 
   useEffect(() => {
@@ -44,7 +45,7 @@ function EditInventoryItem() {
         setDescription(itemData.description);
         setSelectedCategory(itemData.category);
         setSelectedWarehouse(itemData.warehouse_id);
-        setAvailability(itemData.quantity > 0 ? "inStock" : "outOfStock");
+        setStatus(itemData.quantity > 0 ? "inStock" : "outOfStock");
         setQuantity(itemData.quantity);
       } catch (error) {
         console.error("Error getting item data:", error);
@@ -54,13 +55,13 @@ function EditInventoryItem() {
     getData();
   }, [id]);
 
-  const handleChangeItemName = (e) => {
-    setItemName(e.target.value);
-  };
+    const handleChangeItemName = (e) => {
+      setItemName(e.target.value);
+    };
 
-  const handleChangeDescription = (e) => {
-    setDescription(e.target.value);
-  };
+    const handleChangeDescription = (e) => {
+      setDescription(e.target.value);
+    };
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -70,12 +71,39 @@ function EditInventoryItem() {
     setSelectedWarehouse(e.target.value);
   };
 
-  const handleAvailabilityChange = (e) => {
-    setAvailability(e.target.value);
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
+
+  const handleQuantityChange =(e) => {
+    setQuantity(e.target.value)
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    let errors = {};
+
+    if (!selectedWarehouse) {
+      errors.warehouse_id = "This field is required.";
+    }
+
+    if (!itemName) {
+      errors.item_name = "This field is required.";
+    }
+
+    if (!description) {
+      errors.description = "This field is required.";
+    }
+
+    if (!selectedCategory) {
+      errors.category = "This field is required.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
 
     try {
       const updatedItem = {
@@ -112,102 +140,150 @@ function EditInventoryItem() {
   ];
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="edit-inventory-item__head">
-        <img
+    <>
+        <div className="edit-inventory-item__head">
+            <img
             className="edit-inventory-item__icon"
             src={arrowBackIcon}
             alt="back arrow"
             onClick={goBack}
-        />
-        <h1 className="edit-inventory-item__head-title">Edit Inventory Item</h1>
-      </div>
-      <section className="edit-inventory-item__section">
-        <h2 className="edit-inventory-item__subhead-title">Item Details</h2>
-        <label className="edit-inventory-item__label">
-          Item Name{" "}
-          <input
-            className="edit-inventory-item__input"
-            type="text"
-            name="name"
-            onChange={handleChangeItemName}
-            value={itemName}
-          />
-        </label>
-        <label className="edit-inventory-item__label">
-          Description{" "}
-          <textarea
-            className="edit-inventory-item__input"
-            type="text"
-            name="description"
-            onChange={handleChangeDescription}
-            value={description}
-          />
-        </label>
-        <h3 className="edit-inventory-item__label">Category</h3>
-        <select
-          className="edit-inventory-item__input"
-          name="category"
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-        >
-          {/* <option value={selectedCategory}>{selectedCategory}</option> */}
-          {categoryOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </section>
-      <section className="edit-inventory-item__section">
-        <h2 className="edit-inventory-item__subhead-title">
-          Item Availability
-        </h2>
-        <h3 className="edit-inventory-item__label">Status</h3>
-        <label>
-            <input
-                type="radio"
-                name="availability"
-                value="inStock"
-                checked={availability === "inStock"}
-                onChange={handleAvailabilityChange}
             />
-            In Stock ({quantity} available)
-            </label>
-            <label>
-            <input
-                type="radio"
-                name="availability"
-                value="outOfStock"
-                checked={availability === "outOfStock"}
-                onChange={handleAvailabilityChange}
-            />
-            Out of Stock
-            </label>
-        
-        <h3 className="edit-inventory-item__label">Warehouse</h3>
-        <select
-          className="edit-inventory-item__input"
-          name="warehouse"
-          value={selectedWarehouse}
-          onChange={handleWarehouseChange}
-        >
-          {/* <option value={selectedWarehouse}>{selectedWarehouse.label}</option> */}
-          
-          {warehouseOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <div className="add-inventory-buttons">
-          <span className="add-inventory-buttons__cancel" onClick={goBack}>
-            Cancel
-          </span>
-          <button className="add-inventory-buttons__add">+ Add Item</button>
+            <h1 className="edit-inventory-item__head-title">Edit Inventory Item</h1>
         </div>
-      </section>
-    </form>
+        <form className="edit-inventory-item__form" onSubmit={handleSubmit}>
+            <section className="edit-inventory-item__section">
+                <h2 className="edit-inventory-item__subhead-title">Item Details</h2>
+                    <h3 className="edit-inventory-item__label">Item Name</h3>
+                    <label>
+                    <input
+                        className={`edit-inventory-item__input  ${
+                            formErrors.item_name ? "edit-inventory-item__input--error" : ""
+                        }`}
+                        type="text"
+                        name="name"
+                        onChange={handleChangeItemName}
+                        value={itemName}
+                    />
+                    {formErrors.item_name && (
+                        <div className="error">
+                            <img className="error-icon" src={errorIcon}></img>
+                            <div className="error-message">{formErrors.item_name}</div>
+                        </div>
+                    )}
+                    </label>
+
+                    <h3 className="edit-inventory-item__label">Description</h3>
+                    <label>
+                    <textarea
+                        className={`edit-inventory-item__input edit-inventory-item__textarea ${
+                            formErrors.description ? "edit-inventory-item__textarea--error" : ""
+                        }`}
+                        type="text"
+                        name="description"
+                        onChange={handleChangeDescription}
+                        value={description}
+                    />
+                    {formErrors.description && (
+                        <div className="error">
+                            <img className="error-icon" src={errorIcon}></img>
+                            <div className="error-message">{formErrors.item_name}</div>
+                        </div>
+                    )}
+                    </label>
+
+                    <h3 className="edit-inventory-item__label">Category</h3>
+                    <label>
+                    <select
+                        className="edit-inventory-item__input"
+                        name="category"
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                    >
+                        {categoryOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                            {option.label}
+                        </option>
+                        ))}
+                    </select>
+                    </label>
+            </section>
+
+            <section className="edit-inventory-item__section">
+                <h2 className="edit-inventory-item__subhead-title">
+                Item Availability
+                </h2>
+
+                <h3 className="edit-inventory-item__label">Status</h3>
+                <div className="edit-inventory-item__radio-container">
+                    <label className="edit-inventory-item__radio">
+                    <input
+                        type="radio"
+                        name="status"
+                        value="In Stock"
+                        checked={status === "In Stock"}
+                        onChange={handleStatusChange}
+                    />
+                    In Stock
+                    </label>
+                    <label className="edit-inventory-item__radio">
+                    <input
+                        type="radio"
+                        name="status"
+                        value="Out of Stock"
+                        checked={status === "Out of Stock"}
+                        onChange={handleStatusChange}
+                    />
+                    Out of Stock
+                    </label>
+                </div>
+                <label
+                    className={`edit-inventory-item__label ${
+                    status === "Out of Stock"
+                        ? "edit-inventory-item__input--hide"
+                        : ""
+                    }`}
+                >
+                    Quantity
+                    <input
+                    className={`edit-inventory-item__input ${
+                        formErrors.quantity ? "edit-inventory-item__input--error" : ""
+                    }`}
+                    type="number"
+                    name="quantity"
+                    value={quantity}
+                    onChange={handleQuantityChange}
+                    />
+                    {formErrors.description && (
+                        <div className="error">
+                            <img className="error-icon" src={errorIcon}></img>
+                            <div className="error-message">{formErrors.item_name}</div>
+                        </div>
+                    )}
+                </label>
+
+                <h3 className="edit-inventory-item__label">Warehouse</h3>
+                <select
+                className="edit-inventory-item__input"
+                name="warehouse"
+                value={selectedWarehouse}
+                onChange={handleWarehouseChange}
+                >
+                {/* <option value={selectedWarehouse}>{selectedWarehouse.label}</option> */}
+
+                {warehouseOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                    {option.label}
+                    </option>
+                ))}
+                </select>
+                <div className="edit-inventory-item__button-container">
+                <button className="edit-inventory-item__button edit-inventory-item__button--save" onClick={goBack}>Cancel</button>
+                <button className="edit-inventory-item__button">Save</button>
+                </div>
+            </section>
+
+        </form>
+    </>
   );
 }
 
