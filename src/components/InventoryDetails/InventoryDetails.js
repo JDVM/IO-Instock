@@ -4,10 +4,9 @@ import editCircle from "../../assets/images/Icons/edit-white-24px.svg";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import getWarehouseById from "../../utils/getWarehouseById"
+import getWarehouseById from "../../utils/getWarehouseById";
 
 function InventoryDetails() {
-
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
@@ -19,26 +18,29 @@ function InventoryDetails() {
   const PORT = process.env.REACT_APP_API_PORT;
 
   useEffect(() => {
-    axios.get(`${API_URL}:${PORT}/inventories/${id}`).then((res) => {
-      const inventoryInfo = res.data;
-      setInventoryData(inventoryInfo);
+    axios
+      .get(`${API_URL}:${PORT}/inventories/${id}`)
+      .then((res) => {
+        const inventoryInfo = res.data;
+        setInventoryData(inventoryInfo);
+        getWarehouseById(inventoryInfo.warehouse_id);
+        document.title = `InStock | ${inventoryInfo.item_name}`
 
-      getWarehouseById(inventoryInfo.warehouse_id)
-        .then((warehouseInfo) => {
-          setWarehouseName(warehouseInfo.warehouse_name);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }).catch((error) => {
-      console.error(error);
-    });
+          .then((warehouseInfo) => {
+            setWarehouseName(warehouseInfo.warehouse_name);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [id]);
 
   if (!inventoryData) {
     return <p>Loading...</p>;
   }
-
 
   return (
     <section className="inventory-details">
@@ -60,7 +62,9 @@ function InventoryDetails() {
         <div className="inventory-details__description-and-catergory-container">
           <div className="inventory-details__description">
             <h3 className="inventory-details__title">ITEM DESCRIPTION:</h3>
-            <p className="inventory-details__text">{inventoryData.description}</p>
+            <p className="inventory-details__text">
+              {inventoryData.description}
+            </p>
           </div>
           <div className="inventory-details__category">
             <h3 className="inventory-details__title">CATEGORY:</h3>
@@ -70,11 +74,19 @@ function InventoryDetails() {
         <div className="inventory-details__status-quantity-warehouse-container">
           <div className="inventory-details__status">
             <h3 className="inventory-details__title">STATUS:</h3>
-            <p className={`inventory-details__text-status ${inventoryData.status === "Out of Stock" ? "inventory-details__text-status--status-color-out-of-stock" : "inventory-details__text-status--status-color-instock"}`}>{inventoryData.status}</p>
+            <p
+              className={`inventory-details__text-status ${
+                inventoryData.status === "Out of Stock"
+                  ? "inventory-details__text-status--status-color-out-of-stock"
+                  : "inventory-details__text-status--status-color-instock"
+              }`}
+            >
+              {inventoryData.status}
+            </p>
           </div>
           <div className="inventory-details__quantity">
             <h3 className="inventory-details__title">QUANTIY:</h3>
-            <p className="inventory-details__text" >{inventoryData.quantity}</p>
+            <p className="inventory-details__text">{inventoryData.quantity}</p>
           </div>
           <div className="inventory-details__warehouse">
             <h3 className="inventory-details__title">WAREHOUSE:</h3>
