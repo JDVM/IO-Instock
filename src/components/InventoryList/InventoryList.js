@@ -18,6 +18,7 @@ export default function InventoryList() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [toDeleteItem, setToDeleteItem] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +29,17 @@ export default function InventoryList() {
   }, []);
 
   const handleEdit = (id) => navigate(`/inventory/${id}/edit`);
-  //   const handleDelete = (id) =>
+
+  const filteredInventories = inventories.filter(
+    (item) =>
+      item.item_name.toLowerCase().includes(searchValue.toLowerCase()) ||
+      item.category.toLowerCase().includes(searchValue.toLowerCase()) ||
+      item.warehouse_name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value);
+  };
 
   return (
     <div
@@ -39,7 +50,12 @@ export default function InventoryList() {
       <div className="inventory-list-header">
         <h1 className="inventory-list__title">Inventory</h1>
         <div className="inventory-list__search-bar">
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchValue}
+            onChange={handleSearch}
+          />
           <img src={searchIcon} alt="" />
         </div>
         <Link className="inventory-list__add-button" to="/inventory/new">
@@ -72,7 +88,7 @@ export default function InventoryList() {
         </span>
       </div>
       <div className="inventory-list-wrapper">
-        {inventories.map((item) => {
+        {filteredInventories.map((item) => {
           return (
             <div className="inventory-list-item" key={item.id}>
               <div className="inventory-list-item__container">

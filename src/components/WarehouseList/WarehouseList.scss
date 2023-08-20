@@ -12,10 +12,6 @@
   padding: 0;
 }
 
-input::placeholder {
-  padding-left: 0.5rem;
-}
-
 .warehouse-list {
  
   &__head {
@@ -62,11 +58,12 @@ input::placeholder {
     border: 2px solid $secondary-lightgrey;
     background-image: url(../../assets/images/Icons/search-24px.svg);
     background-repeat: no-repeat;
-    background-position: 15.5rem;
+    background-position: 97%;
     outline-color: $primary-blue !important;
+    padding-left: 0.75rem;
 
     @include tablet {
-      background-position: 8.5rem;
+      background-position: 9rem;
     }
   }
 

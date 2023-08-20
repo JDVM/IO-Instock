@@ -15,6 +15,7 @@ function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [toDeleteWarehouse, setToDeleteWarehouse] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     axios
@@ -38,6 +39,30 @@ function WarehouseList() {
     return null;
   }
 
+  const isWarehouseMatchingQuery = (warehouse, query) => {
+    if (!query) return true;
+    const fieldsToSearch = [
+      warehouse.warehouse_name,
+      warehouse.address,
+      warehouse.city,
+      warehouse.country,
+      warehouse.contact_name,
+      warehouse.contact_phone,
+      warehouse.contact_email,
+    ];
+    return fieldsToSearch.some(
+      (field) => field && field.toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
+  const filteredWarehouses = warehouses.filter((warehouse) =>
+    isWarehouseMatchingQuery(warehouse, searchValue)
+  );
+
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value);
+  };
+
   return (
     <>
       <section className="warehouse-list">
@@ -51,6 +76,8 @@ function WarehouseList() {
               type="search"
               name="search"
               placeholder="Search..."
+              value={searchValue}
+              onChange={handleSearch}
             />
             <Link to="/warehouses/new">
               <button className="warehouse-list__add-button" type="button">
@@ -106,7 +133,7 @@ function WarehouseList() {
             </div>
           </div>
         </div>
-        {warehouses.map((warehouse) => (
+        {filteredWarehouses.map((warehouse) => (
           <div className="warehouse-list__card-item" key={warehouse.id}>
             <article className="warehouse-list__card-parent">
               <div className="warehouse-list__card-child">
@@ -150,7 +177,8 @@ function WarehouseList() {
               </div>
             </article>
             <div className="warehouse-list__foot">
-              <img className="warehouse-list__edit"
+              <img
+                className="warehouse-list__edit"
                 src={deleteIcon}
                 alt="delete icon"
                 onClick={() => {
