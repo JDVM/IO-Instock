@@ -23,9 +23,8 @@ function InventoryDetails() {
       .then((res) => {
         const inventoryInfo = res.data;
         setInventoryData(inventoryInfo);
-        getWarehouseById(inventoryInfo.warehouse_id);
         document.title = `InStock | ${inventoryInfo.item_name}`
-
+        getWarehouseById(inventoryInfo.warehouse_id)
           .then((warehouseInfo) => {
             setWarehouseName(warehouseInfo.warehouse_name);
           })
@@ -36,7 +35,7 @@ function InventoryDetails() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [id]);
 
   if (!inventoryData) {
     return <p>Loading...</p>;

@@ -19,7 +19,8 @@
 
     @include tablet {
       flex-direction: row;
-      justify-content: flex-end
+      justify-content: flex-end;
+      padding: 2rem 2rem 1.5rem 2rem;
     }
   }
 
@@ -40,7 +41,7 @@
     justify-content: space-between;
 
     padding: 0.5rem 1rem 0.5rem 0.5rem;
-    height: 2.25rem;
+    height: 2.375rem;
 
     & > input {
       @include P2;
@@ -48,7 +49,6 @@
       align-items: center;
       border: none;
       outline: none;
-      margin-left: .5rem;
       padding: 0;
       flex: 1;
     }
@@ -69,9 +69,9 @@
   &__add-button {
     display: flex;
     @include H3;
-    font-size: 0.875rem;
+    // font-size: 0.875rem;
 
-    font-weight: 400;
+    // font-weight: 400;
     color: $primary-white;
     background-color: $primary-blue;
 
@@ -167,7 +167,7 @@
 
       &--in-stock,
       &--out-of-stock {
-        @include H3;
+        @include H4;
         text-transform: uppercase;
         border-radius: 1.25rem;
         width: fit-content;

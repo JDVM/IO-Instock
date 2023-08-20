@@ -123,9 +123,9 @@ function WarehouseInventoryList() {
                   STATUS
                 </h4>
                 <p
-                  className={`warehouse-inventory-list__card-text ${info.status === "Out of Stock"
-                    ? "warehouse-inventory-list__card-text--status-color-out-of-stock"
-                    : "warehouse-inventory-list__card-text--status-color-instock"
+                  className={`warehouse-inventory-list__status-text ${info.status === "Out of Stock"
+                    ? "warehouse-inventory-list__status-text--status-color-out-of-stock"
+                    : "warehouse-inventory-list__status-text--status-color-instock"
                     }`}
                 >
                   {info.status}

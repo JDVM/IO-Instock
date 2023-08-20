@@ -144,6 +144,17 @@
         text-align: left;
         width: -moz-fit-content;
         width: fit-content;
+    }
+
+    &__status-text {
+        @include H4;
+        color: $primary-black;
+        padding:  0 .5rem ;
+        text-align: left;
+        width: -moz-fit-content;
+        width: fit-content;
+        text-transform: uppercase;
+        height: 1.5rem;
 
 
         &--status-color-instock {
