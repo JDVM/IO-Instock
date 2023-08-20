@@ -12,9 +12,10 @@ const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT || 6080;
 
 function WarehouseList() {
-  const [warehouses, setWarehouses] = useState(null);
+  const [warehouses, setWarehouses] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [toDeleteWarehouse, setToDeleteWarehouse] = useState([]);
+  const [sortConfig, setSortConfig] = useState({ key: '', direction: 'ascending' });
 
   useEffect(() => {
     axios
@@ -29,6 +30,24 @@ function WarehouseList() {
         console.error("Error fetching warehouses:", error);
       });
   }, []);
+
+  const requestSort = (key) => {
+    let direction = 'ascending';
+    if (
+      sortConfig.key === key &&
+      sortConfig.direction === 'ascending'
+    ) {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
+  };
+  let sortedWarehouses = [...warehouses];
+ 
+  if (sortConfig.direction === 'ascending') {
+    sortedWarehouses.sort((a, b) => (a[sortConfig.key] > b[sortConfig.key] ? 1 : -1));
+} else if (sortConfig.direction === 'descending') {
+    sortedWarehouses.sort((a, b) => (a[sortConfig.key] < b[sortConfig.key] ? 1 : -1));
+}
 
   if (warehouses === null) {
     return <h1>Loading...</h1>;
@@ -63,42 +82,23 @@ function WarehouseList() {
           <div className="warehouse-list__card-item warehouse-list__card-item--tablet">
             <article className="warehouse-list__card-parent">
               <div className="warehouse-list__card-child">
-                <div className="warehouse-list__card-info">
-                  <h4 className="warehouse-list__card-title">WAREHOUSE</h4>
-                  <img
-                    className="warehouse-list__sort-icon"
-                    src={sortIcon}
-                    alt="sort icon"
-                  />
-                </div>
-                <div className="warehouse-list__card-info">
-                  <h4 className="warehouse-list__card-title">ADDRESS</h4>
-                  <img
-                    className="warehouse-list__sort-icon"
-                    src={sortIcon}
-                    alt="sort icon"
-                  />
-                </div>
-              </div>
-              <div className="warehouse-list__card-child">
-                <div className="warehouse-list__card-info">
-                  <h4 className="warehouse-list__card-title">CONTACT NAME</h4>
-                  <img
-                    className="warehouse-list__sort-icon"
-                    src={sortIcon}
-                    alt="sort icon"
-                  />
-                </div>
-                <div className="warehouse-list__card-info">
-                  <h4 className="warehouse-list__card-title">
-                    CONTACT INFORMATION
-                  </h4>
-                  <img
-                    className="warehouse-list__sort-icon"
-                    src={sortIcon}
-                    alt="sort icon"
-                  />
-                </div>
+              <div className="warehouse-list__card-info" onClick={() => requestSort('warehouse_name')}>
+  <h4 className="warehouse-list__card-title">WAREHOUSE</h4>
+  <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
+</div>
+<div className="warehouse-list__card-info" onClick={() => requestSort('address')}>
+  <h4 className="warehouse-list__card-title">ADDRESS</h4>
+  <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
+</div>
+<div className="warehouse-list__card-info" onClick={() => requestSort('contact_name')}>
+  <h4 className="warehouse-list__card-title">CONTACT NAME</h4>
+  <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
+</div>
+<div className="warehouse-list__card-info" onClick={() => requestSort('contact_phone')}>
+  <h4 className="warehouse-list__card-title">CONTACT INFORMATION</h4>
+  <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
+</div>
+
               </div>
             </article>
             <div className="warehouse-list__card-actions">
@@ -106,7 +106,7 @@ function WarehouseList() {
             </div>
           </div>
         </div>
-        {warehouses.map((warehouse) => (
+        {sortedWarehouses.map((warehouse) => (
           <div className="warehouse-list__card-item" key={warehouse.id}>
             <article className="warehouse-list__card-parent">
               <div className="warehouse-list__card-child">

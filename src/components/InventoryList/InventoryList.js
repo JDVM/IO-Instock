@@ -18,6 +18,7 @@ export default function InventoryList() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [toDeleteItem, setToDeleteItem] = useState([]);
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,49 +29,66 @@ export default function InventoryList() {
   }, []);
 
   const handleEdit = (id) => navigate(`/inventory/${id}/edit`);
+
+  const handleSort = (key) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+  
+    const sortedItems = [...inventories].sort((a, b) => {
+      if (a[key] < b[key]) {
+        return sortConfig.direction === 'asc' ? -1 : 1;
+      }
+      if (a[key] > b[key]) {
+        return sortConfig.direction === 'asc' ? 1 : -1;
+      }
+      return 0;
+    });
+  
+    setSortConfig({ key, direction });
+    setInventories(sortedItems);
+  };
+  
   //   const handleDelete = (id) =>
 
-  return (
-    <div
-      className={`inventory-list ${
-        modalIsOpen ? "inventory-list--disabled" : ""
-      }`}
-    >
-      <div className="inventory-list-header">
-        <h1 className="inventory-list__title">Inventory</h1>
-        <div className="inventory-list__search-bar">
-          <input type="text" placeholder="Search..." />
-          <img src={searchIcon} alt="" />
-        </div>
-        <Link className="inventory-list__add-button" to="/inventory/new">
-          + Add New Inventory
-        </Link>
+return (
+  <div className={`inventory-list ${modalIsOpen ? "inventory-list--disabled" : ""}`}>
+    <div className="inventory-list-header">
+      <h1 className="inventory-list__title">Inventory</h1>
+      <div className="inventory-list__search-bar">
+        <input type="text" placeholder="Search..." />
+        <img src={searchIcon} alt="" />
       </div>
-      <div className="inventory-list__titles">
-        <span className="inventory-list__titles-head">
-          <h4>Inventory Item</h4>
-          <img src={sortIcon} alt="" />
-        </span>
-        <span className="inventory-list__titles-head">
-          <h4>Category</h4>
-          <img src={sortIcon} alt="" />
-        </span>
-        <span className="inventory-list__titles-head">
-          <h4>Status</h4>
-          <img src={sortIcon} alt="" />
-        </span>
-        <span className="inventory-list__titles-head">
-          <h4>Qty</h4>
-          <img src={sortIcon} alt="" />
-        </span>
-        <span className="inventory-list__titles-head">
-          <h4>Warehouse</h4>
-          <img src={sortIcon} alt="" />
-        </span>
-        <span className="inventory-list__titles-head">
-          <h4>Actions</h4>
-        </span>
-      </div>
+      <Link className="inventory-list__add-button" to="/inventory/new">
+        + Add New Inventory
+      </Link>
+    </div>
+    <div className="inventory-list__titles">
+      <span className="inventory-list__titles-head" onClick={() => handleSort('item_name')}>
+        <h4>Inventory Item</h4>
+        <img src={sortIcon} alt="Sort" />
+      </span>
+      <span className="inventory-list__titles-head" onClick={() => handleSort('category')}>
+        <h4>Category</h4>
+        <img src={sortIcon} alt="Sort" />
+      </span>
+      <span className="inventory-list__titles-head" onClick={() => handleSort('status')}>
+        <h4>Status</h4>
+        <img src={sortIcon} alt="Sort" />
+      </span>
+      <span className="inventory-list__titles-head" onClick={() => handleSort('quantity')}>
+        <h4>Qty</h4>
+        <img src={sortIcon} alt="Sort" />
+      </span>
+      <span className="inventory-list__titles-head" onClick={() => handleSort('warehouse_name')}>
+        <h4>Warehouse</h4>
+        <img src={sortIcon} alt="Sort" />
+      </span>
+      <span className="inventory-list__titles-head">
+        <h4>Actions</h4>
+      </span>
+    </div>
       <div className="inventory-list-wrapper">
         {inventories.map((item) => {
           return (
