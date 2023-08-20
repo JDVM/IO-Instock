@@ -14,13 +14,6 @@ const PORT = process.env.REACT_APP_API_PORT || 6080;
 
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
-  // const [selectedWarehouse, setSelectedWarehouse] = useState(null);
-
-  // const [warehouseName, setWarehouseName] = useState(null);
-
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // const [getWarehousesById, setWarehousesById] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [toDeleteWarehouse, setToDeleteWarehouse] = useState([]);
 
@@ -32,7 +25,7 @@ function WarehouseList() {
       .then((res) => {
         const warehousesData = res.data;
         setWarehouses(warehousesData);
-       
+
         console.log(warehousesData);
       })
       .catch((error) => {
@@ -47,32 +40,6 @@ function WarehouseList() {
   if (warehouses.length === 0) {
     return null;
   }
-
-  // const openModal = () => {
-  //   setModalIsOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setModalIsOpen(false);
-  // };
-
-  // const handleDelete = async (id) => {
-  //     try {
-  //         await axios.delete(`${API_URL}:${PORT}/warehouses/${id}`);
-  //         const newWarehouses = warehouses.filter((warehouse) => warehouse.id !== id);
-  //         setWarehouses(newWarehouses);
-  //     } catch (error) {
-  //         console.error('Error deleting warehouse:', error);
-  //     }
-
-  //   closeModal();
-  // };
-
-  // const deleteCallback = (id) => {
-  //   console.log (id)
-  //   setSelectedWarehouse(id);
-  //   openModal();
-  // };
 
   return (
     <>
@@ -199,26 +166,12 @@ function WarehouseList() {
               />
               <Link to={`/warehouses/${warehouse.id}/edit`}>
                 <img src={editIcon} alt="edit icon" />
-            </Link>
-{/*               
-              <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                contentLabel="Delete Confirmation"
-              >
-                <h2>Confirm Deletion</h2>
-                <p>Are you sure you want to delete this item?</p>
-                <button onClick={() => handleDelete(selectedWarehouse)}>
-                  Yes, Delete
-                </button>
-                <button onClick={closeModal}>Cancel</button>
-              </Modal> */}
-             
+              </Link>
             </div>
           </div>
         ))}
       </section>
- 
+
       <DeleteWarehouse
         modalIsOpen={modalIsOpen}
         setModalIsOpen={setModalIsOpen}
