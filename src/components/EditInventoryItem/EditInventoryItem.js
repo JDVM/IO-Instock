@@ -19,7 +19,7 @@ function EditInventoryItem() {
   const [description, setDescription] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedWarehouse, setSelectedWarehouse] = useState("");
-  const [status, setStatus] = useState("inStock");
+  const [status, setStatus] = useState("");
   const [quantity, setQuantity] = useState(0);
 
   const [formErrors, setFormErrors] = useState({
@@ -45,7 +45,7 @@ function EditInventoryItem() {
         setDescription(itemData.description);
         setSelectedCategory(itemData.category);
         setSelectedWarehouse(itemData.warehouse_id);
-        setStatus(itemData.quantity > 0 ? "inStock" : "outOfStock");
+        setStatus(itemData.status);
         setQuantity(itemData.quantity);
       } catch (error) {
         console.error("Error getting item data:", error);
@@ -276,13 +276,15 @@ function EditInventoryItem() {
                     </option>
                 ))}
                 </select>
-                <div className="edit-inventory-item__button-container">
-                <button className="edit-inventory-item__button edit-inventory-item__button--save" onClick={goBack}>Cancel</button>
-                <button className="edit-inventory-item__button">Save</button>
-                </div>
             </section>
-
         </form>
+        <div className="edit-inventory-item__button-container">
+            <button className="edit-inventory-item__button edit-inventory-item__button--save" onClick={goBack}>Cancel</button>
+            <button className="edit-inventory-item__button">Save</button>
+        </div>
+            
+
+        
     </>
   );
 }
