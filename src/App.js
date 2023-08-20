@@ -23,6 +23,11 @@ function App() {
       
         <Route path="*" element={<PageNotFound/>} />   
         <Route path="/Warehouses/new" element={<Warehouses />} />        
+        <Route path="/Warehouses/:id" element={<Warehouses />} />
+        <Route path="/Inventory" element={<Inventory />} />
+        <Route path="/Inventory/new" element={<Inventory />} />
+        <Route path="/Inventory/:id" element={<Inventory />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

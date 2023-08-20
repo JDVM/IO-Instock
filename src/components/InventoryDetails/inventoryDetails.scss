@@ -1,3 +1,4 @@
+
 @use "../../styles/mixins.scss" as *;
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/variables.scss" as *;
@@ -6,29 +7,159 @@
 @use "../../App.scss" as *;
 
 .inventory-details {
-    margin: 0 1rem;
     display: flex;
     flex-direction: column;
+
+    @include tablet {}
 
     &__header {
         display: flex;
         justify-content: space-between;
         padding: 1.5rem 1rem;
+        border-bottom: solid 2px $secondary-lightgrey;
+
+        @include tablet {
+            padding: 1.5rem 2rem;
+        }
     }
 
-    &__page-title{
+    &__page-title {
         display: flex;
         @include H1;
     }
-    &__edit-button{
+
+    &__edit-button {
         fill: $primary-white;
         background-color: $primary-blue;
-        width: 2.25rem;
-        border-radius: 50%;
+        height: 2.25rem;
+        min-width: 2.25rem;
+        border-radius: 1.25rem;
         border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover{
+            background-color: $primary-black;
+        }
+        @include tablet {
+            width: 5.0625rem;
+        }
     }
-    &__svg{
+
+    &__tablet-visable {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            color: $primary-white;
+            padding: 0 .5rem;
+        }
+    }
+
+    &__svg {
         width: 2.25rem;
         width: 1.25rem
+    }
+
+    &__information {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+
+        @include tablet {
+            flex-direction: row;
+            padding: 1rem 2rem;
+        }
+    }
+
+    &__description-and-catergory-container {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            width: 50%;
+            border-right: solid .125rem $secondary-lightgrey ;
+        }
+    }
+
+    &__description {
+        padding-bottom: 1rem;
+    }
+
+    &__category {
+        padding-bottom: 1rem;
+    }
+
+    &__status-quantity-warehouse-container {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include tablet {
+            width: 50%;
+            padding-left: 2rem;
+        }
+    }
+
+    &__status {
+        width: 50%;
+        padding-bottom: 1rem;
+    }
+
+    &__quantity {
+        width: 50%;
+        padding-bottom: 1rem;
+    }
+
+    &__warehouse {
+        width: 50%;
+        padding-bottom: 1rem;
+    }
+
+    &__title {
+        @include H4;
+        color: $secondary-darkgrey;
+
+    }
+
+    &__text {
+        @include P2;
+        color: $primary-black;
+        // margin: 0;
+        padding: .5rem 0;
+        text-align: left;
+        width: -moz-fit-content;
+        width: fit-content;
+
+         &--status-color-instock{
+            background-color: rgba(21, 132, 99, .7);
+            color:$support-green ;
+            border-radius: 1rem;
+        }
+        &--status-color-out-of-stock{
+            background-color: rgba(201, 69, 21, .7);
+            color:$support-red ;
+            border-radius: 1rem;
+        }
+    }
+
+    &__text-status {
+        @include P2;
+        color: $primary-black;
+        // margin: 0;
+        padding: 0 .5rem ;
+        text-align: left;
+        width: -moz-fit-content;
+        width: fit-content;
+
+         &--status-color-instock{
+            background-color: rgba(21, 132, 99, .7);
+            color:$support-green ;
+            border-radius: 1rem;
+        }
+        &--status-color-out-of-stock{
+            background-color: rgba(201, 69, 21, .7);
+            color:$support-red ;
+            border-radius: 1rem;
+        }
     }
 }
