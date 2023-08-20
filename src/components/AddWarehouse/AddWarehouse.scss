@@ -20,6 +20,10 @@
     width: 1.5rem;
     height: 1.5rem;
     margin-right: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__title {
@@ -205,8 +209,8 @@
       justify-content: center;
 
       &:hover {
-        background-color: $background-dark;
-        color: $primary-white;
+        border-color: $primary-blue;
+        color: $primary-blue;
       }
       @include tablet {
         width: 4.5rem;
