@@ -15,7 +15,7 @@
     &--disabled {
         pointer-events: none;
     }
-    
+
     &__head {
         display: flex;
         flex-direction: column;
@@ -80,7 +80,6 @@
 
         @include tablet {
             flex-direction: row;
-            // width: 40%;
         }
     }
 
@@ -125,25 +124,31 @@
         margin: 0;
         text-align: left;
         display: flex;
+        cursor: pointer;
 
+        &:hover {
+            text-decoration: underline $primary-blue
+        }
     }
 
     &__card-text {
         @include P2;
         color: $primary-black;
         // margin: 0;
-        padding: 0 .5rem;
+        padding: 0;
         text-align: left;
         width: -moz-fit-content;
         width: fit-content;
-        &--status-color-instock{
-            background-color: rgba(21, 132, 99, .7);
-            color:$support-green ;
+
+        &--status-color-instock {
+            background-color: rgba(21, 132, 99, .07);
+            color: $support-green ;
             border-radius: 1rem;
         }
-        &--status-color-out-of-stock{
-            background-color: rgba(201, 69, 21, .7);
-            color:$support-red ;
+
+        &--status-color-out-of-stock {
+            background-color: rgba(201, 69, 21, .07);
+            color: $support-red ;
             border-radius: 1rem;
         }
     }
@@ -158,6 +163,7 @@
             justify-content: flex-end;
             padding: 1rem;
             width: 20%;
+            gap: 1rem;
         }
     }
 
@@ -166,6 +172,7 @@
 
         @include tablet {
             width: 1.5rem;
+            cursor: pointer;
         }
     }
 }
