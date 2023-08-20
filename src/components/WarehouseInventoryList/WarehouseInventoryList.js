@@ -4,7 +4,7 @@ import editIcon from "../../assets/images/Icons/edit-24px.svg";
 import cheveron from "../../assets/images/Icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/images/Icons/sort-24px.svg";
 import DeleteInventory from "../DeleteInventory/DeleteInventory";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
@@ -23,7 +23,7 @@ function WarehouseInventoryList() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/warehouses/${id}`)
+      .get(`${API_URL}:${PORT}/warehouses/${id}`)
       .then((res) => {
         const warehousesData = res.data;
         setWarehousesById(warehousesData);
@@ -43,9 +43,8 @@ function WarehouseInventoryList() {
   return (
     <>
       <section
-        className={`warehouse-inventory-list ${
-          modalIsOpen ? "warehouse-inventory-list--disabled" : ""
-        }`}
+        className={`warehouse-inventory-list ${modalIsOpen ? "warehouse-inventory-list--disabled" : ""
+          }`}
       >
         <div className="invento.ry-list__card-item warehouse-inventory-list__card-item--tablet">
           <article className="warehouse-inventory-list__card-parent">
@@ -103,10 +102,11 @@ function WarehouseInventoryList() {
                 <h4 className="warehouse-inventory-list__card-title warehouse-inventory-list__card-title--tablet">
                   INVENTORY
                 </h4>
-                <p className="warehouse-inventory-list__card-link">
-                  {info.item_name}
-                  <img src={cheveron} alt="Cheveron pointing right" />
-                </p>
+                <Link to={`/Inventory/${info.id}`}>
+                  <p className="warehouse-inventory-list__card-link">
+                    {info.item_name}
+                    <img src={cheveron} alt="Cheveron pointing right" />
+                  </p></Link>
               </div>
 
               <div className="warehouse-inventory-list__card-info">
@@ -123,11 +123,10 @@ function WarehouseInventoryList() {
                   STATUS
                 </h4>
                 <p
-                  className={`warehouse-inventory-list__card-text ${
-                    info.status === "Out of Stock"
-                      ? "warehouse-inventory-list__card-text--status-color-out-of-stock"
-                      : "warehouse-inventory-list__card-text--status-color-instock"
-                  }`}
+                  className={`warehouse-inventory-list__card-text ${info.status === "Out of Stock"
+                    ? "warehouse-inventory-list__card-text--status-color-out-of-stock"
+                    : "warehouse-inventory-list__card-text--status-color-instock"
+                    }`}
                 >
                   {info.status}
                 </p>

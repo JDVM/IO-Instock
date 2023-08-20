@@ -19,7 +19,7 @@ function Inventory() {
       </div>
     );
 
-    
+
   if (location.pathname.endsWith("/edit"))
     return (
       <div className="inventories">
@@ -27,9 +27,16 @@ function Inventory() {
       </div>
     );
 
-  
+  if (location.pathname.endsWith(`/${id}`))
+    return (
+      <div>
+        <InventoryDetails />
+      </div>
+    )
 
-  
+
+
+
 
   return (
     <div className="inventories">
