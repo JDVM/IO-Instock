@@ -201,9 +201,10 @@
       justify-content: center;
 
       &:hover {
-        background-color: $background-dark;
-        color: $primary-white;
+        border-color: $primary-blue;
+        color: $primary-blue;
       }
+
       @include tablet {
         width: 4.5rem;
       }
