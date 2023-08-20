@@ -62,11 +62,11 @@ input::placeholder {
     border: 2px solid $secondary-lightgrey;
     background-image: url(../../assets/images/Icons/search-24px.svg);
     background-repeat: no-repeat;
-    background-position: 16rem;
+    background-position: 15.5rem;
     outline-color: $primary-blue !important;
 
     @include tablet {
-      background-position: 8rem;
+      background-position: 8.5rem;
     }
   }
 
@@ -191,6 +191,9 @@ input::placeholder {
       align-items: center;
 
     }
+  }
+  &__edit{
+    cursor:pointer;
   }
 }
 

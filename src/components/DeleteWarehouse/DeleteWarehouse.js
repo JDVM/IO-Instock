@@ -14,13 +14,12 @@ export default function DeleteWarehouse({
 }) {
   const API_URL = process.env.REACT_APP_API_URL;
   const PORT = process.env.REACT_APP_API_PORT;
-    console.log(modalIsOpen);
+  console.log(modalIsOpen);
   const closeModal = () => {
     setModalIsOpen(false);
   };
 
   const handleDelete = async () => {
-    
     await axios.delete(`${API_URL}:${PORT}/warehouses/${toDeleteWarehouse[0]}`);
     setWarehouses(
       warehouses.filter((warehouse) => warehouse.id !== toDeleteWarehouse[0])
@@ -46,8 +45,8 @@ export default function DeleteWarehouse({
           Delete {toDeleteWarehouse[1]} warehouse?
         </h2>
         <p className="delete-warehouse__content">
-          Please confirm that you’d like to delete {toDeleteWarehouse[1]} from the
-          warehouse list. You won’t be able to undo this action.
+          Please confirm that you’d like to delete {toDeleteWarehouse[1]} from
+          the warehouse list. You won’t be able to undo this action.
         </p>
       </div>
       <div className="delete-warehouse__button-wrapper">

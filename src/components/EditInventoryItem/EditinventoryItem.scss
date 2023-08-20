@@ -6,170 +6,179 @@
 
 @import "../../styles/mixins.scss";
 
-.edit-inventory-item {
-    
-    &__head {
-        display: flex;
-        align-items: center;
-        padding: 1.5rem;
-        padding-top: 2rem;
-        border-bottom: 1px solid $secondary-lightgrey;
+.edit-inventory {
+  display: flex;
+  flex-direction: column;
 
-            @include tablet {
-                margin-bottom: 1.5rem;
-            }
+  &-item {
+    &__head {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem;
+      padding-top: 2rem;
+      border-bottom: 1px solid $secondary-lightgrey;
+
+      @include tablet {
+        margin-bottom: 1.5rem;
+      }
     }
 
     &__icon {
-        height: 1.5rem;
-        margin-right: 0.5rem;
+      height: 1.5rem;
+      margin-right: 0.5rem;
     }
 
     &__head-title {
-        @include H1;
+      @include H1;
     }
 
     &__form {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
 
-            @include tablet {
-                flex-direction: row;
-            }
+      @include tablet {
+        flex-direction: row;
+      }
     }
 
     &__section {
-        display: flex;
-        flex-direction: column;
-        padding: 0 1.5rem;
-        margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      padding: 0 1.5rem;
+      margin-bottom: 1rem;
 
-            @include tablet {
-                width: 50%;
+      @include tablet {
+        width: 50%;
 
-            &:first-child {
-                border-right: 0.0625rem solid $secondary-lightgrey;
-            }
+        &:first-child {
+          border-right: 0.0625rem solid $secondary-lightgrey;
         }
+      }
     }
 
     &__subhead-title {
-        @include H2;
-        margin: 1rem 0;
+      @include H2;
+      margin: 1rem 0;
 
-        @include tablet {
-            margin: 0 0 1rem 0;
-        }
+      @include tablet {
+        margin: 0 0 1rem 0;
+      }
     }
 
     &__label {
-        @include H3;
-        display: flex;
-        flex-direction: column;
-        margin: 0.5rem 0;
-        padding-top: 0.5rem;
+      @include H3;
+      display: flex;
+      flex-direction: column;
+      margin: 0.5rem 0;
+      padding-top: 0.5rem;
     }
 
     &__input {
-        width: 100%;
-        @include P2;
-        @include input;
-        padding-left: 1rem;
-        border: 1px solid $secondary-lightgrey;
-        outline: none;
-        appearance: none;
-        cursor: pointer;
+      width: 100%;
+      @include P2;
+      @include input;
+      padding-left: 1rem;
+      border: 1px solid $secondary-lightgrey;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
 
-        &:focus {
-            border-color: $primary-blue;
-        }
+      &:focus {
+        border-color: $primary-blue;
+      }
     }
 
     &__textarea {
-        height: 7.5rem;
-        resize: none;
-        padding-top: 1rem;
+      height: 7.5rem;
+      resize: none;
+      padding-top: 1rem;
     }
 
     &__radio-container {
-        display: flex;
+      display: flex;
     }
 
     &__radio {
-        @include P2;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+      @include P2;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+
+      & > input {
+        margin-right: 0.5rem;
+      }
+    }
+
+    &__button-container {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    &__button-container {
+      padding: 0 1.5rem;
+
+      @include tablet {
         width: 100%;
-
-        & > input {
-            margin-right: 0.5rem;
-        }
-    }
-
-    &__button-container {
-        display: flex;
-        gap: 1rem;
-        margin: 2rem 0;
-    }
-
-    &__button-container {
-        padding: 0 1.5rem;
-
-        @include tablet {
-            width: fit-content;
-        }
+        justify-content: right
+      }
     }
 
     &__button {
-        @include button;
-        @include H3;
-        flex: 1;
-        gap: 1rem;
-        cursor: pointer;
+      @include button;
+      @include H3;
+      flex: 1;
+      gap: 1rem;
+      cursor: pointer;
 
-        &--save {
-            background-color: $primary-white;
-            color: $secondary-darkgrey;
-            border: 1px solid $secondary-lightgrey;
-        }
+      @include tablet {
+        flex: none;
+        width: fit-content;
+      }
 
+      &--save {
+        background-color: $primary-white;
+        color: $secondary-darkgrey;
+        border: 1px solid $secondary-lightgrey;
+      }
     }
+  }
 }
 
 .edit-inventory-form__label {
-    @include H3;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.25rem;
+  @include H3;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.25rem;
 }
 
-.edit-inventory-item__input--hide{
-    display: none;
+.edit-inventory-item__input--hide {
+  display: none;
 }
 
 .edit-inventory-item__input--error {
-    border-color: $support-red;
+  border-color: $support-red;
 }
 
 .edit-inventory-item__textarea--error {
-    border-color: $support-red;
+  border-color: $support-red;
 }
 
 .error {
-    display: flex;
+  display: flex;
 }
 
 .error-message {
-    color: $support-red;
+  color: $support-red;
 }
 
 .error-icon {
-    height: 1rem;
+  height: 1rem;
 }
 
 select {
-    background-image: url(../../assets/images/Icons/arrow_drop_down-24px.svg);
-    background-repeat: no-repeat;
-    background-position: right;
+  background-image: url(../../assets/images/Icons/arrow_drop_down-24px.svg);
+  background-repeat: no-repeat;
+  background-position: right;
 }

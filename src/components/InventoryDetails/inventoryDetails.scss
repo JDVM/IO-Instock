@@ -26,6 +26,12 @@
     &__page-title {
         display: flex;
         @include H1;
+
+        & > img {
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 
     &__edit-button {
@@ -40,6 +46,7 @@
         align-items: center;
         &:hover{
             background-color: $primary-black;
+            cursor: pointer;;
         }
         @include tablet {
             width: 5.0625rem;

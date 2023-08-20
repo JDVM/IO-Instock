@@ -150,7 +150,7 @@ function WarehouseList() {
               </div>
             </article>
             <div className="warehouse-list__foot">
-              <img
+              <img className="warehouse-list__edit"
                 src={deleteIcon}
                 alt="delete icon"
                 onClick={() => {

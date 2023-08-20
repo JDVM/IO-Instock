@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import arrowBackIcon from "../../assets/images/Icons/arrow_back-24px.svg";
-import errorIcon from '../../assets/images/Icons/error-24px.svg';
+import errorIcon from "../../assets/images/Icons/error-24px.svg";
 import "./EditinventoryItem.scss";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -32,6 +32,10 @@ function EditInventoryItem() {
   });
 
   useEffect(() => {
+    document.title = "InStock | Edit Inventory Item";
+  }, []);
+
+  useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.get(
@@ -55,13 +59,13 @@ function EditInventoryItem() {
     getData();
   }, [id]);
 
-    const handleChangeItemName = (e) => {
-      setItemName(e.target.value);
-    };
+  const handleChangeItemName = (e) => {
+    setItemName(e.target.value);
+  };
 
-    const handleChangeDescription = (e) => {
-      setDescription(e.target.value);
-    };
+  const handleChangeDescription = (e) => {
+    setDescription(e.target.value);
+  };
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -75,8 +79,8 @@ function EditInventoryItem() {
     setStatus(e.target.value);
   };
 
-  const handleQuantityChange =(e) => {
-    setQuantity(e.target.value)
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -140,152 +144,158 @@ function EditInventoryItem() {
   ];
 
   return (
-    <>
-        <div className="edit-inventory-item__head">
-            <img
-            className="edit-inventory-item__icon"
-            src={arrowBackIcon}
-            alt="back arrow"
-            onClick={goBack}
+
+    <div className="edit-inventory">
+      <div className="edit-inventory-item__head">
+        <img
+          className="edit-inventory-item__icon"
+          src={arrowBackIcon}
+          alt="back arrow"
+          onClick={goBack}
+        />
+        <h1 className="edit-inventory-item__head-title">Edit Inventory Item</h1>
+      </div>
+      <form className="edit-inventory-item__form" onSubmit={handleSubmit}>
+        <section className="edit-inventory-item__section">
+          <h2 className="edit-inventory-item__subhead-title">Item Details</h2>
+          <h3 className="edit-inventory-item__label">Item Name</h3>
+          <label>
+            <input
+              className={`edit-inventory-item__input  ${
+                formErrors.item_name ? "edit-inventory-item__input--error" : ""
+              }`}
+              type="text"
+              name="name"
+              onChange={handleChangeItemName}
+              value={itemName}
             />
-            <h1 className="edit-inventory-item__head-title">Edit Inventory Item</h1>
-        </div>
-        <form className="edit-inventory-item__form" onSubmit={handleSubmit}>
-            <section className="edit-inventory-item__section">
-                <h2 className="edit-inventory-item__subhead-title">Item Details</h2>
-                    <h3 className="edit-inventory-item__label">Item Name</h3>
-                    <label>
-                    <input
-                        className={`edit-inventory-item__input  ${
-                            formErrors.item_name ? "edit-inventory-item__input--error" : ""
-                        }`}
-                        type="text"
-                        name="name"
-                        onChange={handleChangeItemName}
-                        value={itemName}
-                    />
-                    {formErrors.item_name && (
-                        <div className="error">
-                            <img className="error-icon" src={errorIcon}></img>
-                            <div className="error-message">{formErrors.item_name}</div>
-                        </div>
-                    )}
-                    </label>
+            {formErrors.item_name && (
+              <div className="error">
 
-                    <h3 className="edit-inventory-item__label">Description</h3>
-                    <label>
-                    <textarea
-                        className={`edit-inventory-item__input edit-inventory-item__textarea ${
-                            formErrors.description ? "edit-inventory-item__textarea--error" : ""
-                        }`}
-                        type="text"
-                        name="description"
-                        onChange={handleChangeDescription}
-                        value={description}
-                    />
-                    {formErrors.description && (
-                        <div className="error">
-                            <img className="error-icon" src={errorIcon}></img>
-                            <div className="error-message">{formErrors.item_name}</div>
-                        </div>
-                    )}
-                    </label>
+                <img className="error-icon" src={errorIcon} alt="" />
+                <div className="error-message">{formErrors.item_name}</div>
+              </div>
+            )}
+          </label>
 
-                    <h3 className="edit-inventory-item__label">Category</h3>
-                    <label>
-                    <select
-                        className="edit-inventory-item__input"
-                        name="category"
-                        value={selectedCategory}
-                        onChange={handleCategoryChange}
-                    >
-                        {categoryOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                        ))}
-                    </select>
-                    </label>
-            </section>
+          <h3 className="edit-inventory-item__label">Description</h3>
+          <label>
+            <textarea
+              className={`edit-inventory-item__input edit-inventory-item__textarea ${
+                formErrors.description
+                  ? "edit-inventory-item__textarea--error"
+                  : ""
+              }`}
+              type="text"
+              name="description"
+              onChange={handleChangeDescription}
+              value={description}
+            />
+            {formErrors.description && (
+              <div className="error">
+                <img className="error-icon" src={errorIcon} alt=""></img>
+                <div className="error-message">{formErrors.item_name}</div>
+              </div>
+            )}
+          </label>
 
-            <section className="edit-inventory-item__section">
-                <h2 className="edit-inventory-item__subhead-title">
-                Item Availability
-                </h2>
+          <h3 className="edit-inventory-item__label">Category</h3>
+          <label>
+            <select
+              className="edit-inventory-item__input"
+              name="category"
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            >
+              {categoryOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        </section>
 
-                <h3 className="edit-inventory-item__label">Status</h3>
-                <div className="edit-inventory-item__radio-container">
-                    <label className="edit-inventory-item__radio">
-                    <input
-                        type="radio"
-                        name="status"
-                        value="In Stock"
-                        checked={status === "In Stock"}
-                        onChange={handleStatusChange}
-                    />
-                    In Stock
-                    </label>
-                    <label className="edit-inventory-item__radio">
-                    <input
-                        type="radio"
-                        name="status"
-                        value="Out of Stock"
-                        checked={status === "Out of Stock"}
-                        onChange={handleStatusChange}
-                    />
-                    Out of Stock
-                    </label>
-                </div>
-                <label
-                    className={`edit-inventory-item__label ${
-                    status === "Out of Stock"
-                        ? "edit-inventory-item__input--hide"
-                        : ""
-                    }`}
-                >
-                    Quantity
-                    <input
-                    className={`edit-inventory-item__input ${
-                        formErrors.quantity ? "edit-inventory-item__input--error" : ""
-                    }`}
-                    type="number"
-                    name="quantity"
-                    value={quantity}
-                    onChange={handleQuantityChange}
-                    />
-                    {formErrors.description && (
-                        <div className="error">
-                            <img className="error-icon" src={errorIcon}></img>
-                            <div className="error-message">{formErrors.item_name}</div>
-                        </div>
-                    )}
-                </label>
+        <section className="edit-inventory-item__section">
+          <h2 className="edit-inventory-item__subhead-title">
+            Item Availability
+          </h2>
 
-                <h3 className="edit-inventory-item__label">Warehouse</h3>
-                <select
-                className="edit-inventory-item__input"
-                name="warehouse"
-                value={selectedWarehouse}
-                onChange={handleWarehouseChange}
-                >
-                {/* <option value={selectedWarehouse}>{selectedWarehouse.label}</option> */}
+          <h3 className="edit-inventory-item__label">Status</h3>
+          <div className="edit-inventory-item__radio-container">
+            <label className="edit-inventory-item__radio">
+              <input
+                type="radio"
+                name="status"
+                value="In Stock"
+                checked={status === "In Stock"}
+                onChange={handleStatusChange}
+              />
+              In Stock
+            </label>
+            <label className="edit-inventory-item__radio">
+              <input
+                type="radio"
+                name="status"
+                value="Out of Stock"
+                checked={status === "Out of Stock"}
+                onChange={handleStatusChange}
+              />
+              Out of Stock
+            </label>
+          </div>
+          <label
+            className={`edit-inventory-item__label ${
+              status === "Out of Stock"
+                ? "edit-inventory-item__input--hide"
+                : ""
+            }`}
+          >
+            Quantity
+            <input
+              className={`edit-inventory-item__input ${
+                formErrors.quantity ? "edit-inventory-item__input--error" : ""
+              }`}
+              type="number"
+              name="quantity"
+              value={quantity}
+              onChange={handleQuantityChange}
+            />
+            {formErrors.description && (
+              <div className="error">
+                <img className="error-icon" src={errorIcon} alt="" ></img>
+                <div className="error-message">{formErrors.item_name}</div>
+              </div>
+            )}
+          </label>
 
-                {warehouseOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                    {option.label}
-                    </option>
-                ))}
-                </select>
-            </section>
-        </form>
-        <div className="edit-inventory-item__button-container">
-            <button className="edit-inventory-item__button edit-inventory-item__button--save" onClick={goBack}>Cancel</button>
-            <button className="edit-inventory-item__button">Save</button>
-        </div>
-            
+          <h3 className="edit-inventory-item__label">Warehouse</h3>
+          <select
+            className="edit-inventory-item__input"
+            name="warehouse"
+            value={selectedWarehouse}
+            onChange={handleWarehouseChange}
+          >
+            {/* <option value={selectedWarehouse}>{selectedWarehouse.label}</option> */}
 
-        
-    </>
+            {warehouseOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </section>
+      </form>
+      <div className="edit-inventory-item__button-container">
+        <button
+          className="edit-inventory-item__button edit-inventory-item__button--save"
+          onClick={goBack}
+        >
+          Cancel
+        </button>
+        <button className="edit-inventory-item__button">Save</button>
+      </div>
+    </div>
   );
 }
 

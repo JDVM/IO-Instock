@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { addWarehouse } from "../../utils/addToDatabase";
 import { isValidPhoneNumber, isValidEmail } from "../../utils/isValid";
@@ -34,6 +34,10 @@ export default function AddWarehouse({ setWarehouses }) {
     contact_phone: false,
     contact_email: false,
   });
+
+  useEffect(() => {
+    document.title = "InStock | New Warehouse";
+  }, []);
 
   const handleChange = async (event) => {
     const { name, value } = event.target;

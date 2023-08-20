@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getWarehouseById from "../../utils/getWarehouseById";
 import backArrow from "../../assets/images/Icons/arrow_back-24px.svg";
 
@@ -15,8 +15,8 @@ export default function WarehouseDetails({ id }) {
     const fetchWarehouse = async () => {
       try {
         const data = await getWarehouseById(id);
-        console.log(data)
         setWarehouseData(data);
+        document.title = `InStock | ${data.warehouse_name}`;
         setIsLoading(false);
       } catch (error) {
         console.log(error);
