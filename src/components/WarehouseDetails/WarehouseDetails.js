@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getWarehouseById from "../../utils/getWarehouseById";
 import backArrow from "../../assets/images/Icons/arrow_back-24px.svg";
 
