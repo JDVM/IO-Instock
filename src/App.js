@@ -11,8 +11,10 @@ Modal.setAppElement('#root');
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
+    <BrowserRouter >
+    <div className="app">
+    <Header />
+      <div className="main-content">
       <Routes>
         <Route path="/" element={<Navigate to="/Warehouses" />} />
         {/* <Route path="/" element={<Warehouses />} /> */}
@@ -29,7 +31,10 @@ function App() {
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      </div>
       <Footer />
+    </div>
+     
     </BrowserRouter>
   );
 }
