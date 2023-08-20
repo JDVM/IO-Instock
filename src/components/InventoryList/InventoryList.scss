@@ -1,0 +1,227 @@
+@use "../../styles/partials/font" as *;
+@use "../../styles/partials/fontStyles" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/mixins.scss" as *;
+
+.inventory-list {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    gap: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__title {
+    @include H1;
+  }
+
+  &__search-bar {
+    display: flex;
+    flex-direction: row;
+    border: 0.0625rem solid $secondary-lightgrey;
+    border-radius: 1.25rem;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    height: 2.25rem;
+
+    & > input {
+      @include P2;
+      display: flex;
+      align-items: center;
+      border: none;
+      outline: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    & > img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__add-button {
+    display: flex;
+    @include H3;
+    font-size: 0.875rem;
+
+    font-weight: 400;
+    color: $primary-white;
+    background-color: $primary-blue;
+
+    width: 100%;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+
+    align-items: center;
+    justify-content: center;
+
+    @include tablet {
+      padding: 0 1rem;
+      width: fit-content;
+      height: 2.375rem;
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    padding: 1.5rem;
+    padding-top: 1rem;
+
+    border-top: 0.0625rem solid $secondary-lightgrey;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    @include desktop {
+      &:hover {
+        background-color: rgba(46, 102, 229, 0.07);
+      }
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+
+      width: 50%;
+
+      @include tablet {
+        justify-content: center;
+        width: calc(100% / 6);
+      }
+    }
+
+    &__title {
+      @include H4;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      color: $secondary-darkgrey;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &__content {
+      @include P2;
+
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      @include tablet {
+        align-items: center;
+        margin: 0;
+      }
+
+      &--link {
+        @include H3;
+        color: $primary-blue;
+        & > img {
+          width: 1.25;
+        }
+      }
+
+      &--in-stock,
+      &--out-of-stock {
+        @include H3;
+        text-transform: uppercase;
+        border-radius: 1.25rem;
+        width: fit-content;
+        height: 1.5rem;
+        padding: 0 0.5rem;
+      }
+
+      &--in-stock {
+        background-color: rgba(21, 132, 99, 0.07);
+        color: $support-green;
+      }
+
+      &--out-of-stock {
+        background-color: rgba(201, 69, 21, 0.07);
+        color: $support-red;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    &-delete,
+    &-edit {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    @include tablet {
+      width: 4rem;
+      gap: 1rem;
+    }
+  }
+
+  &__titles {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 2.5rem;
+      padding: 0 2rem;
+      background-color: rgba(247, 248, 249, 0.7);
+
+      &-head {
+        @include H4;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        width: calc(100% / 6);
+        color: $secondary-darkgrey;
+        text-transform: uppercase;
+
+        &:last-child {
+          width: 4rem;
+          text-align: right;
+        }
+
+        & > img {
+          width: 1rem;
+          margin-left: 0.25rem;
+        }
+      }
+    }
+  }
+}
