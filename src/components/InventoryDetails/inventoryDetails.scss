@@ -138,33 +138,34 @@
         width: fit-content;
 
          &--status-color-instock{
-            background-color: rgba(21, 132, 99, .7);
+            background-color: rgba(21, 132, 99, .07);
             color:$support-green ;
             border-radius: 1rem;
         }
         &--status-color-out-of-stock{
-            background-color: rgba(201, 69, 21, .7);
+            background-color: rgba(201, 69, 21, .07);
             color:$support-red ;
             border-radius: 1rem;
         }
     }
 
     &__text-status {
-        @include P2;
+        @include H4;
         color: $primary-black;
         // margin: 0;
         padding: 0 .5rem ;
         text-align: left;
         width: -moz-fit-content;
         width: fit-content;
+        text-transform: uppercase;
 
          &--status-color-instock{
-            background-color: rgba(21, 132, 99, .7);
+            background-color: rgba(21, 132, 99, .07);
             color:$support-green ;
             border-radius: 1rem;
         }
         &--status-color-out-of-stock{
-            background-color: rgba(201, 69, 21, .7);
+            background-color: rgba(201, 69, 21, .07);
             color:$support-red ;
             border-radius: 1rem;
         }

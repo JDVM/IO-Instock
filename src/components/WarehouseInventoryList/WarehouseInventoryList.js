@@ -119,7 +119,7 @@ function WarehouseInventoryList() {
               </div>
 
               <div className="warehouse-inventory-list__card-info">
-                <h4 className="warehouse-inventory-list__card-title warehouse-inventory-list__card-title--tablet">
+                <h4 className="warehouse-inventory-list__card-title  warehouse-inventory-list__card-title--status warehouse-inventory-list__card-title--tablet">
                   STATUS
                 </h4>
                 <p

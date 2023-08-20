@@ -36,7 +36,7 @@ function InventoryDetails() {
       .catch((error) => {
         console.error(error);
       });
-  }, [id]);
+  }, []);
 
   if (!inventoryData) {
     return <p>Loading...</p>;
