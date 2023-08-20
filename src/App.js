@@ -22,7 +22,11 @@ function App() {
         <Route path="/Warehouses/:id" element={<Warehouses />} />
         <Route path="/Inventory" element={<Inventory />} />
         <Route path="/Inventory/new" element={<Inventory />} />
+
+        <Route path='/Inventory/:id/edit' element={<Inventory />} />
+
         <Route path="/Inventory/:id" element={<Inventory />} />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

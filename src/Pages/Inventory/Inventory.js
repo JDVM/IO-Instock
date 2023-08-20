@@ -1,8 +1,12 @@
 import { useLocation, useParams } from "react-router-dom";
 import "./Inventory.scss";
 import AddInventory from "../../components/AddInventory/AddInventory";
+
+import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
+=======
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 import InventoryList from "../../components/InventoryList/InventoryList";
+
 
 function Inventory() {
   const location = useLocation();
@@ -14,13 +18,18 @@ function Inventory() {
         <AddInventory />
       </div>
     );
-  if (id) {
+
+    
+  if (location.pathname.endsWith("/edit"))
     return (
       <div className="inventories">
-        <InventoryDetails />
+        <EditInventoryItem />
       </div>
     );
-  }
+
+  
+
+  
 
   return (
     <div className="inventories">
