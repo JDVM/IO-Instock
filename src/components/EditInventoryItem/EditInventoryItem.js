@@ -144,7 +144,8 @@ function EditInventoryItem() {
   ];
 
   return (
-    <>
+
+    <div className="edit-inventory">
       <div className="edit-inventory-item__head">
         <img
           className="edit-inventory-item__icon"
@@ -170,6 +171,7 @@ function EditInventoryItem() {
             />
             {formErrors.item_name && (
               <div className="error">
+
                 <img className="error-icon" src={errorIcon} alt="" />
                 <div className="error-message">{formErrors.item_name}</div>
               </div>
@@ -293,7 +295,7 @@ function EditInventoryItem() {
         </button>
         <button className="edit-inventory-item__button">Save</button>
       </div>
-    </>
+    </div>
   );
 }
 
