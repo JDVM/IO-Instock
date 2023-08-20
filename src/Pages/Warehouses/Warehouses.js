@@ -1,22 +1,35 @@
-import { useParams, useLocation } from "react-router-dom";
-import "../../App.scss";
-import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
+import { useParams,useLocation } from "react-router-dom";
+import "../../App.scss"
+import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList"
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
+import EditWarehouse from "../../components/EditWarehouse/EditWarehouse"
 import AddWarehouse from "../../components/AddWarehouse/AddWarehouse";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
-
 function Warehouses() {
-  const location = useLocation();
   const { id } = useParams();
-  if (id) {
+  const location = useLocation();
+  const isEditing = location.pathname.endsWith('/edit');
+  
+  console.log('isEditing:', isEditing);
+  console.log('id:', id);
+
+  if (isEditing) {
+    console.log('Rendering EditWarehouse');
     return (
       <>
-        <WarehouseDetails id={id} />
+        <EditWarehouse />
+      </>
+    );
+  }
+  if (id && !isEditing) {
+    console.log('Rendering WarehouseInventoryList');
+    return (
+      <>
+          <WarehouseDetails id={id} />
         <WarehouseInventoryList />
       </>
     );
   }
-
   if (location.pathname.endsWith("/new")) {
     return (
       <>
@@ -24,12 +37,11 @@ function Warehouses() {
       </>
     );
   }
-
+  console.log('Rendering WarehouseList');
   return (
     <>
       <WarehouseList />
     </>
   );
 }
-
 export default Warehouses;

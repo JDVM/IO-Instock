@@ -15,6 +15,7 @@ export default function WarehouseDetails({ id }) {
     const fetchWarehouse = async () => {
       try {
         const data = await getWarehouseById(id);
+        console.log(data)
         setWarehouseData(data);
         setIsLoading(false);
       } catch (error) {

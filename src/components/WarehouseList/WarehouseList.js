@@ -10,14 +10,14 @@ import chevronIcon from "../../assets/images/Icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/images/Icons/sort-24px.svg";
 
 const API_URL = process.env.REACT_APP_API_URL;
-const PORT = process.env.REACT_APP_API_PORT || 8080;
+const PORT = process.env.REACT_APP_API_PORT || 6080;
 
 function WarehouseList() {
   const [warehouses, setWarehouses] = useState(null);
   // const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
   // const [warehouseName, setWarehouseName] = useState(null);
-  const [warehouseData, setWarehouseData] = useState([]);
+
   // const [isLoading, setIsLoading] = useState(true);
 
   // const [getWarehousesById, setWarehousesById] = useState(null);
@@ -28,10 +28,11 @@ function WarehouseList() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}:${PORT}/warehouses`)
+      .get(`http://localhost:8080/warehouses`)
       .then((res) => {
         const warehousesData = res.data;
         setWarehouses(warehousesData);
+       
         console.log(warehousesData);
       })
       .catch((error) => {
@@ -196,7 +197,10 @@ function WarehouseList() {
                   ]);
                 }}
               />
-              {/*               
+              <Link to={`/warehouses/${warehouse.id}/edit`}>
+                <img src={editIcon} alt="edit icon" />
+            </Link>
+{/*               
               <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -209,11 +213,12 @@ function WarehouseList() {
                 </button>
                 <button onClick={closeModal}>Cancel</button>
               </Modal> */}
-              <img src={editIcon} alt="edit icon" />
+             
             </div>
           </div>
         ))}
       </section>
+ 
       <DeleteWarehouse
         modalIsOpen={modalIsOpen}
         setModalIsOpen={setModalIsOpen}
