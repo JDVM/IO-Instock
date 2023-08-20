@@ -205,8 +205,8 @@
       justify-content: center;
 
       &:hover {
-        background-color: $background-dark;
-        color: $primary-white;
+        border-color: $primary-blue;
+        color: $primary-blue;
       }
       @include tablet {
         width: 4.5rem;
@@ -214,16 +214,3 @@
     }
   }
 }
-
-/*
-{
-    "warehouse_name": "Chicago",
-    "address": "3218 Guess Rd",
-    "city": "Chicago",
-    "country": "USA",
-    "contact_name": "Jameson Schuppe",
-    "contact_position": "Warehouse Manager",
-    "contact_phone": "+1 (919) 797-2875",
-    "contact_email": "jschuppe@instock.com"
-  }
-*/

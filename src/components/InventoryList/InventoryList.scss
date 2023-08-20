@@ -159,6 +159,10 @@
         & > img {
           width: 1.25;
         }
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       &--in-stock,
