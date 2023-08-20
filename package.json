@@ -10,6 +10,7 @@
     "dotenv": "^16.3.1",
     "history": "^5.3.0",
     "lodash": "^4.17.21",
+    "modal": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
@@ -17,7 +18,8 @@
     "react-scripts": "5.0.1",
     "router": "^1.3.8",
     "sass": "^1.65.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zlib": "^1.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,5 +48,8 @@
   "description": "Welcome to **InStock**, the modern, scalable inventory management system designed for high traffic loads. Crafted with dedication by team **IO** as part of *The Nameless '23* cohort at BrainStation's software engineering bootcamp.",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
 }

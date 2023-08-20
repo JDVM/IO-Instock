@@ -23,7 +23,7 @@ function WarehouseInventoryList() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}:${PORT}/warehouses/${id}`)
+      .get(`http://localhost:8080/warehouses/${id}`)
       .then((res) => {
         const warehousesData = res.data;
         setWarehousesById(warehousesData);
