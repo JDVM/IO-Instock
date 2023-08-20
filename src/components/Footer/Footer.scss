@@ -4,8 +4,17 @@
 @use '../../styles/partials/breakpoints' as *;
 
 .footer {
-    background-color: $primary-white;
-
+    background-color: #f7f8f9;
+    height: 6rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding-top:9.5rem;
+    padding-bottom:2.5rem;
+    @include desktop{
+        padding-top:9.5rem;
+        padding-bottom: 3rem;
+    }
     &__text {
         @include P3;
         color: $secondary-darkgrey;

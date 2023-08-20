@@ -12,7 +12,13 @@
     align-items: center;
 
     @include tablet{
-        height: 11.25rem;
+        height: 11.62rem;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    @include desktop{
+        height: 11.62rem;
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
