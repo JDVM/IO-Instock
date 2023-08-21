@@ -12,10 +12,10 @@ const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT || 6080;
 
 function WarehouseList() {
-  const [warehouses, setWarehouses] = useState([]);
+  const [warehouses, setWarehouses] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [toDeleteWarehouse, setToDeleteWarehouse] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: '', direction: 'ascending' });
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     axios
@@ -31,24 +31,6 @@ function WarehouseList() {
       });
   }, []);
 
-  const requestSort = (key) => {
-    let direction = 'ascending';
-    if (
-      sortConfig.key === key &&
-      sortConfig.direction === 'ascending'
-    ) {
-      direction = 'descending';
-    }
-    setSortConfig({ key, direction });
-  };
-  let sortedWarehouses = [...warehouses];
- 
-  if (sortConfig.direction === 'ascending') {
-    sortedWarehouses.sort((a, b) => (a[sortConfig.key] > b[sortConfig.key] ? 1 : -1));
-} else if (sortConfig.direction === 'descending') {
-    sortedWarehouses.sort((a, b) => (a[sortConfig.key] < b[sortConfig.key] ? 1 : -1));
-}
-
   if (warehouses === null) {
     return <h1>Loading...</h1>;
   }
@@ -56,6 +38,30 @@ function WarehouseList() {
   if (warehouses.length === 0) {
     return null;
   }
+
+  const isWarehouseMatchingQuery = (warehouse, query) => {
+    if (!query) return true;
+    const fieldsToSearch = [
+      warehouse.warehouse_name,
+      warehouse.address,
+      warehouse.city,
+      warehouse.country,
+      warehouse.contact_name,
+      warehouse.contact_phone,
+      warehouse.contact_email,
+    ];
+    return fieldsToSearch.some(
+      (field) => field && field.toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
+  const filteredWarehouses = warehouses.filter((warehouse) =>
+    isWarehouseMatchingQuery(warehouse, searchValue)
+  );
+
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value);
+  };
 
   return (
     <>
@@ -70,6 +76,8 @@ function WarehouseList() {
               type="search"
               name="search"
               placeholder="Search..."
+              value={searchValue}
+              onChange={handleSearch}
             />
             <Link to="/warehouses/new">
               <button className="warehouse-list__add-button" type="button">
@@ -82,23 +90,42 @@ function WarehouseList() {
           <div className="warehouse-list__card-item warehouse-list__card-item--tablet">
             <article className="warehouse-list__card-parent">
               <div className="warehouse-list__card-child">
-              <div className="warehouse-list__card-info" onClick={() => requestSort('warehouse_name')}>
-  <h4 className="warehouse-list__card-title">WAREHOUSE</h4>
-  <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
-</div>
-<div className="warehouse-list__card-info" onClick={() => requestSort('address')}>
-  <h4 className="warehouse-list__card-title">ADDRESS</h4>
-  <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
-</div>
-<div className="warehouse-list__card-info" onClick={() => requestSort('contact_name')}>
-  <h4 className="warehouse-list__card-title">CONTACT NAME</h4>
-  <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
-</div>
-<div className="warehouse-list__card-info" onClick={() => requestSort('contact_phone')}>
-  <h4 className="warehouse-list__card-title">CONTACT INFORMATION</h4>
-  <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
-</div>
-
+                <div className="warehouse-list__card-info">
+                  <h4 className="warehouse-list__card-title">WAREHOUSE</h4>
+                  <img
+                    className="warehouse-list__sort-icon"
+                    src={sortIcon}
+                    alt="sort icon"
+                  />
+                </div>
+                <div className="warehouse-list__card-info">
+                  <h4 className="warehouse-list__card-title">ADDRESS</h4>
+                  <img
+                    className="warehouse-list__sort-icon"
+                    src={sortIcon}
+                    alt="sort icon"
+                  />
+                </div>
+              </div>
+              <div className="warehouse-list__card-child">
+                <div className="warehouse-list__card-info">
+                  <h4 className="warehouse-list__card-title">CONTACT NAME</h4>
+                  <img
+                    className="warehouse-list__sort-icon"
+                    src={sortIcon}
+                    alt="sort icon"
+                  />
+                </div>
+                <div className="warehouse-list__card-info">
+                  <h4 className="warehouse-list__card-title">
+                    CONTACT INFORMATION
+                  </h4>
+                  <img
+                    className="warehouse-list__sort-icon"
+                    src={sortIcon}
+                    alt="sort icon"
+                  />
+                </div>
               </div>
             </article>
             <div className="warehouse-list__card-actions">
@@ -106,7 +133,7 @@ function WarehouseList() {
             </div>
           </div>
         </div>
-        {sortedWarehouses.map((warehouse) => (
+        {filteredWarehouses.map((warehouse) => (
           <div className="warehouse-list__card-item" key={warehouse.id}>
             <article className="warehouse-list__card-parent">
               <div className="warehouse-list__card-child">
@@ -150,7 +177,8 @@ function WarehouseList() {
               </div>
             </article>
             <div className="warehouse-list__foot">
-              <img className="warehouse-list__edit"
+              <img
+                className="warehouse-list__edit"
                 src={deleteIcon}
                 alt="delete icon"
                 onClick={() => {
