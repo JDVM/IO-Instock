@@ -141,15 +141,6 @@ function WarehouseInventoryList() {
                 </p>
               </div>
 
-              <div className="warehouse-inventory-list__card-info warehouse-inventory-list__card-title--tablet">
-                <h4 className="warehouse-inventory-list__card-title warehouse-inventory-list__card-title--tablet">
-                  WAREHOUSE
-                </h4>
-                <p className="warehouse-inventory-list__card-text">
-                  {warehouseName}
-                </p>
-              </div>
-
               <div className="warehouse-inventory-list__child">
                 <img
                   className="warehouse-inventory-list__action-icon"

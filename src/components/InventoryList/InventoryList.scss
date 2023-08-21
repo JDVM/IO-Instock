@@ -69,9 +69,7 @@
   &__add-button {
     display: flex;
     @include H3;
-    // font-size: 0.875rem;
-
-    // font-weight: 400;
+    
     color: $primary-white;
     background-color: $primary-blue;
 
@@ -86,6 +84,10 @@
       padding: 0 1rem;
       width: fit-content;
       height: 2.375rem;
+    }
+
+    &:hover{
+      background-color: $background-dark;
     }
   }
 

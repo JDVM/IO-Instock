@@ -45,7 +45,7 @@
         justify-content: center;
         align-items: center;
         &:hover{
-            background-color: $primary-black;
+            background-color: $background-dark;
             cursor: pointer;;
         }
         @include tablet {

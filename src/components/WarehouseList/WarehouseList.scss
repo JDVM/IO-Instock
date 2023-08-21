@@ -88,6 +88,9 @@ input::placeholder {
       width: max-content;
     
     }
+    &:hover{
+      background-color: $background-dark;
+    }
   }
 
   &__card-item {
