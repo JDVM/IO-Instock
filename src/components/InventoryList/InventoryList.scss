@@ -131,6 +131,23 @@
         justify-content: center;
         width: calc(100% / 6);
       }
+
+      &:nth-child(1) {
+        order: -2;
+      }
+      &:nth-child(2) {
+        order: 0;
+      }
+      &:nth-child(3) {
+        order: -1;
+      }
+      &:nth-child(4) {
+        order: 0;
+      }
+      &:nth-child(5) {
+        order: 0;
+      }
+     
     }
 
     &__title {
@@ -166,7 +183,7 @@
         &:hover {
           text-decoration: underline;
           & > img {
-            animation: bounceRight .6s infinite alternate;
+            animation: bounceRight 0.6s infinite alternate;
             opacity: 1;
           }
         }
