@@ -98,7 +98,11 @@ input::placeholder {
       padding: 0 8rem;
     }
   }
+.warehouse-list__card-info{
+  @include tablet{
 
+  }
+}
   &__card-item--tablet {
     display: none;
 
@@ -114,6 +118,7 @@ input::placeholder {
     display: flex;
     flex: 1;
     column-gap: 1rem;
+    
     // height: 6rem;
 
     @include tablet {
@@ -130,6 +135,8 @@ input::placeholder {
     @include tablet {
       flex-direction: row;
       align-items: center;
+      flex: 1; 
+      justify-content: space-between;
     }
   }
 
@@ -138,9 +145,10 @@ input::placeholder {
     height: 50%;
 
     @include tablet {
-      width: 50%;
+ 
       display: flex;
-      align-items: center;
+      align-items:center;
+      justify-content: space-between;
     }
   }
 
