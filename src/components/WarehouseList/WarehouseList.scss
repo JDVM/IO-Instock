@@ -3,8 +3,7 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/mixins.scss" as *;
-
-@import "../../styles/mixins.scss";
+@use "../../styles/animations.scss" as *;
 
 * {
   box-sizing: border-box;
@@ -115,7 +114,6 @@ input::placeholder {
     display: flex;
     flex: 1;
     column-gap: 1rem;
-    // height: 6rem;
 
     @include tablet {
       column-gap: 2rem;
@@ -165,6 +163,14 @@ input::placeholder {
     text-align: left;
     display: flex;
     align-items: center;
+
+    &:hover {
+      text-decoration: underline;
+      & > img {
+        animation: bounceRight .6s infinite alternate;
+        opacity: 1;
+      }
+    }
   }
 
   &__card-text {
