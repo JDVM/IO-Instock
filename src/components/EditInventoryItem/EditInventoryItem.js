@@ -115,9 +115,13 @@ function EditInventoryItem() {
         description: description,
         category: selectedCategory,
         warehouse_id: selectedWarehouse,
+        status: status,
+        quantity: status === "Out of Stock" ? 0 : quantity,
       };
 
-      await axios.put(`${API_URL}:${PORT}/inventory/${id}`, updatedItem);
+      console.log("Updated item data:", updatedItem);
+
+      await axios.put(`${API_URL}:${PORT}/inventories/${id}`, updatedItem);
       navigate("/inventory");
     } catch (error) {
       console.error("Error updating item:", error);
@@ -293,7 +297,7 @@ function EditInventoryItem() {
         >
           Cancel
         </button>
-        <button className="edit-inventory-item__button">Save</button>
+        <button onClick={handleSubmit} className="edit-inventory-item__button">Save</button>
       </div>
     </div>
   );
