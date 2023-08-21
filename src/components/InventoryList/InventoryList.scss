@@ -3,6 +3,7 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/mixins.scss" as *;
+@import "../../styles/animations.scss";
 
 .inventory-list {
   display: flex;
@@ -19,7 +20,7 @@
 
     @include tablet {
       flex-direction: row;
-      justify-content: flex-end
+      justify-content: flex-end;
     }
   }
 
@@ -48,7 +49,7 @@
       align-items: center;
       border: none;
       outline: none;
-      margin-left: .5rem;
+      margin-left: 0.5rem;
       padding: 0;
       flex: 1;
     }
@@ -162,6 +163,10 @@
 
         &:hover {
           text-decoration: underline;
+          & > img {
+            animation: bounceRight .6s infinite alternate;
+            opacity: 1;
+          }
         }
       }
 
