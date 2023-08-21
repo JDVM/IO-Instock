@@ -3,6 +3,7 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/mixins.scss" as *;
+@import "../../styles/animations.scss";
 
 .inventory-list {
   display: flex;
@@ -164,6 +165,10 @@
 
         &:hover {
           text-decoration: underline;
+          & > img {
+            animation: bounceRight .6s infinite alternate;
+            opacity: 1;
+          }
         }
       }
 
