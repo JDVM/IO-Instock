@@ -16,27 +16,25 @@
   &__head {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.5rem;
+    padding-top: 2rem;
     border-bottom: 2px solid $secondary-lightgrey;
 
     @include tablet {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: -1rem;
-      padding: 1.5rem 2rem;
-      
+      padding: 2rem 2rem 1.5rem 2rem;
       border: none;
     }
 
     @include desktop {
-      padding: 0 8rem;
+      padding: 2rem 2rem 1.5rem 2.5rem;
     }
   }
 
   &__title {
     @include H1;
-    margin: 0.5rem 0;
     color: $primary-black;
     text-align: left;
   }
@@ -52,17 +50,18 @@
 
   &__input {
     width: 100%;
-    margin: 0.5rem 0;
+    height: 2.375rem;
+   
     @include input;
-    border: 2px solid $secondary-lightgrey;
+    border: 1px solid $secondary-lightgrey;
     background-image: url(../../assets/images/Icons/search-24px.svg);
     background-repeat: no-repeat;
-    background-position: 97%;
+    background-position: 12.5rem;
     outline-color: $primary-blue !important;
     padding-left: 0.75rem;
 
     @include tablet {
-      background-position: 9rem;
+      background-position: 8.5rem;
     }
   }
 
@@ -74,8 +73,13 @@
     cursor: pointer;
 
     @include tablet {
+      margin: 0;
       margin-left: 1rem;
       width: max-content;
+    
+    }
+    &:hover{
+      background-color: $background-dark;
     }
   }
 
@@ -92,7 +96,7 @@
     }
 
     @include desktop {
-      padding: 0 8rem;
+      padding: 0 2.5rem;
     }
   }
 
@@ -195,8 +199,9 @@
 
     }
   }
-  &__edit{
-    cursor:pointer;
+
+  &__edit {
+    cursor: pointer;
   }
 }
 

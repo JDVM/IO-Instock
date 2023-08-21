@@ -288,7 +288,7 @@ function EditInventoryItem() {
       </form>
       <div className="edit-inventory-item__button-container">
         <button
-          className="edit-inventory-item__button edit-inventory-item__button--save"
+          className="edit-inventory-item__button edit-inventory-item__button--cancel"
           onClick={goBack}
         >
           Cancel

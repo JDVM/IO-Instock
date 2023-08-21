@@ -112,6 +112,11 @@
 
             }
         }
+
+        &--status {
+            text-transform: uppercase;
+            @include H4;
+        }
     }
 
     &__icon {
@@ -139,6 +144,20 @@
         text-align: left;
         width: -moz-fit-content;
         width: fit-content;
+    }
+
+    &__status-text {
+        @include H4;
+        color: $primary-black;
+        padding:  0 .5rem ;
+        text-align: left;
+        width: -moz-fit-content;
+        width: fit-content;
+        text-transform: uppercase;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+
 
         &--status-color-instock {
             background-color: rgba(21, 132, 99, .07);

@@ -119,13 +119,13 @@ function WarehouseInventoryList() {
               </div>
 
               <div className="warehouse-inventory-list__card-info">
-                <h4 className="warehouse-inventory-list__card-title warehouse-inventory-list__card-title--tablet">
+                <h4 className="warehouse-inventory-list__card-title  warehouse-inventory-list__card-title--status warehouse-inventory-list__card-title--tablet">
                   STATUS
                 </h4>
                 <p
-                  className={`warehouse-inventory-list__card-text ${info.status === "Out of Stock"
-                    ? "warehouse-inventory-list__card-text--status-color-out-of-stock"
-                    : "warehouse-inventory-list__card-text--status-color-instock"
+                  className={`warehouse-inventory-list__status-text ${info.status === "Out of Stock"
+                    ? "warehouse-inventory-list__status-text--status-color-out-of-stock"
+                    : "warehouse-inventory-list__status-text--status-color-instock"
                     }`}
                 >
                   {info.status}
@@ -138,15 +138,6 @@ function WarehouseInventoryList() {
                 </h4>
                 <p className="warehouse-inventory-list__card-text">
                   {info.quantity}
-                </p>
-              </div>
-
-              <div className="warehouse-inventory-list__card-info warehouse-inventory-list__card-title--tablet">
-                <h4 className="warehouse-inventory-list__card-title warehouse-inventory-list__card-title--tablet">
-                  WAREHOUSE
-                </h4>
-                <p className="warehouse-inventory-list__card-text">
-                  {warehouseName}
                 </p>
               </div>
 
