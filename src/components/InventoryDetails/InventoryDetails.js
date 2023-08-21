@@ -1,7 +1,7 @@
 import "./inventoryDetails.scss";
 import backarrow from "../../assets/images/Icons/arrow_back-24px.svg";
 import editCircle from "../../assets/images/Icons/edit-white-24px.svg";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import getWarehouseById from "../../utils/getWarehouseById";
@@ -36,7 +36,7 @@ function InventoryDetails() {
         console.error(error);
       });
   }, [id]);
-
+ 
   if (!inventoryData) {
     return <p>Loading...</p>;
   }
@@ -48,6 +48,7 @@ function InventoryDetails() {
           <img src={backarrow} alt="Back arrowkey" onClick={goBack} />
           {inventoryData.item_name}
         </h1>
+        <Link to={`/Inventory/${id}/edit`}>
         <button className="inventory-details__edit-button">
           <img
             className="inventory-details__svg"
@@ -56,6 +57,8 @@ function InventoryDetails() {
           />
           <p className="inventory-details__tablet-visable">Edit</p>
         </button>
+        </Link>
+        
       </header>
       <section className="inventory-details__information">
         <div className="inventory-details__description-and-catergory-container">

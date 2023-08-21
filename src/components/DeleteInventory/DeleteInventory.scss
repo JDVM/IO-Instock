@@ -71,12 +71,19 @@
     border: none;
     background: var(--red, #c94515);
     color: $primary-white;
+    &:hover{
+      background-color: $background-dark;
+    }
   }
 
   &__cancel {
     border: 1px solid $secondary-lightgrey;
     background: $primary-white;
     color: $secondary-darkgrey;
+    &:hover{
+      border-color: $primary-blue;
+      color: $primary-blue;
+    }
   }
 
   &__overlay {

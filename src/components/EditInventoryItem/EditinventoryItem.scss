@@ -105,7 +105,7 @@
       align-items: center;
       width: 100%;
 
-      & > input {
+      &>input {
         margin-right: 0.5rem;
       }
     }
@@ -132,15 +132,25 @@
       gap: 1rem;
       cursor: pointer;
 
+      &:hover {
+        background-color: $background-dark;
+      }
+
       @include tablet {
         flex: none;
         width: fit-content;
       }
 
-      &--save {
+      &--cancel {
         background-color: $primary-white;
         color: $secondary-darkgrey;
         border: 1px solid $secondary-lightgrey;
+
+        &:hover {
+          border-color: $primary-blue;
+          color: $primary-blue;
+          background-color: $primary-white;
+        }
       }
     }
   }
