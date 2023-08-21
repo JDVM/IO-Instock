@@ -12,7 +12,6 @@
 }
 
 .warehouse-list {
- 
   &__head {
     display: flex;
     flex-direction: column;
@@ -99,7 +98,11 @@
       padding: 0 2.5rem;
     }
   }
+.warehouse-list__card-info{
+  @include tablet{
 
+  }
+}
   &__card-item--tablet {
     display: none;
 
@@ -115,6 +118,8 @@
     display: flex;
     flex: 1;
     column-gap: 1rem;
+    
+    // height: 6rem;
 
     @include tablet {
       column-gap: 2rem;
@@ -130,6 +135,8 @@
     @include tablet {
       flex-direction: row;
       align-items: center;
+      flex: 1; 
+      justify-content: space-between;
     }
   }
 
@@ -138,9 +145,10 @@
     height: 50%;
 
     @include tablet {
-      width: 50%;
+ 
       display: flex;
-      align-items: center;
+      align-items:center;
+      justify-content: space-between;
     }
   }
 
