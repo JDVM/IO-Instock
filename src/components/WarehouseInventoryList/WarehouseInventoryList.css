@@ -1,0 +1,236 @@
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Bold.ttf);
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list {
+    border-radius: 0.25rem;
+    margin: 0 1rem;
+  }
+}
+.warehouse-inventory-list--disabled {
+  pointer-events: none;
+}
+.warehouse-inventory-list__head {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-bottom: 2px solid #BDC5D5;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+}
+.warehouse-inventory-list__title {
+  font-family: "Titillium Web";
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: #13182C;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+.warehouse-inventory-list__card-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem 1.5rem 1rem;
+  border-bottom: 2px solid #BDC5D5;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-item {
+    flex-direction: row;
+    padding: 0 1rem;
+  }
+}
+.warehouse-inventory-list__card-item--tablet {
+  display: none;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-item--tablet {
+    display: flex;
+    padding: 0 1rem;
+    background-color: #F7F8F9;
+  }
+}
+.warehouse-inventory-list__card-parent {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-parent {
+    width: auto;
+    display: flex;
+  }
+}
+.warehouse-inventory-list__card-child {
+  width: 100%;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-child {
+    flex-direction: row;
+  }
+}
+.warehouse-inventory-list__card-info {
+  padding: 0.5rem 0;
+  width: 50%;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-info {
+    width: 20%;
+    padding: 1rem;
+  }
+}
+.warehouse-inventory-list__card-title {
+  font-family: "Titillium Web";
+  font-size: 0.688rem;
+  line-height: 1rem;
+  font-weight: 600;
+  color: #5C667E;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-title {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}
+.warehouse-inventory-list__card-title--align-flex-end {
+  justify-content: flex-end;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-title--tablet {
+    display: none;
+  }
+}
+.warehouse-inventory-list__card-title--status {
+  text-transform: uppercase;
+  font-family: "Titillium Web";
+  font-size: 0.688rem;
+  line-height: 1rem;
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-title--status {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}
+.warehouse-inventory-list__icon {
+  width: 1rem;
+}
+.warehouse-inventory-list__card-link {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #2E66E5;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-link {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.warehouse-inventory-list__card-link:hover {
+  -webkit-text-decoration: underline #2E66E5;
+          text-decoration: underline #2E66E5;
+}
+.warehouse-inventory-list__card-text {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  color: #13182C;
+  padding: 0;
+  text-align: left;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__card-text {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.warehouse-inventory-list__status-text {
+  font-family: "Titillium Web";
+  font-size: 0.688rem;
+  line-height: 1rem;
+  font-weight: 600;
+  color: #13182C;
+  padding: 0 0.5rem;
+  text-align: left;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-transform: uppercase;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__status-text {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}
+.warehouse-inventory-list__status-text--status-color-instock {
+  background-color: rgba(21, 132, 99, 0.07);
+  color: #158463;
+  border-radius: 1rem;
+}
+.warehouse-inventory-list__status-text--status-color-out-of-stock {
+  background-color: rgba(201, 69, 21, 0.07);
+  color: #C94515;
+  border-radius: 1rem;
+}
+.warehouse-inventory-list__child {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__child {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    width: 20%;
+    gap: 1rem;
+  }
+}
+.warehouse-inventory-list__action-icon {
+  width: 1rem;
+}
+@media (min-width: 768px) {
+  .warehouse-inventory-list__action-icon {
+    width: 1.5rem;
+    cursor: pointer;
+  }
+}/*# sourceMappingURL=WarehouseInventoryList.css.map */

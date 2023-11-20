@@ -1,0 +1,274 @@
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Bold.ttf);
+  font-weight: 700;
+}
+.add-warehouse {
+  display: flex;
+  flex-direction: column;
+}
+.add-warehouse-header {
+  display: flex;
+  flex-direction: row;
+  padding: 1.5rem;
+  padding-top: 2rem;
+  align-items: center;
+}
+.add-warehouse__back-arrow {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+.add-warehouse__back-arrow:hover {
+  cursor: pointer;
+}
+.add-warehouse__title {
+  font-family: "Titillium Web";
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .add-warehouse__title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+.add-warehouse-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  border-top: 0.0625rem solid #BDC5D5;
+}
+@media (min-width: 768px) {
+  .add-warehouse-form {
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-top: 1.5rem;
+  }
+}
+.add-warehouse-form__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+.add-warehouse-form__wrapper:nth-child(2) {
+  border-top: 0.0625rem solid #BDC5D5;
+  padding-top: 1rem;
+}
+@media (min-width: 768px) {
+  .add-warehouse-form__wrapper {
+    width: 50%;
+  }
+  .add-warehouse-form__wrapper:first-child {
+    border-right: 0.0625rem solid #BDC5D5;
+  }
+  .add-warehouse-form__wrapper:nth-child(2) {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+.add-warehouse-form__title {
+  font-family: "Titillium Web";
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+  .add-warehouse-form__title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+.add-warehouse-form__label {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.25rem;
+}
+@media (min-width: 768px) {
+  .add-warehouse-form__label {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.add-warehouse-form__input {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  border-radius: 1.25rem;
+  border: 0.0625rem solid #BDC5D5;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin-top: 0.25rem;
+}
+@media (min-width: 768px) {
+  .add-warehouse-form__input {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.add-warehouse-form__input--error {
+  border-color: #C94515;
+}
+.add-warehouse-form__input:focus {
+  border-color: #2E66E5;
+}
+.add-warehouse-form__input--description {
+  height: 7.5rem;
+  resize: none;
+}
+.add-warehouse-form__input--hide {
+  display: none;
+}
+.add-warehouse-form__label--radio-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.add-warehouse-form__label--radio-wrapper > span {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .add-warehouse-form__label--radio-wrapper > span {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.add-warehouse-form__radio {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 5rem;
+}
+@media (min-width: 768px) {
+  .add-warehouse-form__radio {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+@media (min-width: 768px) {
+  .add-warehouse-form__radio {
+    margin-right: 2.5rem;
+  }
+}
+.add-warehouse-form__radio > input {
+  margin-right: 0.5rem;
+}
+.add-warehouse-form__error {
+  font-family: "Titillium Web";
+  font-size: 0.688rem;
+  line-height: 1rem;
+  font-weight: 400;
+  display: flex;
+  visibility: hidden;
+  vertical-align: center;
+  color: #C94515;
+  margin-top: 0.25rem;
+}
+@media (min-width: 768px) {
+  .add-warehouse-form__error {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}
+.add-warehouse-form__error > img {
+  width: 1rem;
+}
+.add-warehouse-form__error--active {
+  visibility: visible;
+}
+.add-warehouse-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(247, 248, 249, 0.7);
+}
+.add-warehouse-buttons > * {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 1.25rem;
+}
+@media (min-width: 768px) {
+  .add-warehouse-buttons > * {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.add-warehouse-buttons > *:hover {
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .add-warehouse-buttons > * {
+    flex: initial;
+  }
+  .add-warehouse-buttons > *:last-child {
+    width: 8.625rem;
+  }
+}
+@media (min-width: 768px) {
+  .add-warehouse-buttons {
+    width: 100%;
+    justify-content: right;
+    padding: 1rem 2rem;
+  }
+}
+.add-warehouse-buttons__add {
+  background-color: #2E66E5;
+  border: 0.0625rem solid #2E66E5;
+  border: none;
+}
+.add-warehouse-buttons__add:hover {
+  background-color: #232940;
+}
+@media (min-width: 768px) {
+  .add-warehouse-buttons__add {
+    width: 6.125rem;
+  }
+}
+.add-warehouse-buttons__cancel {
+  color: #5C667E;
+  background-color: #FFFFFF;
+  border: 0.0625rem solid #BDC5D5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-warehouse-buttons__cancel:hover {
+  border-color: #2E66E5;
+  color: #2E66E5;
+}
+@media (min-width: 768px) {
+  .add-warehouse-buttons__cancel {
+    width: 4.5rem;
+  }
+}/*# sourceMappingURL=AddWarehouse.css.map */

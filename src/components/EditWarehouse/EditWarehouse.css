@@ -1,0 +1,226 @@
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Bold.ttf);
+  font-weight: 700;
+}
+.edit-warehouse {
+  margin-top: auto;
+}
+.edit-warehouse--header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  padding-top: 2rem;
+}
+.edit-warehouse--header .back-button {
+  margin-right: 1.25rem;
+}
+.edit-warehouse--header .back-button .back-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+.edit-warehouse--header .edit-warehouse--title {
+  color: #232940;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-family: "Titillium Web", Arial, sans-serif;
+}
+@media (min-width: 768px) {
+  .edit-warehouse--header .edit-warehouse--title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .edit-warehouse--header .edit-warehouse--title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+.edit-warehouse .edit-warehouse--form .form-sections {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 1px solid #ccc;
+  border-width: 100%;
+}
+@media (min-width: 768px) {
+  .edit-warehouse .edit-warehouse--form .form-sections {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section:first-child {
+    border-right: 1px solid #ccc;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section:last-child {
+    padding-left: 1.25rem;
+  }
+}
+@media (min-width: 1280px) {
+  .edit-warehouse .edit-warehouse--form .form-sections {
+    align-items: stretch;
+    flex-direction: row;
+  }
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section:first-child {
+    border-right: 1px solid #ccc;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section:last-child {
+    padding-left: 1.25rem;
+  }
+}
+.edit-warehouse .edit-warehouse--form .form-sections .form--section {
+  flex-grow: 1;
+  padding: 1.5rem;
+}
+@media (min-width: 768px) {
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section {
+    padding-right: 2rem;
+  }
+}
+.edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--title {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.75rem;
+  font-family: "Titillium Web", Arial, sans-serif;
+}
+@media (min-width: 768px) {
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+.edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--label {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  font-family: "Titillium Web", Arial, sans-serif;
+  font-size: 0.8125rem;
+}
+@media (min-width: 768px) {
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--label {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    padding-top: 1rem;
+  }
+}
+@media (min-width: 1280px) {
+  .edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--label {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--input {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid #BDC5D5;
+  border-radius: 1.25rem;
+  margin-bottom: 1rem;
+  height: 2.375rem;
+}
+.edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--input:focus {
+  border: 1px solid #2E66E5;
+  outline: none;
+}
+.edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--input.error {
+  border: 1px solid #C94515;
+}
+.edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--input .error-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.edit-warehouse .edit-warehouse--form .form-sections .form--section .form-section--input .error-text {
+  color: #C94515 !important;
+  font-size: 2rem;
+  margin-top: 0.2rem;
+}
+.edit-warehouse .edit-warehouse--form .form-btns {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: rgba(247, 248, 249, 0.7);
+}
+@media (min-width: 768px) {
+  .edit-warehouse .edit-warehouse--form .form-btns {
+    padding-right: 2rem;
+    margin-left: auto;
+    justify-content: right;
+  }
+}
+@media (min-width: 1280px) {
+  .edit-warehouse .edit-warehouse--form .form-btns {
+    padding-right: 2rem;
+    margin-left: auto;
+  }
+}
+.edit-warehouse .edit-warehouse--form .form-btns .save-btn {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 1.25rem;
+  background-color: #2E66E5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  height: 2.375rem;
+}
+.edit-warehouse .edit-warehouse--form .form-btns .save-btn:hover {
+  background-color: #232940;
+}
+@media (min-width: 768px) {
+  .edit-warehouse .edit-warehouse--form .form-btns .save-btn {
+    width: -moz-min-content;
+    width: min-content;
+  }
+}
+@media (min-width: 1280px) {
+  .edit-warehouse .edit-warehouse--form .form-btns .save-btn {
+    width: -moz-min-content;
+    width: min-content;
+  }
+}
+.edit-warehouse .edit-warehouse--form .form-btns .cancel-btn {
+  background-color: #fff;
+  color: #5C667E;
+  width: 100%;
+  border-radius: 1.25rem;
+  height: 2.375rem;
+  border: 1px solid #BDC5D5;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+.edit-warehouse .edit-warehouse--form .form-btns .cancel-btn:hover {
+  border-color: #2E66E5;
+  color: #2E66E5;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .edit-warehouse .edit-warehouse--form .form-btns .cancel-btn {
+    width: -moz-min-content;
+    width: min-content;
+  }
+}
+@media (min-width: 1280px) {
+  .edit-warehouse .edit-warehouse--form .form-btns .cancel-btn {
+    width: -moz-min-content;
+    width: min-content;
+  }
+}/*# sourceMappingURL=EditWarehouse.css.map */

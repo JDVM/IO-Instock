@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Bold.ttf);
+  font-weight: 700;
+}
+.footer {
+  background-color: #f7f8f9;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 9.5rem;
+  padding-bottom: 2.5rem;
+}
+@media (min-width: 1280px) {
+  .footer {
+    padding-top: 9.5rem;
+    padding-bottom: 3rem;
+  }
+}
+.footer__text {
+  font-family: "Titillium Web";
+  font-size: 0.688rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: #5C667E;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .footer__text {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}/*# sourceMappingURL=Footer.css.map */

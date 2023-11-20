@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Bold.ttf);
+  font-weight: 700;
+}
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40rem;
+  background-color: #232940;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+.not-found:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 0;
+  background: radial-gradient(circle, transparent, #F7F8F9 80%);
+  transform: rotate(-20deg);
+}
+.not-found__circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #2E66E5;
+  animation: pulse 1.5s infinite, rotateCircle 30s infinite linear;
+}
+.not-found__title {
+  font-family: "Titillium Web";
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  font-size: 4rem;
+  margin-top: -130px;
+  z-index: 2;
+  animation: slideDown 0.5s ease forwards, rotateText 5s infinite alternate;
+}
+@media (min-width: 768px) {
+  .not-found__title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+.not-found__text {
+  font-family: "Titillium Web";
+  font-size: 0.938rem;
+  line-height: 1.625rem;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  opacity: 0.8;
+  z-index: 2;
+  animation: rotateText -5s infinite alternate-reverse;
+}
+@media (min-width: 768px) {
+  .not-found__text {
+    font-size: 1rem;
+    line-height: 1.75rem;
+  }
+}
+.not-found__subtext {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  z-index: 2;
+  color: #BDC5D5;
+}
+@media (min-width: 768px) {
+  .not-found__subtext {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(46, 102, 229, 0.7);
+  }
+  50% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(46, 102, 229, 0.7), 0 0 30px rgba(46, 102, 229, 0.7);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(46, 102, 229, 0.7);
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateText {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}/*# sourceMappingURL=PageNotFound.css.map */

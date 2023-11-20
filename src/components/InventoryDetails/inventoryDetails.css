@@ -1,0 +1,238 @@
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Titillium Web";
+  src: local("Titillium Web"), url(../../assets/fonts/TitilliumWeb-Bold.ttf);
+  font-weight: 700;
+}
+html,
+header,
+nav,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app {
+  background-color: #F7F8F9;
+  height: 100vh;
+}
+
+.main-content {
+  background-color: white;
+  width: auto;
+  border-radius: 0.25rem;
+  margin: -4rem 1rem 0rem 1rem;
+  box-shadow: 0px 2px 15px 0px rgba(19, 24, 44, 0.1);
+  z-index: 5;
+  overflow-y: auto;
+  opacity: 1;
+}
+@media (min-width: 768px) {
+  .main-content {
+    margin: -5.875rem 2rem 0rem 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .main-content {
+    margin: -5.875rem auto 0rem auto;
+    max-width: 1216px;
+  }
+}
+
+.inventory-details {
+  display: flex;
+  flex-direction: column;
+}
+.inventory-details__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 1rem;
+  border-bottom: solid 2px #BDC5D5;
+}
+@media (min-width: 768px) {
+  .inventory-details__header {
+    padding: 1.5rem 2rem;
+  }
+}
+.inventory-details__page-title {
+  display: flex;
+  font-family: "Titillium Web";
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .inventory-details__page-title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+.inventory-details__page-title > img:hover {
+  cursor: pointer;
+}
+.inventory-details__edit-button {
+  fill: #FFFFFF;
+  background-color: #2E66E5;
+  height: 2.25rem;
+  min-width: 2.25rem;
+  border-radius: 1.25rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inventory-details__edit-button:hover {
+  background-color: #232940;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .inventory-details__edit-button {
+    width: 5.0625rem;
+  }
+}
+.inventory-details__tablet-visable {
+  display: none;
+}
+@media (min-width: 768px) {
+  .inventory-details__tablet-visable {
+    display: flex;
+    color: #FFFFFF;
+    padding: 0 0.5rem;
+  }
+}
+.inventory-details__svg {
+  width: 2.25rem;
+  width: 1.25rem;
+}
+.inventory-details__information {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .inventory-details__information {
+    flex-direction: row;
+    padding: 1rem 2rem;
+  }
+}
+.inventory-details__description-and-catergory-container {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .inventory-details__description-and-catergory-container {
+    width: 50%;
+    border-right: solid 0.125rem #BDC5D5;
+  }
+}
+.inventory-details__description {
+  padding-bottom: 1rem;
+}
+.inventory-details__category {
+  padding-bottom: 1rem;
+}
+.inventory-details__status-quantity-warehouse-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+  .inventory-details__status-quantity-warehouse-container {
+    width: 50%;
+    padding-left: 2rem;
+  }
+}
+.inventory-details__status {
+  width: 50%;
+  padding-bottom: 1rem;
+}
+.inventory-details__quantity {
+  width: 50%;
+  padding-bottom: 1rem;
+}
+.inventory-details__warehouse {
+  width: 50%;
+  padding-bottom: 1rem;
+}
+.inventory-details__title {
+  font-family: "Titillium Web";
+  font-size: 0.688rem;
+  line-height: 1rem;
+  font-weight: 600;
+  color: #5C667E;
+}
+@media (min-width: 768px) {
+  .inventory-details__title {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}
+@media (min-width: 768px) {
+  .inventory-details__title {
+    padding-top: 1rem;
+  }
+}
+.inventory-details__text {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  color: #13182C;
+  padding: 0.5rem 0;
+  text-align: left;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 1.5rem;
+}
+@media (min-width: 768px) {
+  .inventory-details__text {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.inventory-details__text--status-color-instock {
+  background-color: rgba(21, 132, 99, 0.07);
+  color: #158463;
+  border-radius: 1rem;
+}
+.inventory-details__text--status-color-out-of-stock {
+  background-color: rgba(201, 69, 21, 0.07);
+  color: #C94515;
+  border-radius: 1rem;
+}
+.inventory-details__text-status {
+  font-family: "Titillium Web";
+  font-size: 0.688rem;
+  line-height: 1rem;
+  font-weight: 600;
+  color: #13182C;
+  padding: 0 0.5rem;
+  text-align: left;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .inventory-details__text-status {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}
+.inventory-details__text-status--status-color-instock {
+  background-color: rgba(21, 132, 99, 0.07);
+  color: #158463;
+  border-radius: 1rem;
+}
+.inventory-details__text-status--status-color-out-of-stock {
+  background-color: rgba(201, 69, 21, 0.07);
+  color: #C94515;
+  border-radius: 1rem;
+}/*# sourceMappingURL=inventoryDetails.css.map */
