@@ -4,14 +4,14 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/mixins.scss" as *;
 
-// .inventories {
-//   display: flex;
-//   justify-content: center;
-//   max-width: 63.75rem;
-//   max-height: 37.875;
-//   @include tablet {
-//     background-color: $primary-white;
+.inventories {
+  display: flex;
+  justify-content: center;
+  max-width: 63.75rem;
+  max-height: 37.875;
+  @include tablet {
+    background-color: $primary-white;
 
-//     margin-top: -6rem
-//   }
-// }
+    margin-top: -6rem
+  }
+}
