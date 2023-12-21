@@ -4,7 +4,7 @@ Welcome to **InStock**, the modern, scalable inventory management system designe
 
 ## Introduction
 
-InStock is our answer to the outdated inventory systems that struggle under heavy traffic. Built with a React front-end and an Express back-end (found in our [API repository](https://github.com/yourgithubusername/io-instock-api)), we aim to provide a seamless, efficient, and user-friendly experience for all inventory needs.
+InStock is our answer to the outdated inventory systems that struggle under heavy traffic. Built with a React front-end and an Express back-end (found in our [API repository](https://github.com/JDVM/IO-Instock-API)), we aim to provide a seamless, efficient, and user-friendly experience for all inventory needs.
 
 ## Technologies
 
@@ -19,7 +19,7 @@ InStock is our answer to the outdated inventory systems that struggle under heav
 ## Setup
 
 1. Clone the repository: 
-```git clone https://github.com/Mannyhab/io-instock.git```
+```git clone https://github.com/JDVM/IO-Instock.git```
 
 2. Install dependencies:
 ```npm install```
